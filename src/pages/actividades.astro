@@ -1,0 +1,33 @@
+---
+import LegacyPage from '../components/LegacyPage.astro';
+import beforeHtml from '../legacy/actividades.before.html?raw';
+import projectsHtml from '../legacy/actividades.projects.html?raw';
+import newsHtml from '../legacy/actividades.news.html?raw';
+import afterHtml from '../legacy/actividades.after.html?raw';
+import afterFooterHtml from '../legacy/actividades.after-footer.html?raw';
+---
+
+<LegacyPage
+  title="ECAM Forum 2025"
+  lang="es"
+  description="Forum 2025"
+  ogTitle="ECAM Forum"
+  ogDescription="2025"
+  ogUrl="https://ecamforum.es/"
+  ogImage="https://ecamforum.es/images/forum-share.jpg"
+  loadLegacyInteractive={true}
+  loadModernInteractive={false}
+  pageId="activities"
+  currentRoute="/actividades"
+  counterpartRoute="/en/"
+  footerLocale="es"
+  hasLegacyProjectModal={false}
+  hasProject2025Modal={false}
+  hasNewsModal={false}
+  hasSeminarModal={true}
+  beforeHtml={beforeHtml}
+  projectsHtml={projectsHtml}
+  newsHtml={newsHtml}
+  afterHtml={afterHtml}
+  afterFooterHtml={afterFooterHtml}
+/>

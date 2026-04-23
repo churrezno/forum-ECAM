@@ -1,0 +1,51 @@
+#convocatorias {
+
+    padding: 4rem 0;
+    
+    .bkg {
+        
+        background: url(#{$img-path}bkg-convocatorias.svg);
+        background-repeat: no-repeat;
+        background-position: center top;
+        background-size: cover;
+        padding: 4rem 0;
+    }
+
+    .tit-seccion {
+
+        margin-bottom: -2.5rem;
+    }
+
+    .tit-convo {
+
+        font-family: $formula;
+        font-size: 2.75rem;
+        letter-spacing: .0625rem;
+        margin: 3.5rem 0 .75rem;
+    }
+
+    .wrapper {
+
+        text-wrap: balance;
+        max-width: 320px;
+        margin: -2rem 0 0 auto;
+        padding: 4rem 2.5rem 2rem;
+        border-radius: 1.25rem;
+
+        a:hover {
+
+            color: white;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    
+    #convocatorias {
+        
+        .tit-seccion {
+
+            margin-bottom: 0;
+        }
+    }
+}

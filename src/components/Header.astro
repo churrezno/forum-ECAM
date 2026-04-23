@@ -1,0 +1,98 @@
+---
+interface Props {
+  locale: 'es' | 'en';
+  pageId: 'home' | 'forum-2024' | 'forum-2025' | 'news' | 'activities' | 'legal';
+  currentRoute: string;
+  counterpartRoute: string;
+}
+
+const { locale, pageId, currentRoute, counterpartRoute } = Astro.props;
+const isEnglish = locale === 'en';
+const homeHref = isEnglish ? '/en/' : '/';
+const editionsLabel = isEnglish ? 'Editions' : 'Ediciones';
+const newsLabel = isEnglish ? 'News' : 'Noticias';
+const homeAnchorHref =
+  pageId === 'activities'
+    ? '/#proyectos'
+    : pageId === 'home'
+      ? '#finde'
+      : isEnglish
+        ? '/en/#finde'
+        : '/#finde';
+const homeAnchorLabel = pageId === 'activities' ? 'Proyectos' : 'FINDE';
+const newsHref = isEnglish ? '/en/news' : '/noticias';
+const editions = [
+  { id: 'forum-2024', label: 'Forum 2024', href: isEnglish ? '/en/forum-2024' : '/forum-2024' },
+  { id: 'forum-2025', label: 'Forum 2025', href: isEnglish ? '/en/forum-2025' : '/forum-2025' },
+];
+const separatorIcon = '/images/ico_chile-blanco.svg';
+---
+
+<header>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <nav class="navbar navbar-expand-lg">
+          <div class="container-fluid">
+            <a class="navbar-brand" href={homeHref}>
+              <img src="/images/logo_FORUM_ECAM.svg" alt="Forum ECAM" class="logo" />
+            </a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarTogglerForum"
+              aria-controls="navbarTogglerForum"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerForum">
+              <ul class="navbar-nav mt-4 mt-lg-0 ms-auto mb-2 mb-lg-0 text-end">
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href={homeAnchorHref}>{homeAnchorLabel}</a>
+                </li>
+                <li class="nav-item">
+                  <a class:list={['nav-link', { active: pageId === 'news' }]} aria-current="page" href={newsHref}>
+                    {newsLabel}
+                  </a>
+                </li>
+                {pageId === 'activities' && !isEnglish && (
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/actividades">
+                      Actividades
+                    </a>
+                  </li>
+                )}
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {editionsLabel}
+                  </a>
+                  <ul class="dropdown-menu">
+                    {editions.map((edition) => (
+                      <li>
+                        <a class:list={['dropdown-item', { active: pageId === edition.id }]} href={edition.href}>
+                          {edition.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+                <li class="separador d-none d-lg-block">
+                  <img src={separatorIcon} alt="separador" />
+                </li>
+                <li class="nav-item lang mt-3 mt-lg-0">
+                  <a class:list={['nav-link', { active: !isEnglish }]} href={isEnglish ? counterpartRoute : currentRoute}>ES</a>
+                </li>
+                <li class="nav-item lang">
+                  <a class:list={['nav-link', { active: isEnglish }]} href={isEnglish ? currentRoute : counterpartRoute}>EN</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>

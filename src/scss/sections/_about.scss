@@ -1,0 +1,22 @@
+#about {
+    
+    background-color: white;
+    background: white url(#{$img-path}corona_chiles.svg);
+    background-repeat: no-repeat;
+    background-position: 95% 20px;
+    background-size: auto 80px;
+    padding: 3rem 0;
+
+    p {
+        color: $azul;
+    }
+}
+
+@media (min-width: 768px) {
+    
+    #about {
+        background-position: 75vw center;
+        background-size: auto 90%;
+        padding: 4rem 0;    
+    }
+}

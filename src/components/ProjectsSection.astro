@@ -1,0 +1,111 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import { projectsData, sections as legacySections } from '../js/data-projects';
+import { projectsData2025, sections as sections2025 } from '../js/data-projects-2025';
+
+interface Props {
+  lang: 'es' | 'en';
+  pageId: 'forum-2024' | 'forum-2025';
+}
+
+const { lang, pageId } = Astro.props;
+const isEnglish = lang === 'en';
+const workspaceRoot = process.cwd();
+
+const cleanText = (value: unknown) =>
+  String(value ?? '')
+    .replace(/\r\n?/g, '\n')
+    .replace(/\s*\n\s*/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+const getProject2024Image = (image: string) => `/images/proyectos/${image.replace('-gr.', '-pq.')}`;
+const getProject2025Image = (slug: string) => {
+  const pqPath = path.join(workspaceRoot, 'public', 'images', 'proyectos-2025', 'pq', `${slug}.jpg`);
+  return fs.existsSync(pqPath) ? `/images/proyectos-2025/pq/${slug}.jpg` : `/images/proyectos-2025/${slug}.jpg`;
+};
+
+const projectsByPage = {
+  'forum-2024': {
+    heading: isEnglish ? 'SELECTED PROJECTS 2024' : 'PROYECTOS SELECCIONADOS 2024',
+    sections: [
+      { id: 1, label: legacySections[1] },
+      { id: 2, label: legacySections[2] },
+      { id: 3, label: legacySections[3] },
+      { id: 4, label: legacySections[4] },
+    ],
+    projects: projectsData.map((project) => ({
+      key: project.project,
+      triggerAttr: 'data-project',
+      triggerValue: project.project,
+      triggerLang: null,
+      imageSrc: getProject2024Image(project.image),
+      title: cleanText(isEnglish ? (project.title_en || project.title) : project.title),
+      alt: cleanText(isEnglish ? (project.title_en || project.title) : project.title),      
+      credit: cleanText(project.section === 3 ? project.script : project.director),
+      country: cleanText(isEnglish ? (project.country_en || project.country) : project.country),
+      section: project.section,
+    })),
+  },
+  'forum-2025': {
+    heading: isEnglish ? 'SELECTED PROJECTS 2025' : 'PROYECTOS SELECCIONADOS 2025',
+    sections: [
+      { id: 1, label: sections2025[1] },
+      { id: 2, label: sections2025[2] },
+      { id: 4, label: sections2025[4] },
+      { id: 3, label: sections2025[3] },
+    ],
+    projects: projectsData2025.map((project) => ({
+      key: project.project,
+      triggerAttr: 'data-project-2025',
+      triggerValue: project.project,
+      triggerLang: lang,
+      imageSrc: getProject2025Image(project.project),
+      title: cleanText(isEnglish ? (project.titleEn || project.title) : project.title),
+      alt: cleanText(isEnglish ? (project.titleEn || project.title) : project.title),
+      credit: cleanText(project.section === 3 ? project.script : project.director),
+      country: cleanText(isEnglish ? (project.countryEn || project.country) : project.country),
+      section: project.section,
+    })),
+  },
+}[pageId];
+---
+
+<section id="proyectos">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h3 class="tit-seccion blanco mb-4">{projectsByPage.heading}</h3>
+      </div>
+    </div>
+
+    {projectsByPage.sections.map((section) => {
+      const sectionProjects = projectsByPage.projects.filter((project) => project.section === section.id);
+
+      return (
+        <div class="row row-proyectos">
+          <div class="col-12">
+            <h4 class="cat-proyecto">{section.label}</h4>
+          </div>
+          {sectionProjects.map((project) => (
+            <div class="col-6 col-md-4 col-lg-3">
+              <a
+                href="#"
+                data-bs-toggle="modal"
+                data-bs-target="#modalProyecto"
+                data-lang={project.triggerLang ?? undefined}
+                {...{ [project.triggerAttr]: project.triggerValue }}
+              >
+                <img src={project.imageSrc} alt={project.alt} />
+                <p class="titulo">{project.title}</p>
+                <p class="direccion">{project.credit}</p>
+                <p class="pais">{project.country}</p>
+              </a>
+            </div>
+          ))}
+        </div>
+      );
+    })}
+  </div>
+</section>

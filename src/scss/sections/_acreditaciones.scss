@@ -1,0 +1,55 @@
+#acreditaciones {
+
+    background-color: $gris;
+    padding: 4rem 0 3rem;
+
+    p.azul {
+
+        max-width: 640px;
+    }
+
+    .wrapper {
+
+        color: white;
+        background-color: $azul;
+        padding: 3rem 3rem 2rem;
+        border-radius: 2rem;
+        width: fit-content;
+        margin: 1.5rem auto 0;
+
+        p {
+
+            font-size: 1.25rem;
+            margin-bottom: 0.125rem;
+        }
+
+        .fecha {
+
+            font-size: 4rem;
+            line-height: 1.25;
+            color: $rojo;
+        }
+    }
+
+    .btn {
+
+        font-size: 1.25rem;
+
+        &:hover {
+
+            color: $rojo;
+            border-color: $rojo;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    
+    #acreditaciones {
+
+        .wrapper {
+
+            margin-top: 0;
+        }
+    }
+}

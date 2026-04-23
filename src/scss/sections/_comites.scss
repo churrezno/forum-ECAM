@@ -1,0 +1,47 @@
+#comites {
+
+    padding: 4rem 0 1rem;
+
+    .tit-categoria {
+        font-family: $formula;
+        font-size: 2.75rem;
+        margin-bottom: 1.5rem;
+    }
+
+    img {
+        width: 200px;
+        border-radius: 50%;
+        margin: 0 auto 1rem;
+        display: block;
+    }
+
+    .nombre {
+        font-size: 1rem;
+        font-weight: 600;
+        line-height: 1.25;
+        text-transform: uppercase;
+        margin-bottom: 0.125rem;
+    }
+
+    p {
+        font-size: 0.9rem;
+        text-align: center;
+    }
+}
+
+
+
+@media (min-width: 768px) {
+    
+    #comites {        
+        padding: 4rem 0;
+        
+        .nombre {
+            font-size: 1.25rem;
+        }
+
+        p {
+            font-size: 1rem;
+        }
+    }
+}

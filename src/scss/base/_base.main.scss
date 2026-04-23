@@ -1,0 +1,32 @@
+@import "../settings/settings.variables";
+@import "../tools/index";
+
+body {
+
+  color: $color-base;
+  font-family: $helvetica;
+  font-size: $size-base;
+  font-weight: 300;
+  font-style: normal;
+  background-color: $azul;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $color-base;
+}
+
+b,
+strong {
+  font-weight: 700;
+}
+
+img {
+  max-width: 100%;
+}
+
+@include color-based-styles;

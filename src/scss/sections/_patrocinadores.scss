@@ -1,0 +1,50 @@
+#patrocinadores {
+
+    margin: 4rem 0 3rem;
+
+    p {
+
+        font-size: .625rem;
+    }
+
+    .logo-main {
+
+        width: auto;
+        height: 50px;
+    }
+
+    .wrapper {
+
+        gap: 3rem;
+
+        .logo {
+
+            width: auto;
+
+            $h: 40px;
+
+            &_1 {
+
+                height: $h;
+            }
+            
+            &_2 {
+
+                height: 1.25*$h;
+            }
+            
+            &_3 {
+
+                height: 1.5*$h;
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    
+    #patrocinadores {
+
+        margin: 5rem 0 6rem;
+    }
+}

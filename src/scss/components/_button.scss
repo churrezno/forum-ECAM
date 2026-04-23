@@ -1,0 +1,215 @@
+.btn {
+    transition: all .25s ease;
+
+    &-border {
+        font-weight: 600;
+        line-height: 1;
+        color: $azul;
+        padding: 1.25rem 1.25rem 1rem;
+        border: 3px solid $azul;
+        border-radius: 1rem;
+
+        &:hover {
+            color: $gris;
+            border-color: $gris;
+        }
+
+        &-gris {
+            color: $gris;
+            border-color: $gris;
+
+            &:hover {    
+                color: $rojo;
+                border-color: $rojo;
+            }
+        }
+
+        &-blanco {
+            color: white;
+            border-color: white;
+
+            &:hover {    
+                color: $rojo;
+                border-color: $rojo;
+            }
+        }
+
+        &-azul {
+            color: $azul;
+            border-color: $azul;
+
+            &:hover {    
+                color: $rojo;
+                border-color: $rojo;
+            }
+        }
+
+        &-solid {
+            color: $gris;
+            border-color: $rojo;
+            background-color: $rojo;
+            
+            &:hover {                
+                color: white;
+                border-color: $rojo;
+                background-color: $rojo;
+            }
+        }
+    }
+
+    &-cta {
+        font-family: $formula;
+        font-size: 2.5rem;
+        line-height: 1.125;
+        letter-spacing: .5px;
+        text-align: left;
+        color: $azul;
+        background-color: $gris;
+        border-radius: 2rem;
+        border: 4px solid $gris;
+        padding: 2rem 6rem 1.25rem 2rem;
+        display: inline-flex;
+        align-items: center;
+        width: max-content;
+        max-width: 100%;
+        position: relative;
+
+        svg {
+            height: auto;
+            width: 50px;
+            position: absolute;
+            right: 2rem;
+            transition: all .25s ease;
+        }
+
+        &:hover {
+            color: $rojo;
+            background-color: $gris;
+            border: 4px solid $rojo;
+
+            svg {
+                right: 1.5rem;
+            }
+        }
+
+        &-pq {
+            font-size: 2.125rem;
+            padding: 1.75rem 5rem .75rem 1.0rem;
+            border-radius: 1.125rem;
+            width: fit-content;
+
+            svg {
+                width: 35px;
+                right: 2rem;
+                top: 32%;
+            }
+
+            &:hover {
+    
+                svg {    
+                    right: 1.5rem;
+                }
+            }
+        }
+
+        &-azul {
+            color: $gris;
+            background-color: $azul;
+            border-color: $azul;
+        }
+    }
+}
+
+@media (min-width: 576px) {
+
+    .btn {
+
+        &-cta {
+            font-size: 4rem;
+            padding: 3rem 8rem 1.25rem 3rem;
+
+            svg {
+                width: 55px;
+                right: 3rem;
+            }
+
+            &:hover {
+
+                svg {
+                    right: 2.5rem;
+                }
+            }
+
+            &-pq {    
+                font-size: 2.125rem;
+                padding: 1.75rem 1.0rem .75rem 1.0rem;
+                border-radius: 1.125rem;
+    
+                svg {    
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+
+    .btn {
+
+        &-cta {
+
+            svg {
+                top: 35%;
+            }
+
+            &-pq {    
+                font-size: 2.25rem;
+                padding: 1.75rem 5.5rem .75rem 1.25rem;
+                border-radius: 2rem;
+    
+                svg {    
+                    display: block;
+                    width: 35px;
+                    right: 1.5rem;
+                    top: 32%;
+                }
+    
+                &:hover {
+        
+                    svg {        
+                        right: 1rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 992px) {
+
+    .btn {
+
+        &-cta {            
+
+            &-pq {    
+                font-size: 2.5rem;
+                padding: 2rem 5.5rem 1rem 2rem;
+                width: 100%;
+    
+                svg {    
+                    width: 45px;
+                    right: 2rem;
+                    top: 30%;
+                }
+    
+                &:hover {
+        
+                    svg {        
+                        right: 1.5rem;
+                    }
+                }
+            }
+        }
+    }
+}

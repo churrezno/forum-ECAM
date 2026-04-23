@@ -1,0 +1,17 @@
+//color variations
+@mixin bloque-($color) {
+  .bloque-#{$color} {
+    border-color: map-get($colors, $color);
+  }
+}
+
+@mixin color-based-styles {
+  @each $name, $hex in $colors {
+    .#{$name} {
+      color: $hex;
+    }
+    .bg-#{$name} {
+      background-color: $hex;
+    }
+  }
+}

@@ -1,0 +1,65 @@
+@font-face {
+    font-family: 'Helvetica LT Std';
+    src: url(#{$font-path}HelveticaLTStd-BoldObl.eot);
+    src: url(#{$font-path}HelveticaLTStd-BoldObl.eot?#iefix) format('embedded-opentype'),
+        url(#{$font-path}HelveticaLTStd-BoldObl.woff2) format('woff2'),
+        url(#{$font-path}HelveticaLTStd-BoldObl.woff) format('woff'),
+        url(#{$font-path}HelveticaLTStd-BoldObl.ttf) format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Helvetica LT Std';
+    src: url(#{$font-path}HelveticaLTStd-LightObl.eot);
+    src: url(#{$font-path}HelveticaLTStd-LightObl.eot?#iefix) format('embedded-opentype'),
+        url(#{$font-path}HelveticaLTStd-LightObl.woff2) format('woff2'),
+        url(#{$font-path}HelveticaLTStd-LightObl.woff) format('woff'),
+        url(#{$font-path}HelveticaLTStd-LightObl.ttf) format('truetype');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Helvetica LT Std';
+    src: url(#{$font-path}HelveticaLTStd-Light.eot);
+    src: url(#{$font-path}HelveticaLTStd-Light.eot?#iefix) format('embedded-opentype'),
+        url(#{$font-path}HelveticaLTStd-Light.woff2) format('woff2'),
+        url(#{$font-path}HelveticaLTStd-Light.woff) format('woff'),
+        url(#{$font-path}HelveticaLTStd-Light.ttf) format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Helvetica LT Std';
+    src: url(#{$font-path}HelveticaLTStd-Bold.eot);
+    src: url(#{$font-path}HelveticaLTStd-Bold.eot?#iefix) format('embedded-opentype'),
+        url(#{$font-path}HelveticaLTStd-Bold.woff2) format('woff2'),
+        url(#{$font-path}HelveticaLTStd-Bold.woff) format('woff'),
+        url(#{$font-path}HelveticaLTStd-Bold.ttf) format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PP Formula Condensed';
+    src: url(#{$font-path}PPFormulaCondensed-Black.eot);
+    src: url(#{$font-path}PPFormulaCondensed-Black.eot?#iefix) format('embedded-opentype'),
+        url(#{$font-path}PPFormulaCondensed-Black.woff2) format('woff2'),
+        url(#{$font-path}PPFormulaCondensed-Black.woff) format('woff'),
+        url(#{$font-path}PPFormulaCondensed-Black.ttf) format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PP Formula Condensed';
+    src: url(#{$font-path}PPFormulaCondensed-Bold.eot);
+    src: url(#{$font-path}PPFormulaCondensed-Bold.eot?#iefix) format('embedded-opentype'),
+        url(#{$font-path}PPFormulaCondensed-Bold.woff2) format('woff2'),
+        url(#{$font-path}PPFormulaCondensed-Bold.woff) format('woff'),
+        url(#{$font-path}PPFormulaCondensed-Bold.ttf) format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}

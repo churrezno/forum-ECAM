@@ -1,0 +1,86 @@
+#seminarios{
+
+    padding: 4rem 0;
+    background-color: white;
+
+    .row-intro {
+
+        .tit-seccion {
+            margin-bottom: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 2rem;
+        }
+    }
+
+    .wrapper-evento {
+        font-family: $formula;
+        color: white;
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+        transition: all .25s ease;
+
+        .tipo-evento {
+            font-size: 1.5rem;
+            margin-bottom: .25rem;
+        }
+
+        .ponente {
+            &_name {
+                font-size: 2.625rem;
+                line-height: 1.05;
+                text-transform: uppercase;
+                margin-bottom: 1rem;
+            }
+
+            &_img {
+                margin-bottom: 1.25rem;
+            }
+        }
+
+        .titulo, .fecha {
+            font-size: 1.875rem;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+
+        .wrapper-cierre {
+            font-family: $helvetica;
+            display: flex;
+            justify-content: space-between;
+
+            .wrapper-colaborador {                
+                p {
+                    font-size: .75rem;
+                }
+
+                .logo-colaborador {
+                    height: 30px;
+                    width: auto;
+                    margin: 0 0 0 auto;
+
+                    &-gr {
+                        height: 50px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media(min-width: 768px) {
+
+    #seminarios {
+        .row-intro {
+            .tit-seccion {
+                margin-bottom: 2rem;
+            }
+
+            p {
+                max-width: 700px;
+            }
+        }
+    }
+}

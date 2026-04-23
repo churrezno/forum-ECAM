@@ -1,0 +1,33 @@
+---
+import LegacyPage from '../../components/LegacyPage.astro';
+import beforeHtml from '../../legacy/en__forum-2025.before.html?raw';
+import projectsHtml from '../../legacy/en__forum-2025.projects.html?raw';
+import newsHtml from '../../legacy/en__forum-2025.news.html?raw';
+import afterHtml from '../../legacy/en__forum-2025.after.html?raw';
+import afterFooterHtml from '../../legacy/en__forum-2025.after-footer.html?raw';
+---
+
+<LegacyPage
+  title="ECAM Forum 2025"
+  lang="en"
+  description="Forum 2025"
+  ogTitle="ECAM Forum"
+  ogDescription="2025"
+  ogUrl="https://ecamforum.es/"
+  ogImage="https://ecamforum.es/images/forum-share.jpg"
+  loadLegacyInteractive={true}
+  loadModernInteractive={true}
+  pageId="forum-2025"
+  currentRoute="/en/forum-2025"
+  counterpartRoute="/forum-2025"
+  footerLocale="en"
+  hasLegacyProjectModal={false}
+  hasProject2025Modal={true}
+  hasNewsModal={false}
+  hasSeminarModal={true}
+  beforeHtml={beforeHtml}
+  projectsHtml={projectsHtml}
+  newsHtml={newsHtml}
+  afterHtml={afterHtml}
+  afterFooterHtml={afterFooterHtml}
+/>

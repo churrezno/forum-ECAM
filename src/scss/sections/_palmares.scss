@@ -1,0 +1,29 @@
+#palmares {
+
+    padding: 4rem 0;
+
+    .tit-categoria {
+        font-family: $formula;
+        font-size: 2.75rem;
+        margin-bottom: 1rem;
+
+        svg {
+            width: 40px;
+            margin: 0 0 .5rem .5rem;
+        }
+    }
+
+    .premio {
+        font-family: $formula;
+        font-size: 1.875rem;
+        color: white;
+        margin-bottom: 0;
+    }
+
+    .proyecto-titulo {
+        font-size: 1.25rem;
+        font-style: italic;
+        font-weight: 600;
+        margin-bottom: 0;
+    }
+}

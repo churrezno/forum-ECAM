@@ -1,0 +1,26 @@
+#finde {
+    padding: 3rem 0;
+
+    .logo-finde {
+        width: 180px;
+        margin-bottom: 2rem;
+    }
+
+    .bkg {
+        background: url(#{$img-path}finde-0.jpg) no-repeat center top;
+        background-size: cover;
+    }
+}
+
+
+@media (min-width: 768px) {
+
+    #finde {
+        padding: 4rem 0;
+
+        .logo-finde {
+            width: 250px;
+            margin-bottom: 2rem;
+        }
+    }
+}

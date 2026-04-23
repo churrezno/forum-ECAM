@@ -1,0 +1,50 @@
+footer {
+
+    background: linear-gradient($azul, $rojo);
+    color: white;
+    padding: 2rem 0 1rem;
+
+    .col-12:not(:first-child) {
+
+        padding-top: 10px;
+    }
+
+    .logo {
+
+        width: 120px;
+    }
+
+    p, a {
+
+        font-size: .85rem;
+        color: white;
+    } 
+
+    a {
+
+        font-weight: 600;
+    } 
+
+    ul.navbar-nav {
+
+        flex-direction: row;
+        gap: 1rem;
+
+        a {
+
+            color: white;
+        }
+    }
+}
+
+
+@media (min-width: 768px) {
+
+    footer {
+
+        .col-12:not(:first-child) {
+
+            padding-top: 30px;
+        }        
+    }
+}

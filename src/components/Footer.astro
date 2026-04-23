@@ -1,0 +1,79 @@
+---
+interface Props {
+  locale: 'es' | 'en';
+}
+
+const { locale } = Astro.props;
+const isEnglish = locale === 'en';
+const infoLabel = isEnglish ? 'Information' : 'Información';
+const pressLabel = isEnglish ? 'Press annd communication' : 'Prensa y comunicación';
+const hoursLabel = isEnglish
+  ? 'Public service hours (reception)<br>\n                        monday to thursday: 9:30 h to 18:00 h<br>\n                        friday: 9:30 h to 15:30 h'
+  : 'Horario de atención al público (recepción)<br>\n                        lunes a jueves: 9:30 h a 18:00 h<br>\n                        viernes: 9:30 h a 15:30 h';
+const socialLabel = isEnglish ? 'Follow us on' : 'Síguenos en<br>\n                        nuestras redes sociales';
+---
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-3">
+        <img src="/images/logo-ECAM_blanco.svg" alt="ECAM" class="logo" />
+      </div>
+
+      <div class="col-12 col-md-3">
+        <p set:html={`${infoLabel}<br>\n                        <a href="tel:+34 915 121 060">+34 915 121 060</a>`}></p>
+        <p set:html={`${pressLabel}<br>\n                        <a title="E-mail de Comunicación" href="mailto:forum@ecam.es">forum@ecam.es</a>`}></p>
+      </div>
+
+      <div class="col-12 col-md-3">
+        <p>
+          C/ Juan de Orduña, 3<br />
+          Ciudad de la Imagen<br />
+          28223 Pozuelo de Alarcón, Madrid
+        </p>
+
+        <p set:html={hoursLabel}></p>
+      </div>
+
+      <div class="col-12 col-md-3">
+        <p set:html={socialLabel}></p>
+        <ul class="navbar-nav">
+          <li>
+            <a href="https://es-la.facebook.com/ECAMescuela/" target="_blank">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://twitter.com/ecam_" target="_blank">
+              <i class="fa-brands fa-x-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/ecam_cine/" target="_blank">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.linkedin.com/company/ecam-escuela-de-cinematograf-a-y-del-audiovisual-de-la-comunidad-de-madrid-/"
+              target="_blank"
+            >
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/channel/UCkpBkvGs-zX6ayayKNhY5bw" target="_blank">
+              <i class="fa-brands fa-youtube"></i>
+            </a>
+          </li>
+        </ul>
+        <p class="mt-4 d-flex flex-column">
+          <a href="/politica-cookies" title="Política de cookies">Política de cookies</a>
+          <a href="/politica-privacidad" title="Política de privacidad">Política de privacidad</a>
+          <span>-----</span>
+          <a href="https://ecam.es/canal-de-denuncias/" target="_blank">Canal de denuncias</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>

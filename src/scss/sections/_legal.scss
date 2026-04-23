@@ -1,0 +1,53 @@
+#legal {
+
+    margin: 2rem 0;
+
+    h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin: 3rem 0 1rem;
+    }
+
+    h4 {
+        font-size: 1.25rem;
+        margin: 1rem 0;
+    }
+
+    p {
+        margin-bottom: .5rem;
+    }
+
+    a {
+        color: $rojo;
+    }
+
+    strong {
+        font-size: 1.25rem;
+    }
+
+    ul > li {
+        margin-bottom: .5rem;
+    }
+
+    table {
+        width: 100%;
+        margin: 2rem 0;
+
+        th {
+            background-color: $gris;
+            color: $azul;
+        }
+        td, th {
+            border: 1px solid $gris;
+            padding: .75rem;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    
+    #legal {
+
+        margin: 3rem 0;
+    }
+}

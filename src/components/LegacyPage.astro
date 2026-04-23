@@ -1,0 +1,71 @@
+---
+import Footer from './Footer.astro';
+import Header from './Header.astro';
+import NewsSection from './NewsSection.astro';
+import ProjectsSection from './ProjectsSection.astro';
+import NewsModal from './modals/NewsModal.astro';
+import ProjectModal2025 from './modals/ProjectModal2025.astro';
+import ProjectModalLegacy from './modals/ProjectModalLegacy.astro';
+import SeminarModal from './modals/SeminarModal.astro';
+import LegacyLayout from '../layouts/LegacyLayout.astro';
+
+interface Props {
+  title: string;
+  lang?: 'es' | 'en';
+  description?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogUrl?: string;
+  ogImage?: string;
+  loadLegacyInteractive?: boolean;
+  loadModernInteractive?: boolean;
+  pageId: 'home' | 'forum-2024' | 'forum-2025' | 'news' | 'activities' | 'legal';
+  currentRoute: string;
+  counterpartRoute: string;
+  footerLocale?: 'es' | 'en';
+  hasLegacyProjectModal?: boolean;
+  hasProject2025Modal?: boolean;
+  hasNewsModal?: boolean;
+  hasSeminarModal?: boolean;
+  beforeHtml?: string;
+  projectsHtml?: string;
+  newsHtml?: string;
+  afterHtml?: string;
+  afterFooterHtml?: string;
+}
+
+const props = Astro.props;
+---
+
+<LegacyLayout
+  title={props.title}
+  lang={props.lang}
+  description={props.description}
+  ogTitle={props.ogTitle}
+  ogDescription={props.ogDescription}
+  ogUrl={props.ogUrl}
+  ogImage={props.ogImage}
+  loadLegacyInteractive={props.loadLegacyInteractive}
+  loadModernInteractive={props.loadModernInteractive}
+>
+  <Header
+    locale={props.lang ?? 'es'}
+    pageId={props.pageId}
+    currentRoute={props.currentRoute}
+    counterpartRoute={props.counterpartRoute}
+  />
+  {props.beforeHtml && <Fragment set:html={props.beforeHtml} />}
+  {props.projectsHtml && (props.pageId === 'forum-2024' || props.pageId === 'forum-2025') && (
+    <ProjectsSection lang={props.lang ?? 'es'} pageId={props.pageId} />
+  )}
+  {props.newsHtml && (props.pageId === 'home' || props.pageId === 'news') && (
+    <NewsSection lang={props.lang ?? 'es'} pageId={props.pageId} />
+  )}
+  {props.afterHtml && <Fragment set:html={props.afterHtml} />}
+  <Footer locale={props.footerLocale ?? props.lang ?? 'es'} />
+  {props.hasLegacyProjectModal && <ProjectModalLegacy />}
+  {props.hasProject2025Modal && <ProjectModal2025 />}
+  {props.hasNewsModal && <NewsModal />}
+  {props.hasSeminarModal && <SeminarModal />}
+  {props.afterFooterHtml && <Fragment set:html={props.afterFooterHtml} />}
+</LegacyLayout>

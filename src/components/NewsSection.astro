@@ -1,0 +1,47 @@
+---
+import { newsData } from '../js/data-news';
+
+interface Props {
+  lang: 'es' | 'en';
+  pageId: 'home' | 'news';
+}
+
+const { lang, pageId } = Astro.props;
+const isEnglish = lang === 'en';
+const isHome = pageId === 'home';
+const items = isHome ? newsData.slice(0, 3) : newsData;
+const cleanText = (value: unknown) =>
+  String(value ?? '')
+    .replace(/\r\n?/g, '\n')
+    .replace(/\s*\n\s*/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+---
+
+<section id="news">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h3 class="tit-seccion azul mb-4">{isEnglish ? 'NEWS' : 'NOTICIAS'}</h3>
+      </div>
+    </div>
+
+    <div class="row row-news">
+      {items.map((item) => (
+        <div class="col-6 col-md-6 col-lg-4">
+          <a href="#" data-bs-toggle="modal" data-bs-target="#modalNoticia" data-news={item.news} data-lang={lang}>
+            <img src={`/images/${item.image}`} alt={cleanText(item.news)} />
+            <p class="titulo">{cleanText(isEnglish ? item.titleEN : item.title)}</p>
+          </a>
+        </div>
+      ))}
+      {isHome && (
+        <div class="col-12 mt-3 text-center">
+          <a href={isEnglish ? '/en/news' : '/noticias'} class="btn btn-border btn-border-azul d-inline-block">
+            {isEnglish ? 'See more news' : 'Ver más noticias'}
+          </a>
+        </div>
+      )}
+    </div>
+  </div>
+</section>

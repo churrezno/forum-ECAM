@@ -1,0 +1,101 @@
+header {
+    background-color: $rojo;
+    padding: .5rem;
+    
+    .logo {
+        width: 160px;
+    }
+    
+    .navbar {
+        
+        & > .container-fluid {
+            align-items: end;
+        }
+
+        .navbar-brand {
+            padding: 0;
+        }
+        
+        li {
+            a {
+                font-weight: 600;
+                color: white;
+                transition: all .25s ease;
+                
+                &:hover {
+                    color: $azul;
+                }
+                
+                &.active {
+                    color: $azul;
+                    pointer-events: none;
+                }
+            }
+
+            &.separador {
+                align-self: center;
+                margin: 0 1rem .25rem;
+
+                img {
+                    width: 20px;
+                }
+            }
+            
+            .dropdown-menu {
+                background-color: $rojo;
+                border: none;
+                padding: 0;
+
+                li a {
+                    text-align: end;
+                    padding: 0.375rem 1rem;
+                    font-weight: 400;
+
+                    &:hover, &:focus {
+                        background-color: transparent;
+                    }
+
+                    &.active {
+                        background: none;
+                        color: $azul;
+                    }
+                }
+            }
+        }
+
+        .navbar-toggler {
+            border: 3px solid $azul;
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2832, 19, 46, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='3' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");            
+        }
+    }
+}
+
+
+@media(min-width: 768px) {
+
+    header {  
+        padding: 1.5rem;
+        
+        .logo {
+            width: 230px;
+        }
+
+        .navbar {
+            
+            li {
+                
+                .dropdown-menu {
+                    padding: .5rem 1rem;
+
+                    li a {
+                        text-align: start;
+                        padding: .5rem .25rem;
+                    }
+                }
+            }
+        }
+    }
+}

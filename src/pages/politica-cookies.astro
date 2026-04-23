@@ -1,0 +1,33 @@
+---
+import LegacyPage from '../components/LegacyPage.astro';
+import beforeHtml from '../legacy/politica-cookies.before.html?raw';
+import projectsHtml from '../legacy/politica-cookies.projects.html?raw';
+import newsHtml from '../legacy/politica-cookies.news.html?raw';
+import afterHtml from '../legacy/politica-cookies.after.html?raw';
+import afterFooterHtml from '../legacy/politica-cookies.after-footer.html?raw';
+---
+
+<LegacyPage
+  title="ECAM Forum 2025"
+  lang="es"
+  description="Forum 2025"
+  ogTitle="ECAM Forum"
+  ogDescription="2025"
+  ogUrl="https://ecamforum.es/"
+  ogImage="https://ecamforum.es/images/forum-share.jpg"
+  loadLegacyInteractive={false}
+  loadModernInteractive={false}
+  pageId="legal"
+  currentRoute="/politica-cookies"
+  counterpartRoute="/en/"
+  footerLocale="es"
+  hasLegacyProjectModal={false}
+  hasProject2025Modal={false}
+  hasNewsModal={false}
+  hasSeminarModal={false}
+  beforeHtml={beforeHtml}
+  projectsHtml={projectsHtml}
+  newsHtml={newsHtml}
+  afterHtml={afterHtml}
+  afterFooterHtml={afterFooterHtml}
+/>
