@@ -7,16 +7,16 @@ const pagesDir = path.join(srcDir, 'pages');
 const legacyDir = path.join(srcDir, 'legacy');
 
 const pageConfigs = [
-  { html: 'index.html', page: 'index.astro', pageId: 'home', footerLocale: 'es', componentSections: ['news'] },
-  { html: 'forum-2024.html', page: 'forum-2024.astro', pageId: 'forum-2024', footerLocale: 'es', componentSections: ['projects'] },
-  { html: 'forum-2025.html', page: 'forum-2025.astro', pageId: 'forum-2025', footerLocale: 'es', componentSections: ['projects'] },
+  { html: 'index.html', page: 'index.astro', pageId: 'home', footerLocale: 'es', componentSections: ['news', 'video', 'sponsors'] },
+  { html: 'forum-2024.html', page: 'forum-2024.astro', pageId: 'forum-2024', footerLocale: 'es', componentSections: ['projects', 'video', 'sponsors'] },
+  { html: 'forum-2025.html', page: 'forum-2025.astro', pageId: 'forum-2025', footerLocale: 'es', componentSections: ['projects', 'video', 'sponsors'] },
   { html: 'noticias.html', page: 'noticias.astro', pageId: 'news', footerLocale: 'es', componentSections: ['news'] },
   { html: 'actividades.html', page: 'actividades.astro', pageId: 'activities', footerLocale: 'es' },
   { html: 'politica-privacidad.html', page: 'politica-privacidad.astro', pageId: 'legal', footerLocale: 'es' },
   { html: 'politica-cookies.html', page: 'politica-cookies.astro', pageId: 'legal', footerLocale: 'es' },
-  { html: 'en/index.html', page: 'en/index.astro', pageId: 'home', footerLocale: 'en', componentSections: ['news'] },
-  { html: 'en/forum-2024.html', page: 'en/forum-2024.astro', pageId: 'forum-2024', footerLocale: 'en', componentSections: ['projects'] },
-  { html: 'en/forum-2025.html', page: 'en/forum-2025.astro', pageId: 'forum-2025', footerLocale: 'en', componentSections: ['projects'] },
+  { html: 'en/index.html', page: 'en/index.astro', pageId: 'home', footerLocale: 'en', componentSections: ['news', 'video', 'sponsors'] },
+  { html: 'en/forum-2024.html', page: 'en/forum-2024.astro', pageId: 'forum-2024', footerLocale: 'en', componentSections: ['projects', 'video', 'sponsors'] },
+  { html: 'en/forum-2025.html', page: 'en/forum-2025.astro', pageId: 'forum-2025', footerLocale: 'en', componentSections: ['projects', 'video', 'sponsors'] },
   { html: 'en/news.html', page: 'en/news.astro', pageId: 'news', footerLocale: 'es', componentSections: ['news'] },
 ];
 
@@ -252,6 +252,8 @@ const sanitizeAfterFooterHtml = (html) => {
 const sectionPatternByName = {
   news: /<section id="news"[\s\S]*?<\/section>/i,
   projects: /<section id="proyectos"[\s\S]*?<\/section>/i,
+  video: /<section id="video"[\s\S]*?<\/section>/i,
+  sponsors: /<section id="patrocinadores"[\s\S]*?<\/section>/i,
 };
 
 const splitComponentSections = (bodyHtml, componentSections = []) => {
@@ -260,6 +262,8 @@ const splitComponentSections = (bodyHtml, componentSections = []) => {
     beforeHtml: '',
     newsHtml: '',
     projectsHtml: '',
+    videoHtml: '',
+    sponsorsHtml: '',
     afterHtml: '',
   };
 
@@ -288,6 +292,8 @@ const splitComponentSections = (bodyHtml, componentSections = []) => {
   chunks.afterHtml = [chunks.afterHtml, remainingHtml.trim()].filter(Boolean).join('\n\n');
   return chunks;
 };
+
+const optionalSectionNames = ['projects', 'news', 'video', 'sponsors'];
 
 await fs.mkdir(pagesDir, { recursive: true });
 await fs.mkdir(legacyDir, { recursive: true });
@@ -336,6 +342,14 @@ for (const config of pageConfigs) {
     legacyDir,
     config.html.replace(/\//g, '__').replace(/\.html$/, '.after.html'),
   );
+  const videoHtmlPath = path.join(
+    legacyDir,
+    config.html.replace(/\//g, '__').replace(/\.html$/, '.video.html'),
+  );
+  const sponsorsHtmlPath = path.join(
+    legacyDir,
+    config.html.replace(/\//g, '__').replace(/\.html$/, '.sponsors.html'),
+  );
   const afterFooterHtmlPath = path.join(
     legacyDir,
     config.html.replace(/\//g, '__').replace(/\.html$/, '.after-footer.html'),
@@ -364,16 +378,61 @@ for (const config of pageConfigs) {
   await fs.mkdir(path.dirname(beforeHtmlPath), { recursive: true });
   await fs.mkdir(path.dirname(astroPagePath), { recursive: true });
   await fs.writeFile(beforeHtmlPath, `${sectionChunks.beforeHtml}\n`);
-  await fs.writeFile(projectsHtmlPath, `${sectionChunks.projectsHtml}\n`);
-  await fs.writeFile(newsHtmlPath, `${sectionChunks.newsHtml}\n`);
   await fs.writeFile(afterHtmlPath, `${sectionChunks.afterHtml}\n`);
   await fs.writeFile(afterFooterHtmlPath, `${sanitizedAfterFooterHtml}\n`);
+
+  const optionalSectionPaths = {
+    projects: projectsHtmlPath,
+    news: newsHtmlPath,
+    video: videoHtmlPath,
+    sponsors: sponsorsHtmlPath,
+  };
+
+  await Promise.all(optionalSectionNames.map(async (sectionName) => {
+    const sectionPath = optionalSectionPaths[sectionName];
+    const sectionHtml = sectionChunks[`${sectionName}Html`];
+
+    if (config.componentSections?.includes(sectionName)) {
+      await fs.writeFile(sectionPath, `${sectionHtml}\n`);
+      return;
+    }
+
+    await fs.rm(sectionPath, { force: true });
+  }));
+
+  const optionalImports = [];
+  const optionalProps = [];
+
+  if (config.componentSections?.includes('projects')) {
+    optionalImports.push(`import projectsHtml from '${relativeProjectsImport}?raw';`);
+    optionalProps.push('  projectsHtml={projectsHtml}');
+  }
+
+  if (config.componentSections?.includes('news')) {
+    optionalImports.push(`import newsHtml from '${relativeNewsImport}?raw';`);
+    optionalProps.push('  newsHtml={newsHtml}');
+  }
+
+  if (config.componentSections?.includes('video')) {
+    const relativeVideoImport = path
+      .relative(path.dirname(astroPagePath), videoHtmlPath)
+      .replace(/\\/g, '/');
+    optionalImports.push(`import videoHtml from '${relativeVideoImport}?raw';`);
+    optionalProps.push('  videoHtml={videoHtml}');
+  }
+
+  if (config.componentSections?.includes('sponsors')) {
+    const relativeSponsorsImport = path
+      .relative(path.dirname(astroPagePath), sponsorsHtmlPath)
+      .replace(/\\/g, '/');
+    optionalImports.push(`import sponsorsHtml from '${relativeSponsorsImport}?raw';`);
+    optionalProps.push('  sponsorsHtml={sponsorsHtml}');
+  }
 
   const astroSource = `---
 import LegacyPage from '${relativeComponent}';
 import beforeHtml from '${relativeBeforeImport}?raw';
-import projectsHtml from '${relativeProjectsImport}?raw';
-import newsHtml from '${relativeNewsImport}?raw';
+${optionalImports.join('\n')}
 import afterHtml from '${relativeAfterImport}?raw';
 import afterFooterHtml from '${relativeAfterFooterImport}?raw';
 ---
@@ -397,8 +456,7 @@ import afterFooterHtml from '${relativeAfterFooterImport}?raw';
   hasNewsModal={${modalFlags.hasNewsModal}}
   hasSeminarModal={${modalFlags.hasSeminarModal}}
   beforeHtml={beforeHtml}
-  projectsHtml={projectsHtml}
-  newsHtml={newsHtml}
+${optionalProps.join('\n')}
   afterHtml={afterHtml}
   afterFooterHtml={afterFooterHtml}
 />

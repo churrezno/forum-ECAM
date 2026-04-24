@@ -1,0 +1,58 @@
+---
+import YouTubeConsentEmbed from './YouTubeConsentEmbed.astro';
+
+interface Props {
+  lang?: 'es' | 'en';
+  pageId: 'home' | 'forum-2024' | 'forum-2025';
+}
+
+const { lang = 'es', pageId } = Astro.props;
+
+const contentByPage = {
+  es: {
+    home: {
+      headingHtml: 'ASÍ FUE LA <a href="/forum-2025">EDICIÓN 2025</a>',
+      videoSrc: 'https://www.youtube-nocookie.com/embed/9yvz9I8GB7I?si=2VH1DfCuNJQ8y5yn',
+    },
+    'forum-2024': {
+      headingHtml: 'ASÍ FUE LA EDICIÓN 2024',
+      videoSrc: 'https://www.youtube-nocookie.com/embed/ImDcPKPXco0?si=0hmqC5IYeVwwJlE2',
+    },
+    'forum-2025': {
+      headingHtml: 'ASÍ FUE LA EDICIÓN 2025',
+      videoSrc: 'https://www.youtube-nocookie.com/embed/9yvz9I8GB7I?si=2VH1DfCuNJQ8y5yn',
+    },
+  },
+  en: {
+    home: {
+      headingHtml: 'THIS WAS THE <a href="/en/forum-2025">2025 EDITION</a>',
+      videoSrc: 'https://www.youtube-nocookie.com/embed/9yvz9I8GB7I?si=2VH1DfCuNJQ8y5yn',
+    },
+    'forum-2024': {
+      headingHtml: 'THIS WAS THE 2024 EDITION',
+      videoSrc: 'https://www.youtube-nocookie.com/embed/ye_h5Z610l0?si=IgjY_3ITG0N7Jdkn',
+    },
+    'forum-2025': {
+      headingHtml: 'THIS WAS THE 2025 EDITION',
+      videoSrc: 'https://www.youtube-nocookie.com/embed/9yvz9I8GB7I?si=2VH1DfCuNJQ8y5yn',
+    },
+  },
+} as const;
+
+const pageContent = contentByPage[lang][pageId];
+---
+
+<section id="video">
+  <div class="container-fluid bkg">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-md-center">
+          <h3 class="tit-seccion azul" set:html={pageContent.headingHtml}></h3>
+          <div class="wrapper-video">
+            <YouTubeConsentEmbed locale={lang} src={pageContent.videoSrc} />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
