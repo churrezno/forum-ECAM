@@ -163,6 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('click', (event) => {
         const projectTrigger = event.target.closest('[data-project]');
         if (projectTrigger) {
+            event.preventDefault();
             const projectName = projectTrigger.getAttribute('data-project');
 
             void (async () => {
@@ -174,6 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const seminarTrigger = event.target.closest('[data-seminar]');
         if (seminarTrigger) {
+            event.preventDefault();
             const seminarName = seminarTrigger.getAttribute('data-seminar');
 
             void (async () => {

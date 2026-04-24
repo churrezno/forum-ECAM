@@ -261,6 +261,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('click', (event) => {
         const projectTrigger = event.target.closest('[data-project-2025]');
         if (projectTrigger) {
+            event.preventDefault();
             const projectName = projectTrigger.getAttribute('data-project-2025');
             const language = projectTrigger.getAttribute('data-lang');
 
@@ -273,6 +274,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const newsTrigger = event.target.closest('[data-news]');
         if (newsTrigger) {
+            event.preventDefault();
             const newsName = newsTrigger.getAttribute('data-news');
             const language = newsTrigger.getAttribute('data-lang');
 

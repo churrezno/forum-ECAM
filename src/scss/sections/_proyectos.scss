@@ -17,6 +17,7 @@
             color: white;
             margin-bottom: 2rem;
             display: block;
+            min-height: 100%;
             transition: .25s all ease;
 
             &:hover {
@@ -27,6 +28,7 @@
         img {
             border-radius: 1rem;
             margin-bottom: 1rem;
+            width: 100%;
         }
 
         .titulo {
@@ -35,11 +37,13 @@
             line-height: 1.25;
             text-transform: uppercase;
             margin-bottom: 0.125rem;
+            overflow-wrap: anywhere;
         }
 
         .direccion {
             font-size: .9rem;
             margin-bottom: 0.125rem;
+            overflow-wrap: anywhere;
         }
 
         .pais {
