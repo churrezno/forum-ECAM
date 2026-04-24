@@ -155,6 +155,49 @@ const splitBodyChrome = (body) => {
   };
 };
 
+const escapeHtmlAttribute = (value = '') =>
+  value
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+
+const replaceYouTubeEmbeds = (html, lang) =>
+  html.replace(
+    /<iframe\b([^>]*?)\bsrc=(["'])(https:\/\/www\.youtube-nocookie\.com\/embed\/[^"']+)\2([^>]*)><\/iframe>/gi,
+    (_match, beforeSrc, _quote, src, afterSrc) => {
+      const titleMatch = `${beforeSrc} ${afterSrc}`.match(/\btitle=(["'])([^"']*)\1/i);
+      const allowMatch = `${beforeSrc} ${afterSrc}`.match(/\ballow=(["'])([^"']*)\1/i);
+      const referrerPolicyMatch = `${beforeSrc} ${afterSrc}`.match(/\breferrerpolicy=(["'])([^"']*)\1/i);
+      const title = titleMatch?.[2] ?? (lang === 'en' ? 'YouTube video player' : 'Reproductor de YouTube');
+      const allow = allowMatch?.[2] ?? 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      const referrerPolicy = referrerPolicyMatch?.[2] ?? 'strict-origin-when-cross-origin';
+      const message =
+        lang === 'en'
+          ? 'To watch this video, accept marketing cookies and then click "Load video".'
+          : 'Para ver este vídeo, acepta las cookies de marketing y después pulsa "Cargar vídeo".';
+      const pendingMessage =
+        lang === 'en'
+          ? 'Accept marketing cookies in the banner to continue loading this video.'
+          : 'Acepta las cookies de marketing en el banner para terminar de cargar este vídeo.';
+      const loadLabel = lang === 'en' ? 'Load video' : 'Cargar vídeo';
+      const settingsLabel = lang === 'en' ? 'Cookie settings' : 'Configurar cookies';
+
+      return `<div class="youtube-consent-embed" data-youtube-embed data-src="${escapeHtmlAttribute(src)}" data-title="${escapeHtmlAttribute(title)}" data-allow="${escapeHtmlAttribute(allow)}" data-referrerpolicy="${escapeHtmlAttribute(referrerPolicy)}" data-message="${escapeHtmlAttribute(message)}" data-pending-message="${escapeHtmlAttribute(pendingMessage)}">
+  <div class="youtube-consent-card">
+    <div class="youtube-consent-poster" aria-hidden="true">
+      <span class="youtube-consent-play"></span>
+    </div>
+    <p class="youtube-consent-message">${message}</p>
+    <div class="youtube-consent-actions">
+      <button type="button" class="btn btn-border btn-border-azul youtube-consent-load">${loadLabel}</button>
+      <button type="button" class="btn btn-border btn-border-azul youtube-consent-settings">${settingsLabel}</button>
+    </div>
+  </div>
+</div>`;
+    },
+  );
+
 const removeBlockBetween = (source, startMarker, endMarkers) => {
   const startIndex = source.indexOf(startMarker);
 
@@ -264,17 +307,18 @@ for (const config of pageConfigs) {
   const currentRoute = routeByHtml[config.html];
   const counterpartRoute = counterpartRouteByHtml[config.html];
   const rewrittenBody = rewriteBodyPaths(normalizeBody(extract(source, /<body>([\s\S]*?)<\/body>/i)), isEnglishPage);
-  const { bodyHtml, afterFooterHtml } = splitBodyChrome(rewrittenBody);
+  const bodyWithProtectedYouTube = replaceYouTubeEmbeds(rewrittenBody, lang);
+  const { bodyHtml, afterFooterHtml } = splitBodyChrome(bodyWithProtectedYouTube);
   const sectionChunks = splitComponentSections(bodyHtml, config.componentSections);
   const modalFlags = {
     hasLegacyProjectModal: config.pageId === 'forum-2024',
     hasProject2025Modal: config.pageId === 'forum-2025',
     hasNewsModal: config.pageId === 'home' || config.pageId === 'news',
-    hasSeminarModal: /data-seminar=/.test(rewrittenBody),
+    hasSeminarModal: /data-seminar=/.test(bodyWithProtectedYouTube),
   };
   const sanitizedAfterFooterHtml = sanitizeAfterFooterHtml(afterFooterHtml);
-  const loadLegacyInteractive = /data-project=|data-seminar=/.test(rewrittenBody);
-  const loadModernInteractive = /data-project-2025=|data-news=/.test(rewrittenBody);
+  const loadLegacyInteractive = /data-project=|data-seminar=/.test(bodyWithProtectedYouTube);
+  const loadModernInteractive = /data-project-2025=|data-news=/.test(bodyWithProtectedYouTube);
 
   const beforeHtmlPath = path.join(
     legacyDir,

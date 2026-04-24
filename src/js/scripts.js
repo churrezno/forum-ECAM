@@ -1,6 +1,4 @@
-import $ from "jquery";
-
-$(function() {
+document.addEventListener('DOMContentLoaded', () => {
     let projectsDataCache = null;
     let seminarsDataCache = null;
 
@@ -29,158 +27,166 @@ $(function() {
         return seminarsDataCache;
     };
 
-    // OPEN MODAL ON PAGE LOAD WHEN RECEIVING PARAM
-    var projectName = window.location.href.split("?p=")[1];
-    if (projectName) {
-        setTimeout(function() {
-            var button = document.querySelector('[data-project="' + projectName + '"]');
-            if (button) {
-                button.click();
-            }
-        }, 0);
-    }
-    
-    // FILL MODAL PROJECTS ON GRID ITEM CLICK
-    //const baseUrl = 'https://devala.es/devs/ecam-forum',
-    const baseUrl = '',
-          section = document.getElementById('section'),
-          title = document.getElementById('title'),
-          title_en = document.getElementById('title_en'),
-          img = document.getElementById('img'),
-          arrayFields = [
-                'synopsis',
-                'synopsis_en',
-                'director',
-                'producer',
-                'company',
-                'script',
-                'country',
-                'country_en',
-                'genre',
-                'genre_en',
-                'duration',
-                'budget',
-                'budget_acquired',
-                'searching',
-                'searching_en',
-                'intention',
-                'intention_en',
-                'biography',
-                'biography_en',
-                'filmography',
-                'company_profile',
-                'company_profile_en',
-                'company_filmography',
-          ]
+    const baseUrl = '';
+    const section = document.getElementById('section');
+    const title = document.getElementById('title');
+    const titleEn = document.getElementById('title_en');
+    const img = document.getElementById('img');
+    const arrayFields = [
+        'synopsis',
+        'synopsis_en',
+        'director',
+        'producer',
+        'company',
+        'script',
+        'country',
+        'country_en',
+        'genre',
+        'genre_en',
+        'duration',
+        'budget',
+        'budget_acquired',
+        'searching',
+        'searching_en',
+        'intention',
+        'intention_en',
+        'biography',
+        'biography_en',
+        'filmography',
+        'company_profile',
+        'company_profile_en',
+        'company_filmography',
+    ];
 
-    const btn_tickets = document.getElementById('sem__url'),
-          imgColaborator = document.getElementById('sem__colaborator'),
-          imgPonente = document.getElementById('sem__ponente'),
-          arraySeminarFields = [
-                'activity',
-                'location',
-                'date',
-                'time',
-                'url',
-                'colaborator',
-                'title',
-                'subtitle',
-                'subtitleEn',
-                'text',
-                'textEn',
-                'bio',
-                'bioEn',
-          ]
+    const btnTickets = document.getElementById('sem__url');
+    const imgColaborator = document.getElementById('sem__colaborator');
+    const imgPonente = document.getElementById('sem__ponente');
+    const arraySeminarFields = [
+        'activity',
+        'location',
+        'date',
+        'time',
+        'url',
+        'colaborator',
+        'title',
+        'subtitle',
+        'subtitleEn',
+        'text',
+        'textEn',
+        'bio',
+        'bioEn',
+    ];
 
-        
-    $('[data-project]').on('click', function() {
-        const projectName = $(this).data('project');
-        void (async () => {
-            const projectsData = await getProjectsData();
-            const project = projectsData.find((element) => element.project == projectName);
-            setModalContent(project);
-        })();
-    });
-        
-    $('[data-seminar]').on('click', function() {
-        const seminarName = $(this).data('seminar');
-        void (async () => {
-            const seminarsData2025 = await getSeminarsData();
-            const seminar = seminarsData2025.find((element) => element.seminar == seminarName);
-            setModalSeminarContent(seminar);
-        })();
-    });
+    const setModalContent = (project) => {
+        if (!project || !section || !title || !titleEn || !img) {
+            return;
+        }
 
-
-    function setModalContent(project) {
-
-        section.textContent = sectionLabels[project?.section] ?? 'Sección';
-        title.textContent = project?.title ?? 'Título';
-        title_en.textContent = (project?.title_en != project?.title) ?
-                                project?.title_en :
-                                '';
-                                
-        img.src = baseUrl + '/images/proyectos/' + project?.image;
+        section.textContent = sectionLabels[project.section] ?? 'Sección';
+        title.textContent = project.title ?? 'Título';
+        titleEn.textContent = project.title_en != project.title ? project.title_en : '';
+        img.src = `${baseUrl}/images/proyectos/${project.image}`;
         setFieldsContent(arrayFields, project);
-    }
+    };
 
-
-    function setModalSeminarContent(seminar) {
+    const setModalSeminarContent = (seminar) => {
+        if (!seminar || !imgColaborator || !imgPonente || !btnTickets) {
+            return;
+        }
 
         setSeminarFieldsContent(arraySeminarFields, seminar);
-        imgColaborator.src = baseUrl + '/images/' + seminar?.colaboratorUrl;
-        imgPonente.src = baseUrl + '/images/' + seminar?.photoUrl;
-        btn_tickets.href = seminar.url;
-    }
+        imgColaborator.src = `${baseUrl}/images/${seminar.colaboratorUrl}`;
+        imgPonente.src = `${baseUrl}/images/${seminar.photoUrl}`;
+        btnTickets.href = seminar.url;
+    };
 
-    
-    function setFieldsContent(array, project) {
-        
-        array.forEach(element => {
-            const modalElement = document.getElementById(element);
-            const elementWrapper = document.getElementsByClassName('wrapper_' + element)[0];
-            const elementData = project[`${element}`];
-            
+    const setFieldsContent = (fields, project) => {
+        fields.forEach((field) => {
+            const modalElement = document.getElementById(field);
+            const elementWrapper = document.getElementsByClassName(`wrapper_${field}`)[0];
+            const elementData = project[field];
+
+            if (!modalElement) {
+                return;
+            }
+
             modalElement.textContent = '';
 
             if (elementData && elementData != '-') {
-                elementWrapper?.classList?.remove('d-none');                
+                elementWrapper?.classList?.remove('d-none');
                 modalElement.innerHTML = elementData;
             } else {
                 elementWrapper?.classList?.add('d-none');
             }
         });
-    }
+    };
 
-    
-    function setSeminarFieldsContent(array, seminar) {
-        
-        array.forEach(element => {
-            const modalSeminarElement = document.getElementById('sem__' + element);
-            const elementWrapper = document.getElementsByClassName('wrapper_' + element)[0];
-            const elementData = seminar[`${element}`];
+    const setSeminarFieldsContent = (fields, seminar) => {
+        fields.forEach((field) => {
+            const modalSeminarElement = document.getElementById(`sem__${field}`);
+            const elementWrapper = document.getElementsByClassName(`wrapper_${field}`)[0];
+            const elementData = seminar[field];
 
-            if (element != 'url')
-                modalSeminarElement.textContent = '';       
+            if (!modalSeminarElement) {
+                return;
+            }
+
+            if (field != 'url') {
+                modalSeminarElement.textContent = '';
+            }
 
             if (elementData && elementData != '-') {
-                elementWrapper?.classList?.remove('d-none');  
-                if (element == 'date') 
+                elementWrapper?.classList?.remove('d-none');
+
+                if (field == 'date') {
                     modalSeminarElement.innerHTML = formatDate(elementData);
-                else if (element != 'url')
+                } else if (field != 'url') {
                     modalSeminarElement.innerHTML = elementData;
+                }
             } else {
                 elementWrapper?.classList?.add('d-none');
             }
         });
-    }
+    };
 
-
-    function formatDate(originalDate) {
+    const formatDate = (originalDate) => {
         const date = new Date(originalDate);
+
         return date.toLocaleDateString('es-ES', {
             day: '2-digit',
             month: 'short',
         });
+    };
+
+    document.addEventListener('click', (event) => {
+        const projectTrigger = event.target.closest('[data-project]');
+        if (projectTrigger) {
+            const projectName = projectTrigger.getAttribute('data-project');
+
+            void (async () => {
+                const projectsData = await getProjectsData();
+                const project = projectsData.find((element) => element.project == projectName);
+                setModalContent(project);
+            })();
+        }
+
+        const seminarTrigger = event.target.closest('[data-seminar]');
+        if (seminarTrigger) {
+            const seminarName = seminarTrigger.getAttribute('data-seminar');
+
+            void (async () => {
+                const seminarsData2025 = await getSeminarsData();
+                const seminar = seminarsData2025.find((element) => element.seminar == seminarName);
+                setModalSeminarContent(seminar);
+            })();
+        }
+    });
+
+    const projectName = new URLSearchParams(window.location.search).get('p');
+    if (projectName) {
+        setTimeout(() => {
+            const button = document.querySelector(`[data-project="${projectName}"]`);
+            button?.click();
+        }, 0);
     }
 });
