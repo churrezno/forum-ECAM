@@ -1,8 +1,3 @@
-import $ from 'jquery';
-
-window.$ = $;
-window.jQuery = $;
-
 const loadCookieNotice = async () => {
     await import('../vendor/cookienoticepro.script.js?v=1.0.1');
 
