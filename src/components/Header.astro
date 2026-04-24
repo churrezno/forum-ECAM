@@ -26,15 +26,20 @@ const editions = [
   { id: 'forum-2025', label: 'Forum 2025', href: isEnglish ? '/en/forum-2025' : '/forum-2025' },
 ];
 const separatorIcon = '/images/ico_chile-blanco.svg';
+const navLabel = isEnglish ? 'Main navigation' : 'Navegación principal';
+const menuToggleLabel = isEnglish ? 'Open navigation menu' : 'Abrir menú de navegación';
+const homeLabel = isEnglish ? 'Home' : 'Inicio';
+const langEsLabel = isEnglish ? 'Switch to Spanish' : 'Cambiar a español';
+const langEnLabel = isEnglish ? 'Switch to English' : 'Cambiar a inglés';
 ---
 
 <header>
   <div class="container">
     <div class="row">
       <div class="col">
-        <nav class="navbar navbar-expand-lg">
+        <nav class="navbar navbar-expand-lg" aria-label={navLabel}>
           <div class="container-fluid">
-            <a class="navbar-brand" href={homeHref}>
+            <a class="navbar-brand" href={homeHref} aria-label={homeLabel}>
               <img src="/images/logo_FORUM_ECAM.svg" alt="Forum ECAM" class="logo" />
             </a>
             <button
@@ -44,17 +49,21 @@ const separatorIcon = '/images/ico_chile-blanco.svg';
               data-bs-target="#navbarTogglerForum"
               aria-controls="navbarTogglerForum"
               aria-expanded="false"
-              aria-label="Toggle navigation"
+              aria-label={menuToggleLabel}
             >
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarTogglerForum">
               <ul class="navbar-nav mt-4 mt-lg-0 ms-auto mb-2 mb-lg-0 text-end">
                 <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href={homeAnchorHref}>{homeAnchorLabel}</a>
+                  <a class="nav-link" href={homeAnchorHref}>{homeAnchorLabel}</a>
                 </li>
                 <li class="nav-item">
-                  <a class:list={['nav-link', { active: pageId === 'news' }]} aria-current="page" href={newsHref}>
+                  <a
+                    class:list={['nav-link', { active: pageId === 'news' }]}
+                    aria-current={pageId === 'news' ? 'page' : undefined}
+                    href={newsHref}
+                  >
                     {newsLabel}
                   </a>
                 </li>
@@ -72,7 +81,11 @@ const separatorIcon = '/images/ico_chile-blanco.svg';
                   <ul class="dropdown-menu">
                     {editions.map((edition) => (
                       <li>
-                        <a class:list={['dropdown-item', { active: pageId === edition.id }]} href={edition.href}>
+                        <a
+                          class:list={['dropdown-item', { active: pageId === edition.id }]}
+                          aria-current={pageId === edition.id ? 'page' : undefined}
+                          href={edition.href}
+                        >
                           {edition.label}
                         </a>
                       </li>
@@ -80,13 +93,27 @@ const separatorIcon = '/images/ico_chile-blanco.svg';
                   </ul>
                 </li>
                 <li class="separador d-none d-lg-block">
-                  <img src={separatorIcon} alt="separador" />
+                  <img src={separatorIcon} alt="" aria-hidden="true" />
                 </li>
                 <li class="nav-item lang mt-3 mt-lg-0">
-                  <a class:list={['nav-link', { active: !isEnglish }]} href={isEnglish ? counterpartRoute : currentRoute}>ES</a>
+                  <a
+                    class:list={['nav-link', { active: !isEnglish }]}
+                    aria-current={!isEnglish ? 'page' : undefined}
+                    aria-label={langEsLabel}
+                    href={isEnglish ? counterpartRoute : currentRoute}
+                  >
+                    ES
+                  </a>
                 </li>
                 <li class="nav-item lang">
-                  <a class:list={['nav-link', { active: isEnglish }]} href={isEnglish ? currentRoute : counterpartRoute}>EN</a>
+                  <a
+                    class:list={['nav-link', { active: isEnglish }]}
+                    aria-current={isEnglish ? 'page' : undefined}
+                    aria-label={langEnLabel}
+                    href={isEnglish ? currentRoute : counterpartRoute}
+                  >
+                    EN
+                  </a>
                 </li>
               </ul>
             </div>

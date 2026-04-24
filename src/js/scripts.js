@@ -96,7 +96,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         setSeminarFieldsContent(arraySeminarFields, seminar);
         imgColaborator.src = `${baseUrl}/images/${seminar.colaboratorUrl}`;
+        imgColaborator.alt = seminar.activity ? `Colaborador de ${seminar.activity}` : 'Colaborador';
         imgPonente.src = `${baseUrl}/images/${seminar.photoUrl}`;
+        imgPonente.alt = seminar.subtitle || seminar.title || 'Ponente';
         btnTickets.href = seminar.url;
     };
 

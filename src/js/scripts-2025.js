@@ -249,6 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         newsImg.src = `${baseUrl}/images/${news.image}`;
+        newsImg.alt = language == 'en' ? news.titleEN : news.title;
 
         if (language == 'es') {
             setFieldsNewsContent(arrayFieldsNews, news);

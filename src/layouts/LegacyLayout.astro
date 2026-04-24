@@ -9,6 +9,8 @@ interface Props {
   ogDescription?: string;
   ogUrl?: string;
   ogImage?: string;
+  currentRoute?: string;
+  counterpartRoute?: string;
   loadLegacyInteractive?: boolean;
   loadModernInteractive?: boolean;
 }
@@ -21,9 +23,17 @@ const {
   ogDescription = '2025',
   ogUrl = 'https://ecamforum.es/',
   ogImage = 'https://ecamforum.es/images/forum-share.jpg',
+  currentRoute = '/',
+  counterpartRoute = '/en/',
   loadLegacyInteractive = false,
   loadModernInteractive = false,
 } = Astro.props;
+const siteUrl = 'https://ecamforum.es';
+const canonicalUrl = new URL(currentRoute, siteUrl).toString();
+const alternateUrl = new URL(counterpartRoute, siteUrl).toString();
+const xDefaultUrl = new URL(lang === 'en' ? counterpartRoute : currentRoute, siteUrl).toString();
+const ogLocale = lang === 'en' ? 'en_GB' : 'es_ES';
+const ogLocaleAlternate = lang === 'en' ? 'es_ES' : 'en_GB';
 ---
 
 <!DOCTYPE html>
@@ -36,13 +46,27 @@ const {
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow" />
     <meta name="keywords" content="ECAM, Forum" />
+    <meta name="theme-color" content="#0f2345" />
     <title>{title}</title>
+
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" hreflang={lang} href={canonicalUrl} />
+    <link rel="alternate" hreflang={lang === 'en' ? 'es' : 'en'} href={alternateUrl} />
+    <link rel="alternate" hreflang="x-default" href={xDefaultUrl} />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
 
     <meta property="og:title" content={ogTitle} />
     <meta property="og:description" content={ogDescription} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={ogUrl} />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="ECAM Forum" />
+    <meta property="og:locale" content={ogLocale} />
+    <meta property="og:locale:alternate" content={ogLocaleAlternate} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={ogTitle} />
+    <meta name="twitter:description" content={ogDescription} />
+    <meta name="twitter:image" content={ogImage} />
 
     <link rel="stylesheet" href="/vendor/cookienoticepro.style.css?v=1.0.1" />
   </head>
