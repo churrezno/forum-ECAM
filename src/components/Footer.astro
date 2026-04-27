@@ -6,11 +6,14 @@ interface Props {
 const { locale } = Astro.props;
 const isEnglish = locale === 'en';
 const infoLabel = isEnglish ? 'Information' : 'Información';
-const pressLabel = isEnglish ? 'Press annd communication' : 'Prensa y comunicación';
+const pressLabel = isEnglish ? 'Press and communication' : 'Prensa y comunicación';
 const hoursLabel = isEnglish
   ? 'Public service hours (reception)<br>\n                        monday to thursday: 9:30 h to 18:00 h<br>\n                        friday: 9:30 h to 15:30 h'
   : 'Horario de atención al público (recepción)<br>\n                        lunes a jueves: 9:30 h a 18:00 h<br>\n                        viernes: 9:30 h a 15:30 h';
 const socialLabel = isEnglish ? 'Follow us on' : 'Síguenos en<br>\n                        nuestras redes sociales';
+const cookiePolicyLabel = isEnglish ? 'Cookie policy' : 'Política de cookies';
+const privacyPolicyLabel = isEnglish ? 'Privacy policy' : 'Política de privacidad';
+const whistleblowingLabel = isEnglish ? 'Whistleblowing channel' : 'Canal de denuncias';
 ---
 
 <footer>
@@ -39,17 +42,17 @@ const socialLabel = isEnglish ? 'Follow us on' : 'Síguenos en<br>\n            
         <p set:html={socialLabel}></p>
         <ul class="navbar-nav">
           <li>
-            <a href="https://es-la.facebook.com/ECAMescuela/" target="_blank">
+            <a href="https://es-la.facebook.com/ECAMescuela/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
               <i class="fa-brands fa-facebook-f"></i>
             </a>
           </li>
           <li>
-            <a href="https://twitter.com/ecam_" target="_blank">
+            <a href="https://twitter.com/ecam_" target="_blank" rel="noopener noreferrer" aria-label="X">
               <i class="fa-brands fa-x-twitter"></i>
             </a>
           </li>
           <li>
-            <a href="https://www.instagram.com/ecam_cine/" target="_blank">
+            <a href="https://www.instagram.com/ecam_cine/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
               <i class="fa-brands fa-instagram"></i>
             </a>
           </li>
@@ -57,21 +60,25 @@ const socialLabel = isEnglish ? 'Follow us on' : 'Síguenos en<br>\n            
             <a
               href="https://www.linkedin.com/company/ecam-escuela-de-cinematograf-a-y-del-audiovisual-de-la-comunidad-de-madrid-/"
               target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
             >
               <i class="fa-brands fa-linkedin-in"></i>
             </a>
           </li>
           <li>
-            <a href="https://www.youtube.com/channel/UCkpBkvGs-zX6ayayKNhY5bw" target="_blank">
+            <a href="https://www.youtube.com/channel/UCkpBkvGs-zX6ayayKNhY5bw" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
               <i class="fa-brands fa-youtube"></i>
             </a>
           </li>
         </ul>
         <p class="mt-4 d-flex flex-column">
-          <a href="/politica-cookies" title="Política de cookies">Política de cookies</a>
-          <a href="/politica-privacidad" title="Política de privacidad">Política de privacidad</a>
+          <a href="/politica-cookies" title={cookiePolicyLabel}>{cookiePolicyLabel}</a>
+          <a href="/politica-privacidad" title={privacyPolicyLabel}>{privacyPolicyLabel}</a>
           <span>-----</span>
-          <a href="https://ecam.es/canal-de-denuncias/" target="_blank">Canal de denuncias</a>
+          <a href="https://ecam.es/canal-de-denuncias/" target="_blank" rel="noopener noreferrer">
+            {whistleblowingLabel}
+          </a>
         </p>
       </div>
     </div>

@@ -1,9 +1,9 @@
 ---
 import LegacyPage from '../../components/LegacyPage.astro';
-import beforeHtml from '../../legacy/en__index.before.html?raw';
-import projectsHtml from '../../legacy/en__index.projects.html?raw';
-import newsHtml from '../../legacy/en__index.news.html?raw';
-import afterHtml from '../../legacy/en__index.after.html?raw';
+import NewsSection from '../../components/NewsSection.astro';
+import VideoSection from '../../components/VideoSection.astro';
+import SponsorsSection from '../../components/SponsorsSection.astro';
+import segment0Html from '../../legacy/en__index.segment-0.html?raw';
 import afterFooterHtml from '../../legacy/en__index.after-footer.html?raw';
 ---
 
@@ -25,9 +25,10 @@ import afterFooterHtml from '../../legacy/en__index.after-footer.html?raw';
   hasProject2025Modal={false}
   hasNewsModal={true}
   hasSeminarModal={false}
-  beforeHtml={beforeHtml}
-  projectsHtml={projectsHtml}
-  newsHtml={newsHtml}
-  afterHtml={afterHtml}
   afterFooterHtml={afterFooterHtml}
-/>
+>
+  <Fragment set:html={segment0Html} />
+  <NewsSection lang={"en"} pageId={"home"} />
+  <VideoSection lang={"en"} pageId={"home"} />
+  <SponsorsSection lang={"en"} />
+</LegacyPage>

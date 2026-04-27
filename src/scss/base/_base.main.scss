@@ -2,13 +2,36 @@
 @import "../tools/index";
 
 body {
-
   color: $color-base;
   font-family: $helvetica;
   font-size: $size-base;
   font-weight: 300;
   font-style: normal;
   background-color: $azul;
+}
+
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+.btn:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 1rem;
+  z-index: 1100;
+  padding: 0.75rem 1rem;
+  color: #fff;
+  background: #000;
+  transform: translateY(-120%);
+  transition: transform 0.2s ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
 }
 
 h1,

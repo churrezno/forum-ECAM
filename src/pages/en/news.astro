@@ -1,9 +1,7 @@
 ---
 import LegacyPage from '../../components/LegacyPage.astro';
-import beforeHtml from '../../legacy/en__news.before.html?raw';
-import projectsHtml from '../../legacy/en__news.projects.html?raw';
-import newsHtml from '../../legacy/en__news.news.html?raw';
-import afterHtml from '../../legacy/en__news.after.html?raw';
+import NewsSection from '../../components/NewsSection.astro';
+
 import afterFooterHtml from '../../legacy/en__news.after-footer.html?raw';
 ---
 
@@ -25,9 +23,7 @@ import afterFooterHtml from '../../legacy/en__news.after-footer.html?raw';
   hasProject2025Modal={false}
   hasNewsModal={true}
   hasSeminarModal={false}
-  beforeHtml={beforeHtml}
-  projectsHtml={projectsHtml}
-  newsHtml={newsHtml}
-  afterHtml={afterHtml}
   afterFooterHtml={afterFooterHtml}
-/>
+>
+  <NewsSection lang={"en"} pageId={"news"} />
+</LegacyPage>

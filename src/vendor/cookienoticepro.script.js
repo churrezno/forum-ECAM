@@ -19,7 +19,6 @@ const config = {
     lightColor: '#ffffff',
     themeMode: 'light',
   },
-  enableGoogleConsentMode: false,
   enableMinimize: false,
   showCookieIcon: true,
   showSettingsBtn: true,
@@ -65,8 +64,6 @@ const config = {
 
 const COOKIE_CONSENT = 'cnp_consent';
 const COOKIE_CONSENT_PREFS = 'cnp_prefs';
-const GOOGLE_CONSENT_MODE_AD_PREFS = 'cnp_gconsent_ad_prefs';
-const GOOGLE_CONSENT_MODE_ANALYTICS_STORAGE = 'cnp_gconsent_analytics_storage';
 
 const emitCookieNoticeEvent = (name, detail = {}) => {
   window.dispatchEvent(new CustomEvent(`cookieNotice:${name}`, { detail }));
@@ -253,112 +250,6 @@ const hideCookieBanner = (value, expiryDays) => {
   }
 };
 
-const googleConsentModeHandler = () => {
-  if (!config.enableGoogleConsentMode) {
-    return;
-  }
-
-  const consent = parseJsonCookie(COOKIE_CONSENT);
-  const preferences = parseJsonCookie(COOKIE_CONSENT_PREFS, []);
-  const googleConsentAnalyticsStorage = parseJsonCookie(GOOGLE_CONSENT_MODE_ANALYTICS_STORAGE);
-  const googleConsentAdPrefs = parseJsonCookie(GOOGLE_CONSENT_MODE_AD_PREFS);
-
-  try {
-    if (consent === true) {
-      if (preferences.indexOf('analytics') > -1 && !cookieExists(GOOGLE_CONSENT_MODE_ANALYTICS_STORAGE)) {
-        createCookie(GOOGLE_CONSENT_MODE_ANALYTICS_STORAGE, encodeURIComponent(true), {
-          expires: daysToUTC(365),
-          path: '/',
-        });
-        gtag('consent', 'update', { analytics_storage: 'granted' });
-      } else if (preferences.indexOf('analytics') > -1 && cookieExists(GOOGLE_CONSENT_MODE_ANALYTICS_STORAGE)) {
-        if (googleConsentAnalyticsStorage === true) {
-          gtag('consent', 'update', { analytics_storage: 'granted' });
-        }
-        if (googleConsentAnalyticsStorage === false) {
-          createCookie(GOOGLE_CONSENT_MODE_ANALYTICS_STORAGE, encodeURIComponent(true), {
-            expires: daysToUTC(365),
-            path: '/',
-          });
-          gtag('consent', 'update', { analytics_storage: 'granted' });
-        }
-      } else if (preferences.indexOf('analytics') === -1 && cookieExists(GOOGLE_CONSENT_MODE_ANALYTICS_STORAGE)) {
-        if (googleConsentAnalyticsStorage === true) {
-          createCookie(GOOGLE_CONSENT_MODE_ANALYTICS_STORAGE, encodeURIComponent(false), {
-            expires: daysToUTC(365),
-            path: '/',
-          });
-          gtag('consent', 'update', { analytics_storage: 'denied' });
-        }
-      }
-
-      if (preferences.indexOf('marketing') > -1 && !cookieExists(GOOGLE_CONSENT_MODE_AD_PREFS)) {
-        createCookie(GOOGLE_CONSENT_MODE_AD_PREFS, encodeURIComponent(true), {
-          expires: daysToUTC(365),
-          path: '/',
-        });
-        gtag('consent', 'update', {
-          ad_storage: 'granted',
-          ad_user_data: 'granted',
-          ad_personalization: 'granted',
-        });
-      } else if (preferences.indexOf('marketing') > -1 && cookieExists(GOOGLE_CONSENT_MODE_AD_PREFS)) {
-        if (googleConsentAdPrefs === true) {
-          gtag('consent', 'update', {
-            ad_storage: 'granted',
-            ad_user_data: 'granted',
-            ad_personalization: 'granted',
-          });
-        }
-        if (googleConsentAdPrefs === false) {
-          createCookie(GOOGLE_CONSENT_MODE_AD_PREFS, encodeURIComponent(true), {
-            expires: daysToUTC(365),
-            path: '/',
-          });
-          gtag('consent', 'update', {
-            ad_storage: 'granted',
-            ad_user_data: 'granted',
-            ad_personalization: 'granted',
-          });
-        }
-      } else if (preferences.indexOf('marketing') === -1 && cookieExists(GOOGLE_CONSENT_MODE_AD_PREFS)) {
-        if (googleConsentAdPrefs === true) {
-          createCookie(GOOGLE_CONSENT_MODE_AD_PREFS, encodeURIComponent(false), {
-            expires: daysToUTC(365),
-            path: '/',
-          });
-          gtag('consent', 'update', {
-            ad_storage: 'denied',
-            ad_user_data: 'denied',
-            ad_personalization: 'denied',
-          });
-        }
-      }
-    } else {
-      if (cookieExists(GOOGLE_CONSENT_MODE_ANALYTICS_STORAGE) && googleConsentAnalyticsStorage === true) {
-        createCookie(GOOGLE_CONSENT_MODE_ANALYTICS_STORAGE, '', {
-          expires: daysToUTC(-365),
-          path: '/',
-        });
-        gtag('consent', 'update', { analytics_storage: 'denied' });
-      }
-      if (cookieExists(GOOGLE_CONSENT_MODE_AD_PREFS) && googleConsentAdPrefs === true) {
-        createCookie(GOOGLE_CONSENT_MODE_AD_PREFS, '', {
-          expires: daysToUTC(-365),
-          path: '/',
-        });
-        gtag('consent', 'update', {
-          ad_storage: 'denied',
-          ad_user_data: 'denied',
-          ad_personalization: 'denied',
-        });
-      }
-    }
-  } catch (error) {
-    console.warn('CookieNoticePro: Error initializing Google Consent Mode. Ensure gtag.js is correctly installed:', error);
-  }
-};
-
 const bindBannerEvents = (event) => {
   const acceptButton = document.getElementById('cookieAccept');
   const settingsButton = document.getElementById('cookieSettings');
@@ -382,9 +273,6 @@ const bindBannerEvents = (event) => {
     if (config.showSettingsBtn) {
       injectScripts();
     }
-    if (config.enableGoogleConsentMode) {
-      googleConsentModeHandler();
-    }
   });
 
   settingsButton?.addEventListener('click', () => {
@@ -405,9 +293,6 @@ const bindBannerEvents = (event) => {
     hideCookieBanner(false, config.expires);
     config.onConsentReject();
     emitCookieNoticeEvent('rejected');
-    if (config.enableGoogleConsentMode) {
-      googleConsentModeHandler();
-    }
     createCookie(COOKIE_CONSENT_PREFS, '', {
       expires: daysToUTC(-365),
       path: '/',
@@ -466,9 +351,6 @@ const renderCookieNotice = (event) => {
   }
   if (config.enableMinimize) {
     minimizeCookieBanner();
-  }
-  if (config.enableGoogleConsentMode) {
-    googleConsentModeHandler();
   }
 };
 

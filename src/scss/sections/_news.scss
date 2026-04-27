@@ -48,6 +48,7 @@
         a {
             margin-bottom: 2rem;
             display: block;
+            min-height: 100%;
 
             &:hover .titulo {
                 color: $rojo;
@@ -69,6 +70,7 @@
             color: $azul;
             transition: .25s all ease;
             margin-bottom: 0.125rem;
+            overflow-wrap: anywhere;
         }
     }
 }

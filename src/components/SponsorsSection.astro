@@ -1,0 +1,121 @@
+---
+interface SponsorItem {
+  src: string;
+  alt: string;
+  className: string;
+}
+
+interface SponsorGroup {
+  label: string;
+  items: SponsorItem[];
+}
+
+interface Props {
+  lang?: 'es' | 'en';
+}
+
+const { lang = 'es' } = Astro.props;
+
+const labels = lang === 'en'
+  ? {
+      organizer: 'Organized by',
+      collaborators: 'Collaborators',
+      support: 'With the support of',
+      partners: 'Partners',
+    }
+  : {
+      organizer: 'Organiza',
+      collaborators: 'Colaboran',
+      support: 'Con el apoyo de',
+      partners: 'Partners',
+    };
+
+const groups: SponsorGroup[] = [
+  {
+    label: labels.collaborators,
+    items: [
+      { src: '/images/logo-CAM.svg', alt: 'Comunidad de Madrid', className: 'logo logo_1' },
+      { src: '/images/logo-matadero.svg', alt: 'Matadero', className: 'logo logo_1' },
+      { src: '/images/logo-madrid-film-office.svg', alt: 'Madrid Film Office', className: 'logo logo_1' },
+      { src: '/images/logo-cineteca.svg', alt: 'Cineteca', className: 'logo logo_1' },
+      { src: '/images/logo-film-madrid-region.svg', alt: 'Film Madrid', className: 'logo logo_1' },
+      { src: '/images/logo-ac-e.svg', alt: 'AC/E', className: 'logo logo_2' },
+      { src: '/images/logo-dama.svg', alt: 'DAMA', className: 'logo logo_1' },
+    ],
+  },
+  {
+    label: labels.support,
+    items: [
+      { src: '/images/logo-filmin.svg', alt: 'Filmin', className: 'logo logo_1' },
+      { src: '/images/logo-ambassade-france.svg', alt: 'Ambassade France', className: 'logo logo_3' },
+      { src: '/images/logo-institute-francaise.svg', alt: 'Institute Française', className: 'logo logo_3' },
+      { src: '/images/logo-cluster.svg', alt: 'Cluster', className: 'logo logo_3' },
+      { src: '/images/logo-filmadrid.svg', alt: 'Filmadrid', className: 'logo logo_2' },
+      { src: '/images/logo-screen.svg', alt: 'Screen', className: 'logo logo_1' },
+      { src: '/images/logo-cinemart.svg', alt: 'Cinemart', className: 'logo logo_3' },
+      { src: '/images/logo-mafiz.svg', alt: 'Mafiz', className: 'logo logo_2' },
+      { src: '/images/logo-abycine.svg', alt: 'Abycine', className: 'logo logo_2' },
+      { src: '/images/logo-proimagenes-colombia.svg', alt: 'Promoimagenes Colombia', className: 'logo logo_2' },
+      { src: '/images/logo-acau.svg', alt: 'ACAU', className: 'logo logo_1' },
+      { src: '/images/logo-euc-media.svg', alt: 'EUC Media', className: 'logo logo_2' },
+      { src: '/images/logo-ace-producers.svg', alt: 'ACE Producers', className: 'logo logo_2' },
+      { src: '/images/logo-cima.png', alt: 'CIMA', className: 'logo logo_1' },
+      { src: '/images/logo-conecta.svg', alt: 'Conecta', className: 'logo logo_3' },
+      { src: '/images/logo-serializados.svg', alt: 'Serializados', className: 'logo logo_2' },
+      { src: '/images/logo-series-mania.svg', alt: 'Seriesmania', className: 'logo logo_2' },
+      { src: '/images/logo-bogo-shorts.svg', alt: 'BOGO', className: 'logo logo_3' },
+      { src: '/images/logo-chile-shorts.svg', alt: 'Chile Shorts', className: 'logo logo_1' },
+      { src: '/images/logo-famu.svg', alt: 'FAMU', className: 'logo logo_3' },
+      { src: '/images/logo-la-femis.svg', alt: 'La Femis', className: 'logo logo_2' },
+      { src: '/images/logo-disff.svg', alt: 'DISFF', className: 'logo logo_2' },
+      { src: '/images/logo-telemadrid.svg', alt: 'Telemadrid', className: 'logo logo_2' },
+      { src: '/images/logo-aluzine.svg', alt: 'Aluzine', className: 'logo logo_3' },
+      { src: '/images/logo-emergente.svg', alt: 'Emergente', className: 'logo logo_3' },
+      { src: '/images/logo-talking-shorts.svg', alt: 'Talking Shorts', className: 'logo logo_2' },
+    ],
+  },
+  {
+    label: labels.partners,
+    items: [
+      { src: '/images/logo-aquaservice.svg', alt: 'Aquaservice', className: 'logo logo_2' },
+      { src: '/images/logo-100-alhambra.svg', alt: 'Alhambra', className: 'logo logo_3' },
+      { src: '/images/logo-renfe.svg', alt: 'Renfe', className: 'logo logo_3' },
+      { src: '/images/logo-campari.svg', alt: 'Campari', className: 'logo logo_2' },
+      { src: '/images/logo-cafe-mexicana.svg', alt: 'Café La Mexicana', className: 'logo logo_2' },
+      { src: '/images/logo-calma-chechu.svg', alt: 'Calma Chechu', className: 'logo logo_2' },
+      { src: '/images/logo-casa-artes.svg', alt: 'Casa de las Artes', className: 'logo logo_3' },
+      { src: '/images/logo-crimons.svg', alt: 'Crimons', className: 'logo logo_1' },
+    ],
+  },
+];
+---
+
+<section id="patrocinadores">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="wrapper d-inline-flex align-items-center flex-wrap">
+          <div class="d-flex flex-column align-items-start">
+            <p class="mb-2 rojo fs-6 fw-bold">{labels.organizer}</p>
+            <img src="/images/logo-ECAM.svg" alt="ECAM" class="logo_3" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {groups.map((group) => (
+      <div class="row mt-5">
+        <div class="col">
+          <div class="d-flex flex-column align-items-start">
+            <p class="mb-2 rojo fs-6 fw-bold">{group.label}</p>
+            <div class="wrapper d-inline-flex align-items-center flex-wrap">
+              {group.items.map((item) => (
+                <img src={item.src} alt={item.alt} class={item.className} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

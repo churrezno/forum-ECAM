@@ -1,0 +1,45 @@
+---
+interface Props {
+  locale?: 'es' | 'en';
+  src: string;
+  title?: string;
+}
+
+const { locale = 'es', src, title = 'YouTube video player' } = Astro.props;
+
+const copy = locale === 'en'
+  ? {
+      message: 'To watch this video, accept marketing cookies and then click "Load video".',
+      pendingMessage: 'Accept marketing cookies in the banner to continue loading this video.',
+      loadLabel: 'Load video',
+      settingsLabel: 'Cookie settings',
+    }
+  : {
+      message: 'Para ver este vídeo, acepta las cookies de marketing y después pulsa "Cargar vídeo".',
+      pendingMessage: 'Acepta las cookies de marketing en el banner para terminar de cargar este vídeo.',
+      loadLabel: 'Cargar vídeo',
+      settingsLabel: 'Configurar cookies',
+    };
+---
+
+<div
+  class="youtube-consent-embed"
+  data-youtube-embed
+  data-src={src}
+  data-title={title}
+  data-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  data-referrerpolicy="strict-origin-when-cross-origin"
+  data-message={copy.message}
+  data-pending-message={copy.pendingMessage}
+>
+  <div class="youtube-consent-card">
+    <div class="youtube-consent-poster" aria-hidden="true">
+      <span class="youtube-consent-play"></span>
+    </div>
+    <p class="youtube-consent-message">{copy.message}</p>
+    <div class="youtube-consent-actions">
+      <button type="button" class="btn btn-border btn-border-azul youtube-consent-load">{copy.loadLabel}</button>
+      <button type="button" class="btn btn-border btn-border-azul youtube-consent-settings">{copy.settingsLabel}</button>
+    </div>
+  </div>
+</div>
