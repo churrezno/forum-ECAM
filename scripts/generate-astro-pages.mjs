@@ -331,8 +331,14 @@ const componentConfigBySection = {
   },
 };
 
+const toAstroTemplateLiteral = (value) =>
+  `\`${value
+    .replace(/\\/g, '\\\\')
+    .replace(/`/g, '\\`')
+    .replace(/\$\{/g, '\\${')}\``;
+
 await fs.mkdir(pagesDir, { recursive: true });
-await fs.mkdir(legacyDir, { recursive: true });
+await fs.rm(legacyDir, { recursive: true, force: true });
 
 for (const config of pageConfigs) {
   const inputPath = path.join(srcDir, config.html);
@@ -362,36 +368,22 @@ for (const config of pageConfigs) {
   const loadLegacyInteractive = /data-project=|data-seminar=/.test(bodyWithProtectedYouTube);
   const loadModernInteractive = /data-project-2025=|data-news=/.test(bodyWithProtectedYouTube);
 
-  const afterFooterHtmlPath = path.join(
-    legacyDir,
-    config.html.replace(/\//g, '__').replace(/\.html$/, '.after-footer.html'),
-  );
   const astroPagePath = path.join(pagesDir, config.page);
-  const relativeAfterFooterImport = path
-    .relative(path.dirname(astroPagePath), afterFooterHtmlPath)
-    .replace(/\\/g, '/');
   const relativeComponent = path
     .relative(path.dirname(astroPagePath), legacyPageComponentPath)
     .replace(/\\/g, '/');
 
-  const pageBaseName = config.html.replace(/\//g, '__').replace(/\.html$/, '');
   await fs.mkdir(path.dirname(astroPagePath), { recursive: true });
-  await fs.writeFile(afterFooterHtmlPath, `${sanitizedAfterFooterHtml}\n`);
-  const contentPartImports = [];
+  const htmlConstants = [];
   const contentPartMarkup = [];
   const componentImports = new Map();
   let htmlSegmentIndex = 0;
 
   for (const segment of contentSegments) {
     if (segment.type === 'html') {
-      const htmlSegmentPath = path.join(legacyDir, `${pageBaseName}.segment-${htmlSegmentIndex}.html`);
-      const relativeHtmlImport = path
-        .relative(path.dirname(astroPagePath), htmlSegmentPath)
-        .replace(/\\/g, '/');
       const bindingName = `segment${htmlSegmentIndex}Html`;
 
-      await fs.writeFile(htmlSegmentPath, `${segment.html}\n`);
-      contentPartImports.push(`import ${bindingName} from '${relativeHtmlImport}?raw';`);
+      htmlConstants.push(`const ${bindingName} = ${toAstroTemplateLiteral(segment.html)};`);
       contentPartMarkup.push(`  <Fragment set:html={${bindingName}} />`);
       htmlSegmentIndex += 1;
       continue;
@@ -416,8 +408,9 @@ for (const config of pageConfigs) {
   const astroSource = `---
 import LegacyPage from '${relativeComponent}';
 ${componentImportLines.join('\n')}
-${contentPartImports.join('\n')}
-import afterFooterHtml from '${relativeAfterFooterImport}?raw';
+
+${htmlConstants.join('\n\n')}
+const afterFooterHtml = ${toAstroTemplateLiteral(sanitizedAfterFooterHtml)};
 ---
 
 <LegacyPage
