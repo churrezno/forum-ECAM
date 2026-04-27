@@ -77,6 +77,30 @@ document.addEventListener('DOMContentLoaded', () => {
         'bioEn',
     ];
 
+    const getFirstDefined = (source, keys) => {
+        for (const key of keys) {
+            const value = source?.[key];
+            if (value !== undefined && value !== null && value !== '') {
+                return value;
+            }
+        }
+
+        return '';
+    };
+
+    const normalizeSeminar = (seminar) => ({
+        ...seminar,
+        title: getFirstDefined(seminar, ['title', 'name']),
+        subtitle: getFirstDefined(seminar, ['subtitle']),
+        subtitleEn: getFirstDefined(seminar, ['subtitleEn', 'subtitle_en']),
+        text: getFirstDefined(seminar, ['text']),
+        textEn: getFirstDefined(seminar, ['textEn', 'text_en']),
+        bio: getFirstDefined(seminar, ['bio']),
+        bioEn: getFirstDefined(seminar, ['bioEn', 'bio_en']),
+        photoUrl: getFirstDefined(seminar, ['photoUrl', 'photo']),
+        colaboratorUrl: getFirstDefined(seminar, ['colaboratorUrl', 'colaborator']),
+    });
+
     const setModalContent = (project) => {
         if (!project || !section || !title || !titleEn || !img) {
             return;
@@ -94,12 +118,18 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        setSeminarFieldsContent(arraySeminarFields, seminar);
-        imgColaborator.src = `${baseUrl}/images/${seminar.colaboratorUrl}`;
-        imgColaborator.alt = seminar.activity ? `Colaborador de ${seminar.activity}` : 'Colaborador';
-        imgPonente.src = `${baseUrl}/images/${seminar.photoUrl}`;
-        imgPonente.alt = seminar.subtitle || seminar.title || 'Ponente';
-        btnTickets.href = seminar.url;
+        const normalizedSeminar = normalizeSeminar(seminar);
+
+        setSeminarFieldsContent(arraySeminarFields, normalizedSeminar);
+        imgColaborator.src = normalizedSeminar.colaboratorUrl && normalizedSeminar.colaboratorUrl != '-'
+            ? `${baseUrl}/images/${normalizedSeminar.colaboratorUrl}`
+            : '';
+        imgColaborator.alt = normalizedSeminar.activity ? `Colaborador de ${normalizedSeminar.activity}` : 'Colaborador';
+        imgPonente.src = normalizedSeminar.photoUrl && normalizedSeminar.photoUrl != '-'
+            ? `${baseUrl}/images/${normalizedSeminar.photoUrl}`
+            : '';
+        imgPonente.alt = normalizedSeminar.subtitle || normalizedSeminar.title || 'Ponente';
+        btnTickets.href = normalizedSeminar.url || '';
     };
 
     const setFieldsContent = (fields, project) => {

@@ -1,8 +1,7 @@
 ---
 import LegacyPage from '../components/LegacyPage.astro';
-import beforeHtml from '../legacy/politica-privacidad.before.html?raw';
 
-import afterHtml from '../legacy/politica-privacidad.after.html?raw';
+import segment0Html from '../legacy/politica-privacidad.segment-0.html?raw';
 import afterFooterHtml from '../legacy/politica-privacidad.after-footer.html?raw';
 ---
 
@@ -24,8 +23,7 @@ import afterFooterHtml from '../legacy/politica-privacidad.after-footer.html?raw
   hasProject2025Modal={false}
   hasNewsModal={false}
   hasSeminarModal={false}
-  beforeHtml={beforeHtml}
-
-  afterHtml={afterHtml}
   afterFooterHtml={afterFooterHtml}
-/>
+>
+  <Fragment set:html={segment0Html} />
+</LegacyPage>
