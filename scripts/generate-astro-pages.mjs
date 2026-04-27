@@ -9,15 +9,15 @@ const legacyPageComponentPath = path.join(srcDir, 'components', 'LegacyPage.astr
 
 const pageConfigs = [
   { html: 'index.html', page: 'index.astro', pageId: 'home', footerLocale: 'es', componentSections: ['news', 'video', 'sponsors'] },
-  { html: 'forum-2024.html', page: 'forum-2024.astro', pageId: 'forum-2024', footerLocale: 'es', componentSections: ['projects', 'video', 'sponsors'] },
-  { html: 'forum-2025.html', page: 'forum-2025.astro', pageId: 'forum-2025', footerLocale: 'es', componentSections: ['projects', 'video', 'sponsors'] },
+  { html: 'forum-2024.html', page: 'forum-2024.astro', pageId: 'forum-2024', footerLocale: 'es', componentSections: ['projects', 'committees', 'awards', 'seminars', 'video', 'sponsors'] },
+  { html: 'forum-2025.html', page: 'forum-2025.astro', pageId: 'forum-2025', footerLocale: 'es', componentSections: ['projects', 'committees', 'awards', 'seminars', 'video', 'sponsors'] },
   { html: 'noticias.html', page: 'noticias.astro', pageId: 'news', footerLocale: 'es', componentSections: ['news'] },
   { html: 'actividades.html', page: 'actividades.astro', pageId: 'activities', footerLocale: 'es', componentSections: ['seminars'] },
   { html: 'politica-privacidad.html', page: 'politica-privacidad.astro', pageId: 'legal', footerLocale: 'es' },
   { html: 'politica-cookies.html', page: 'politica-cookies.astro', pageId: 'legal', footerLocale: 'es' },
   { html: 'en/index.html', page: 'en/index.astro', pageId: 'home', footerLocale: 'en', componentSections: ['news', 'video', 'sponsors'] },
-  { html: 'en/forum-2024.html', page: 'en/forum-2024.astro', pageId: 'forum-2024', footerLocale: 'en', componentSections: ['projects', 'video', 'sponsors'] },
-  { html: 'en/forum-2025.html', page: 'en/forum-2025.astro', pageId: 'forum-2025', footerLocale: 'en', componentSections: ['projects', 'video', 'sponsors'] },
+  { html: 'en/forum-2024.html', page: 'en/forum-2024.astro', pageId: 'forum-2024', footerLocale: 'en', componentSections: ['projects', 'committees', 'awards', 'seminars', 'video', 'sponsors'] },
+  { html: 'en/forum-2025.html', page: 'en/forum-2025.astro', pageId: 'forum-2025', footerLocale: 'en', componentSections: ['projects', 'committees', 'awards', 'seminars', 'video', 'sponsors'] },
   { html: 'en/news.html', page: 'en/news.astro', pageId: 'news', footerLocale: 'es', componentSections: ['news'] },
 ];
 
@@ -256,6 +256,8 @@ const sectionPatternByName = {
   video: /<section id="video"[\s\S]*?<\/section>/i,
   sponsors: /<section id="patrocinadores"[\s\S]*?<\/section>/i,
   seminars: /<section id="seminarios"[\s\S]*?<\/section>/i,
+  committees: /<section id="comites"[\s\S]*?<\/section>/i,
+  awards: /<section id="palmares"[\s\S]*?<\/section>/i,
 };
 
 const splitContentSegments = (bodyHtml, componentSections = []) => {
@@ -324,10 +326,20 @@ const componentConfigBySection = {
     path: path.join(srcDir, 'components', 'SponsorsSection.astro'),
     render: ({ lang }) => `<SponsorsSection lang={${JSON.stringify(lang)}} />`,
   },
+  committees: {
+    name: 'CommitteesSection',
+    path: path.join(srcDir, 'components', 'CommitteesSection.astro'),
+    render: ({ lang, pageId }) => `<CommitteesSection lang={${JSON.stringify(lang)}} pageId={${JSON.stringify(pageId)}} />`,
+  },
+  awards: {
+    name: 'AwardsSection',
+    path: path.join(srcDir, 'components', 'AwardsSection.astro'),
+    render: ({ lang, pageId }) => `<AwardsSection lang={${JSON.stringify(lang)}} pageId={${JSON.stringify(pageId)}} />`,
+  },
   seminars: {
     name: 'SeminarsSection',
     path: path.join(srcDir, 'components', 'SeminarsSection.astro'),
-    render: ({ lang }) => `<SeminarsSection lang={${JSON.stringify(lang)}} />`,
+    render: ({ lang, pageId }) => `<SeminarsSection lang={${JSON.stringify(lang)}} pageId={${JSON.stringify(pageId)}} />`,
   },
 };
 
