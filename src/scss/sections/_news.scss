@@ -48,10 +48,13 @@
         a {
             margin-bottom: 2rem;
             display: block;
-            min-height: 100%;
-
+            
             &:hover .titulo {
                 color: $rojo;
+            }
+            
+            &:not(.btn) {
+                min-height: 100%;
             }
         }
 
