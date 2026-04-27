@@ -9,9 +9,7 @@ yarn-error.log*
 .env.*
 public/pdf/
 src/pdf/
-public/images/*
-!public/images/proyectos-2026/
-!public/images/proyectos-2026/**
-src/images/*
-!src/images/proyectos-2026/
-!src/images/proyectos-2026/**
+public/images/proyectos/
+public/images/proyectos-2025/
+src/images/proyectos/
+src/images/proyectos-2025/
