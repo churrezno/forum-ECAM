@@ -1,0 +1,407 @@
+---
+interface Props {
+  lang: 'es' | 'en';
+  pageId: 'forum-2024' | 'forum-2025';
+}
+
+const { lang, pageId } = Astro.props;
+
+const committeesByPage = {
+  "forum-2024:es": {
+    "title": "COMITÉS Y JURADO 2024",
+    "groups": [
+      {
+        "title": "Comité LAST PUSH",
+        "color": "azul",
+        "people": [
+          {
+            "image": "/images/comites/EvaS.jpg",
+            "alt": "Eva Sangiorgi",
+            "name": "Eva Sangiorgi",
+            "role": "Viennale"
+          },
+          {
+            "image": "/images/comites/PamelaB.jpg",
+            "alt": "Pamela Bienzobas",
+            "name": "Pamela Bienzobas",
+            "role": "Festival de Locarno"
+          },
+          {
+            "image": "/images/comites/JamesL.jpg",
+            "alt": "James Lattimer",
+            "name": "James Lattimer",
+            "role": "Programador"
+          },
+          {
+            "image": "/images/comites/CeciliaB.jpg",
+            "alt": "Cecilia Barrionuevo",
+            "name": "Cecilia Barrionuevo",
+            "role": "Docslisboa"
+          }
+        ]
+      },
+      {
+        "title": "Comité FILMS TO COME",
+        "color": "azul",
+        "people": [
+          {
+            "image": "/images/comites/InesM.jpg",
+            "alt": "Ines Massa",
+            "name": "Ines Massa",
+            "role": "Materia Cinema"
+          },
+          {
+            "image": "/images/comites/SergioG.jpg",
+            "alt": "Sergio García de Leaniz",
+            "name": "Sergio García de Leaniz",
+            "role": "Eurimages"
+          },
+          {
+            "image": "/images/comites/MarinaM.jpg",
+            "alt": "Marina Maesso",
+            "name": "Marina Maesso",
+            "role": "Script Analyst"
+          },
+          {
+            "image": "/images/comites/AgustinaC.jpg",
+            "alt": "Agustina Chiarino",
+            "name": "Agustina Chiarino",
+            "role": "Bocacha Films"
+          }
+        ]
+      },
+      {
+        "title": "JURADO LAST PUSH",
+        "color": "rojo",
+        "people": [
+          {
+            "image": "/images/comites/RemiB.jpg",
+            "alt": "Rémi Bonhomme",
+            "name": "Rémi Bonhomme",
+            "role": "Marrakech International Film Festival"
+          },
+          {
+            "image": "/images/comites/WouterJ.jpg",
+            "alt": "Wouter Jansen",
+            "name": "Wouter Jansen",
+            "role": "Square Eyes"
+          },
+          {
+            "image": "/images/comites/AnnaMariaS.jpg",
+            "alt": "Annamaria Scaramella",
+            "name": "Annamaria Scaramella",
+            "role": "Margenes"
+          }
+        ]
+      }
+    ]
+  },
+  "forum-2025:es": {
+    "title": "COMITÉS Y JURADO 2025",
+    "groups": [
+      {
+        "title": "Comité LAST PUSH",
+        "color": "azul",
+        "people": [
+          {
+            "image": "/images/comites/GaiaF.jpg",
+            "alt": "Gaia Furrer",
+            "name": "Gaia Furrer",
+            "role": "Venice - Giornate degli Autori"
+          },
+          {
+            "image": "/images/comites/PamelaB.jpg",
+            "alt": "Pamela Bienzobas",
+            "name": "Pamela Bienzobas",
+            "role": "Festival de Locarno"
+          },
+          {
+            "image": "/images/comites/VioletaG.jpg",
+            "alt": "Violeta Gil",
+            "name": "Violeta Gil",
+            "role": "Escritora, filóloga, creadora escénica"
+          },
+          {
+            "image": "/images/comites/VioletaB.jpg",
+            "alt": "Violeta Bava",
+            "name": "Violeta Bava",
+            "role": "Venice Film Festival, NYFF"
+          }
+        ]
+      },
+      {
+        "title": "Comité FILMS TO COME",
+        "color": "azul",
+        "people": [
+          {
+            "image": "/images/comites/ZsusZannaK.jpg",
+            "alt": "Zsuzsanna Kiràly",
+            "name": "Zsuzsanna Kiràly",
+            "role": "Flaneur Films"
+          },
+          {
+            "image": "/images/comites/PazL.jpg",
+            "alt": "Paz Lázaro",
+            "name": "Paz Lázaro",
+            "role": "Amore Cine"
+          },
+          {
+            "image": "/images/comites/CarlaS.jpg",
+            "alt": "Carla Sospedra Salvadó",
+            "name": "Carla Sospedra Salvadó",
+            "role": "Edna Cinema"
+          },
+          {
+            "image": "/images/comites/AgustinaC.jpg",
+            "alt": "Agustina Chiarino",
+            "name": "Agustina Chiarino",
+            "role": "Bocacha Films"
+          },
+          {
+            "image": "/images/comites/LisonH.jpg",
+            "alt": "Lison Hervé",
+            "name": "Lison Hervé",
+            "role": "Les Arcs Industry"
+          }
+        ]
+      },
+      {
+        "title": "JURADO LAST PUSH",
+        "color": "rojo",
+        "people": [
+          {
+            "image": "/images/comites/ChristianJ.jpg",
+            "alt": "Christian Jeune",
+            "name": "Christian Jeune",
+            "role": "Festival de Cannes"
+          },
+          {
+            "image": "/images/comites/DianaC.jpg",
+            "alt": "Diana Cadavid",
+            "name": "Diana Cadavid",
+            "role": "TIFF Toronto International Film Festival"
+          },
+          {
+            "image": "/images/comites/JoseLuisC.jpg",
+            "alt": "José Luis Cienfuegos",
+            "name": "José Luis Cienfuegos",
+            "role": "SEMINCI"
+          }
+        ]
+      }
+    ]
+  },
+  "forum-2024:en": {
+    "title": "2024 COMMITTEES & JURY",
+    "groups": [
+      {
+        "title": "LAST PUSH Committee",
+        "color": "azul",
+        "people": [
+          {
+            "image": "/images/comites/EvaS.jpg",
+            "alt": "Eva Sangiorgi",
+            "name": "Eva Sangiorgi",
+            "role": "Viennale"
+          },
+          {
+            "image": "/images/comites/PamelaB.jpg",
+            "alt": "Pamela Bienzobas",
+            "name": "Pamela Bienzobas",
+            "role": "Festival de Locarno"
+          },
+          {
+            "image": "/images/comites/JamesL.jpg",
+            "alt": "James Lattimer",
+            "name": "James Lattimer",
+            "role": "Programador"
+          },
+          {
+            "image": "/images/comites/CeciliaB.jpg",
+            "alt": "Cecilia Barrionuevo",
+            "name": "Cecilia Barrionuevo",
+            "role": "Docslisboa"
+          }
+        ]
+      },
+      {
+        "title": "FILMS TO COME Committee",
+        "color": "azul",
+        "people": [
+          {
+            "image": "/images/comites/InesM.jpg",
+            "alt": "Ines Massa",
+            "name": "Ines Massa",
+            "role": "Materia Cinema"
+          },
+          {
+            "image": "/images/comites/SergioG.jpg",
+            "alt": "Sergio García de Leaniz",
+            "name": "Sergio García de Leaniz",
+            "role": "Eurimages"
+          },
+          {
+            "image": "/images/comites/MarinaM.jpg",
+            "alt": "Marina Maesso",
+            "name": "Marina Maesso",
+            "role": "Script Analyst"
+          },
+          {
+            "image": "/images/comites/AgustinaC.jpg",
+            "alt": "Agustina Chiarino",
+            "name": "Agustina Chiarino",
+            "role": "Bocacha Films"
+          }
+        ]
+      },
+      {
+        "title": "LAST PUSH Jury",
+        "color": "rojo",
+        "people": [
+          {
+            "image": "/images/comites/RemiB.jpg",
+            "alt": "Rémi Bonhomme",
+            "name": "Rémi Bonhomme",
+            "role": "Marrakech International Film Festival"
+          },
+          {
+            "image": "/images/comites/WouterJ.jpg",
+            "alt": "Wouter Jansen",
+            "name": "Wouter Jansen",
+            "role": "Square Eyes"
+          },
+          {
+            "image": "/images/comites/AnnaMariaS.jpg",
+            "alt": "Annamaria Scaramella",
+            "name": "Annamaria Scaramella",
+            "role": "Margenes"
+          }
+        ]
+      }
+    ]
+  },
+  "forum-2025:en": {
+    "title": "2025 COMMITTEES & JURY",
+    "groups": [
+      {
+        "title": "LAST PUSH Committee",
+        "color": "azul",
+        "people": [
+          {
+            "image": "/images/comites/GaiaF.jpg",
+            "alt": "Gaia Furrer",
+            "name": "Gaia Furrer",
+            "role": "Venice - Giornate degli Autori"
+          },
+          {
+            "image": "/images/comites/PamelaB.jpg",
+            "alt": "Pamela Bienzobas",
+            "name": "Pamela Bienzobas",
+            "role": "Festival de Locarno"
+          },
+          {
+            "image": "/images/comites/VioletaG.jpg",
+            "alt": "Violeta Gil",
+            "name": "Violeta Gil",
+            "role": "Escritora, filóloga, creadora escénica"
+          },
+          {
+            "image": "/images/comites/VioletaB.jpg",
+            "alt": "Violeta Bava",
+            "name": "Violeta Bava",
+            "role": "Venice Film Festival, NYFF"
+          }
+        ]
+      },
+      {
+        "title": "FILMS TO COME Committee",
+        "color": "azul",
+        "people": [
+          {
+            "image": "/images/comites/ZsusZannaK.jpg",
+            "alt": "Zsuzsanna Kiràly",
+            "name": "Zsuzsanna Kiràly",
+            "role": "Flaneur Films"
+          },
+          {
+            "image": "/images/comites/PazL.jpg",
+            "alt": "Paz Lázaro",
+            "name": "Paz Lázaro",
+            "role": "Amore Cine"
+          },
+          {
+            "image": "/images/comites/CarlaS.jpg",
+            "alt": "Carla Sospedra Salvadó",
+            "name": "Carla Sospedra Salvadó",
+            "role": "Edna Cinema"
+          },
+          {
+            "image": "/images/comites/AgustinaC.jpg",
+            "alt": "Agustina Chiarino",
+            "name": "Agustina Chiarino",
+            "role": "Bocacha Films"
+          },
+          {
+            "image": "/images/comites/LisonH.jpg",
+            "alt": "Lison Hervé",
+            "name": "Lison Hervé",
+            "role": "Les Arcs Industry"
+          }
+        ]
+      },
+      {
+        "title": "LAST PUSH Jury",
+        "color": "rojo",
+        "people": [
+          {
+            "image": "/images/comites/ChristianJ.jpg",
+            "alt": "Christian Jeune",
+            "name": "Christian Jeune",
+            "role": "Festival de Cannes"
+          },
+          {
+            "image": "/images/comites/DianaC.jpg",
+            "alt": "Diana Cadavid",
+            "name": "Diana Cadavid",
+            "role": "TIFF Toronto International Film Festival"
+          },
+          {
+            "image": "/images/comites/JoseLuisC.jpg",
+            "alt": "José Luis Cienfuegos",
+            "name": "José Luis Cienfuegos",
+            "role": "SEMINCI"
+          }
+        ]
+      }
+    ]
+  }
+};
+const content = committeesByPage[`${pageId}:${lang}`];
+---
+
+{content && (
+  <section id="comites" class="bg-blanco">
+    <div class="container">
+      <div class="row">
+        <div class="col col-md-8 mb-5">
+          <h3 class="tit-seccion rojo">{content.title}</h3>
+        </div>
+      </div>
+
+      {content.groups.map((group, index) => (
+        <div class:list={["row", index > 0 && "mt-4"]}>
+          <div class="col-12">
+            <h4 class:list={["tit-categoria", group.color]}>{group.title}</h4>
+          </div>
+          {group.people.map((person) => (
+            <div class="col-6 col-md-3">
+              <img src={person.image} alt={person.alt} />
+              <p class="nombre azul">{person.name}</p>
+              <p class="azul">{person.role}</p>
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  </section>
+)}

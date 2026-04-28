@@ -9,15 +9,15 @@ const legacyPageComponentPath = path.join(srcDir, 'components', 'LegacyPage.astr
 
 const pageConfigs = [
   { html: 'index.html', page: 'index.astro', pageId: 'home', footerLocale: 'es', componentSections: ['news', 'video', 'sponsors'] },
-  { html: 'forum-2024.html', page: 'forum-2024.astro', pageId: 'forum-2024', footerLocale: 'es', componentSections: ['projects', 'video', 'sponsors'] },
-  { html: 'forum-2025.html', page: 'forum-2025.astro', pageId: 'forum-2025', footerLocale: 'es', componentSections: ['projects', 'video', 'sponsors'] },
+  { html: 'forum-2024.html', page: 'forum-2024.astro', pageId: 'forum-2024', footerLocale: 'es', componentSections: ['projects', 'committees', 'awards', 'seminars', 'video', 'sponsors'] },
+  { html: 'forum-2025.html', page: 'forum-2025.astro', pageId: 'forum-2025', footerLocale: 'es', componentSections: ['projects', 'committees', 'awards', 'seminars', 'video', 'sponsors'] },
   { html: 'noticias.html', page: 'noticias.astro', pageId: 'news', footerLocale: 'es', componentSections: ['news'] },
   { html: 'actividades.html', page: 'actividades.astro', pageId: 'activities', footerLocale: 'es', componentSections: ['seminars'] },
   { html: 'politica-privacidad.html', page: 'politica-privacidad.astro', pageId: 'legal', footerLocale: 'es' },
   { html: 'politica-cookies.html', page: 'politica-cookies.astro', pageId: 'legal', footerLocale: 'es' },
   { html: 'en/index.html', page: 'en/index.astro', pageId: 'home', footerLocale: 'en', componentSections: ['news', 'video', 'sponsors'] },
-  { html: 'en/forum-2024.html', page: 'en/forum-2024.astro', pageId: 'forum-2024', footerLocale: 'en', componentSections: ['projects', 'video', 'sponsors'] },
-  { html: 'en/forum-2025.html', page: 'en/forum-2025.astro', pageId: 'forum-2025', footerLocale: 'en', componentSections: ['projects', 'video', 'sponsors'] },
+  { html: 'en/forum-2024.html', page: 'en/forum-2024.astro', pageId: 'forum-2024', footerLocale: 'en', componentSections: ['projects', 'committees', 'awards', 'seminars', 'video', 'sponsors'] },
+  { html: 'en/forum-2025.html', page: 'en/forum-2025.astro', pageId: 'forum-2025', footerLocale: 'en', componentSections: ['projects', 'committees', 'awards', 'seminars', 'video', 'sponsors'] },
   { html: 'en/news.html', page: 'en/news.astro', pageId: 'news', footerLocale: 'es', componentSections: ['news'] },
 ];
 
@@ -256,6 +256,8 @@ const sectionPatternByName = {
   video: /<section id="video"[\s\S]*?<\/section>/i,
   sponsors: /<section id="patrocinadores"[\s\S]*?<\/section>/i,
   seminars: /<section id="seminarios"[\s\S]*?<\/section>/i,
+  committees: /<section id="comites"[\s\S]*?<\/section>/i,
+  awards: /<section id="palmares"[\s\S]*?<\/section>/i,
 };
 
 const splitContentSegments = (bodyHtml, componentSections = []) => {
@@ -324,15 +326,31 @@ const componentConfigBySection = {
     path: path.join(srcDir, 'components', 'SponsorsSection.astro'),
     render: ({ lang }) => `<SponsorsSection lang={${JSON.stringify(lang)}} />`,
   },
+  committees: {
+    name: 'CommitteesSection',
+    path: path.join(srcDir, 'components', 'CommitteesSection.astro'),
+    render: ({ lang, pageId }) => `<CommitteesSection lang={${JSON.stringify(lang)}} pageId={${JSON.stringify(pageId)}} />`,
+  },
+  awards: {
+    name: 'AwardsSection',
+    path: path.join(srcDir, 'components', 'AwardsSection.astro'),
+    render: ({ lang, pageId }) => `<AwardsSection lang={${JSON.stringify(lang)}} pageId={${JSON.stringify(pageId)}} />`,
+  },
   seminars: {
     name: 'SeminarsSection',
     path: path.join(srcDir, 'components', 'SeminarsSection.astro'),
-    render: ({ lang }) => `<SeminarsSection lang={${JSON.stringify(lang)}} />`,
+    render: ({ lang, pageId }) => `<SeminarsSection lang={${JSON.stringify(lang)}} pageId={${JSON.stringify(pageId)}} />`,
   },
 };
 
+const toAstroTemplateLiteral = (value) =>
+  `\`${value
+    .replace(/\\/g, '\\\\')
+    .replace(/`/g, '\\`')
+    .replace(/\$\{/g, '\\${')}\``;
+
 await fs.mkdir(pagesDir, { recursive: true });
-await fs.mkdir(legacyDir, { recursive: true });
+await fs.rm(legacyDir, { recursive: true, force: true });
 
 for (const config of pageConfigs) {
   const inputPath = path.join(srcDir, config.html);
@@ -362,36 +380,22 @@ for (const config of pageConfigs) {
   const loadLegacyInteractive = /data-project=|data-seminar=/.test(bodyWithProtectedYouTube);
   const loadModernInteractive = /data-project-2025=|data-news=/.test(bodyWithProtectedYouTube);
 
-  const afterFooterHtmlPath = path.join(
-    legacyDir,
-    config.html.replace(/\//g, '__').replace(/\.html$/, '.after-footer.html'),
-  );
   const astroPagePath = path.join(pagesDir, config.page);
-  const relativeAfterFooterImport = path
-    .relative(path.dirname(astroPagePath), afterFooterHtmlPath)
-    .replace(/\\/g, '/');
   const relativeComponent = path
     .relative(path.dirname(astroPagePath), legacyPageComponentPath)
     .replace(/\\/g, '/');
 
-  const pageBaseName = config.html.replace(/\//g, '__').replace(/\.html$/, '');
   await fs.mkdir(path.dirname(astroPagePath), { recursive: true });
-  await fs.writeFile(afterFooterHtmlPath, `${sanitizedAfterFooterHtml}\n`);
-  const contentPartImports = [];
+  const htmlConstants = [];
   const contentPartMarkup = [];
   const componentImports = new Map();
   let htmlSegmentIndex = 0;
 
   for (const segment of contentSegments) {
     if (segment.type === 'html') {
-      const htmlSegmentPath = path.join(legacyDir, `${pageBaseName}.segment-${htmlSegmentIndex}.html`);
-      const relativeHtmlImport = path
-        .relative(path.dirname(astroPagePath), htmlSegmentPath)
-        .replace(/\\/g, '/');
       const bindingName = `segment${htmlSegmentIndex}Html`;
 
-      await fs.writeFile(htmlSegmentPath, `${segment.html}\n`);
-      contentPartImports.push(`import ${bindingName} from '${relativeHtmlImport}?raw';`);
+      htmlConstants.push(`const ${bindingName} = ${toAstroTemplateLiteral(segment.html)};`);
       contentPartMarkup.push(`  <Fragment set:html={${bindingName}} />`);
       htmlSegmentIndex += 1;
       continue;
@@ -416,8 +420,9 @@ for (const config of pageConfigs) {
   const astroSource = `---
 import LegacyPage from '${relativeComponent}';
 ${componentImportLines.join('\n')}
-${contentPartImports.join('\n')}
-import afterFooterHtml from '${relativeAfterFooterImport}?raw';
+
+${htmlConstants.join('\n\n')}
+const afterFooterHtml = ${toAstroTemplateLiteral(sanitizedAfterFooterHtml)};
 ---
 
 <LegacyPage

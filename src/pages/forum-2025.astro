@@ -1,11 +1,43 @@
 ---
 import LegacyPage from '../components/LegacyPage.astro';
 import ProjectsSection from '../components/ProjectsSection.astro';
+import CommitteesSection from '../components/CommitteesSection.astro';
+import AwardsSection from '../components/AwardsSection.astro';
+import SeminarsSection from '../components/SeminarsSection.astro';
 import VideoSection from '../components/VideoSection.astro';
 import SponsorsSection from '../components/SponsorsSection.astro';
-import segment0Html from '../legacy/forum-2025.segment-0.html?raw';
-import segment1Html from '../legacy/forum-2025.segment-1.html?raw';
-import afterFooterHtml from '../legacy/forum-2025.after-footer.html?raw';
+
+const segment0Html = `<section id="intro">
+        <div class="container">
+            <div class="row">
+                 <div class="col-12 col-sm-4 text-center mt-5 mb-2 mt-sm-5 mb-sm-5">
+                    <a href="/pdf/ECAM_FORUM_catalogo_2025.pdf" class="btn btn-cta btn-cta-pq" target="_blank">
+                        <span>CATÁLOGO</span>
+                        <svg viewBox="0 0 66 59" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 33.481V25.9273H54.6916C49.9626 24.09 45.6449 21.0277 41.9439 16.7405C38.243 12.4533 36.1869 6.94118 35.3645 0H43.3832C44.2056 6.32872 46.6729 11.8408 51.1963 16.3322C55.7196 20.8235 60.6542 24.09 66 25.7232V33.2768C60.6542 34.91 55.7196 38.1765 51.1963 42.6678C46.6729 47.1592 44.2056 52.6713 43.3832 59H35.3645C36.1869 52.0588 38.243 46.5467 41.9439 42.2595C45.6449 37.9723 49.757 34.91 54.6916 33.2768H0V33.481Z" fill="#E61D4B"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="col-12 col-sm-4 text-center mt-2 mb-2 mt-sm-5 mb-sm-5">
+                    <a href="/pdf/ECAM_FORUM_PROGRAMA_2025.pdf" class="btn btn-cta btn-cta-pq" target="_blank">
+                        <span>PROGRAMA</span>
+                        <svg viewBox="0 0 66 59" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 33.481V25.9273H54.6916C49.9626 24.09 45.6449 21.0277 41.9439 16.7405C38.243 12.4533 36.1869 6.94118 35.3645 0H43.3832C44.2056 6.32872 46.6729 11.8408 51.1963 16.3322C55.7196 20.8235 60.6542 24.09 66 25.7232V33.2768C60.6542 34.91 55.7196 38.1765 51.1963 42.6678C46.6729 47.1592 44.2056 52.6713 43.3832 59H35.3645C36.1869 52.0588 38.243 46.5467 41.9439 42.2595C45.6449 37.9723 49.757 34.91 54.6916 33.2768H0V33.481Z" fill="#E61D4B"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="col-12 col-sm-4 text-center mt-2 mb-2 mt-sm-5 mb-sm-5">
+                    <a href="/pdf/FINDE_PROGRAMA_2025_01.pdf" class="btn btn-cta btn-cta-pq" target="_blank">
+                        <span>Programa FINDE</span>
+                        <svg viewBox="0 0 66 59" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 33.481V25.9273H54.6916C49.9626 24.09 45.6449 21.0277 41.9439 16.7405C38.243 12.4533 36.1869 6.94118 35.3645 0H43.3832C44.2056 6.32872 46.6729 11.8408 51.1963 16.3322C55.7196 20.8235 60.6542 24.09 66 25.7232V33.2768C60.6542 34.91 55.7196 38.1765 51.1963 42.6678C46.6729 47.1592 44.2056 52.6713 43.3832 59H35.3645C36.1869 52.0588 38.243 46.5467 41.9439 42.2595C45.6449 37.9723 49.757 34.91 54.6916 33.2768H0V33.481Z" fill="#E61D4B"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>`;
+const afterFooterHtml = ``;
 ---
 
 <LegacyPage
@@ -30,7 +62,9 @@ import afterFooterHtml from '../legacy/forum-2025.after-footer.html?raw';
 >
   <Fragment set:html={segment0Html} />
   <ProjectsSection lang={"es"} pageId={"forum-2025"} />
-  <Fragment set:html={segment1Html} />
+  <CommitteesSection lang={"es"} pageId={"forum-2025"} />
+  <AwardsSection lang={"es"} pageId={"forum-2025"} />
+  <SeminarsSection lang={"es"} pageId={"forum-2025"} />
   <VideoSection lang={"es"} pageId={"forum-2025"} />
   <SponsorsSection lang={"es"} />
 </LegacyPage>

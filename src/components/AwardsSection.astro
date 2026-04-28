@@ -1,0 +1,396 @@
+---
+interface Props {
+  lang: 'es' | 'en';
+  pageId: 'forum-2024' | 'forum-2025';
+}
+
+const { lang, pageId } = Astro.props;
+
+const awardsByPage = {
+  "forum-2024:es": {
+    "title": "PALMARÉS 2024",
+    "groups": [
+      {
+        "title": "LAST PUSH",
+        "items": [
+          {
+            "prize": "Premio Comunidad de Madrid",
+            "project": "DEUSES DE PEDRA",
+            "description": "Dirigida por Iván Castiñeiras y producida por Ángel Santos Touza. Una producción de Amateurfilms, Promenon–nous dans les Bois, Rua Escura y Primeira Idade."
+          }
+        ]
+      },
+      {
+        "title": "FILMS TO COME",
+        "items": [
+          {
+            "prize": "Premio Filmin",
+            "project": "MEMORIAL",
+            "description": "Dirigida por Sergi Pérez y producida por Carla Sospedra. Una producción de Edna Cinema, Sumendi, Bteam y Noodles."
+          },
+          {
+            "prize": "Premio Madrid Film Office",
+            "project": "PHANTOM",
+            "description": "Dirigida por Cristóbal Fernández y producida por Guadalupe Balaguer Trelles. Una producción de El Gesto Cinematográfico SL."
+          },
+          {
+            "prize": "Premio IFFR PRO",
+            "project": "EL MILAGRO DEL SURUBÍ",
+            "description": "Dirigido por Lorenzo Tocco y producido por Pancho Magnou. Una producción de Montelona (Uruguay) y Kocria (Brasil)."
+          }
+        ]
+      },
+      {
+        "title": "SERIES",
+        "items": [
+          {
+            "prize": "Premio Seriesmanía",
+            "project": "ESTRELLA DEL GREEN",
+            "description": "De Denise Moreno."
+          },
+          {
+            "prize": "Premio Serializados",
+            "project": "ELLA Y YO Y SOBRE TODO ELLA",
+            "description": "De Marta Ambel Meyer."
+          }
+        ]
+      },
+      {
+        "title": "AFTER",
+        "items": [
+          {
+            "prize": "Premio Emergente",
+            "project": "MANU CONDUCE DE NOCHE",
+            "description": "Dirigido por Alba Menor y producido por Carlota Rodas. Una producción de El Inquilino."
+          },
+          {
+            "prize": "Premio Abycine Lanza",
+            "project": "MANU CONDUCE DE NOCHE",
+            "description": "Dirigido por Alba Menor y producido por Carlota Rodas. Una producción de El Inquilino."
+          },
+          {
+            "prize": "Premio Skyline Benidorm",
+            "project": "TURBOCAPITALEND",
+            "description": "Dirigido por Claudia Gracia y producido por Arnold Lozada."
+          },
+          {
+            "prize": "Premio Short Film Lab",
+            "project": "TE SALDRÁN ESCAMAS",
+            "description": "Dirigido por Sara Domínguez y producido por Anxo Soilán."
+          },
+          {
+            "prize": "Premio Madrid Film Office",
+            "project": "NADIE QUIERE ENTERRARTE",
+            "description": "Dirigido por Matías García y producido por María Alemán. Una producción de Bola 3 Produccion3s."
+          },
+          {
+            "prize": "Premio Telemadrid",
+            "project": "QUIERO VERTE UNA VEZ MÁS",
+            "description": "Dirigido por Guillermo Chapa y producido por Aïda Gómez."
+          }
+        ]
+      }
+    ]
+  },
+  "forum-2025:es": {
+    "title": "PALMARÉS 2025",
+    "groups": [
+      {
+        "title": "LAST PUSH",
+        "items": [
+          {
+            "prize": "Premio Comunidad de Madrid",
+            "project": "EL ARTE DE LA GUERRA",
+            "description": "Grecia Barbieri y Gonzalo Benavente Secco."
+          }
+        ]
+      },
+      {
+        "title": "FILMS TO COME",
+        "items": [
+          {
+            "prize": "Premio Filmin",
+            "project": "DESDE QUE TÚ TE HAS IDO",
+            "description": "María Herrera."
+          },
+          {
+            "prize": "Premio IFFR Rotterdam",
+            "project": "BAI, BAI",
+            "description": "Alba Esquinas."
+          },
+          {
+            "prize": "Premio Madrid Film Office",
+            "project": "DESDE QUE TÚ TE HAS IDO",
+            "description": "María Herrera."
+          },
+          {
+            "prize": "Premio Screen International",
+            "project": "NATIVITY",
+            "description": "Francisca Alegría."
+          }
+        ]
+      },
+      {
+        "title": "FORUM CORTOS",
+        "items": [
+          {
+            "prize": "Premio Emergente",
+            "project": "LECHO DE PASTO",
+            "description": "Carmela Román."
+          },
+          {
+            "prize": "Premio Abycine Lanza Conexiones",
+            "project": "TERRORES NOCTURNOS",
+            "description": "Manolo Orellana Naranjo."
+          },
+          {
+            "prize": "Premio Telemadrid",
+            "project": "TERRORES NOCTURNOS",
+            "description": "Manolo Orellana Naranjo."
+          },
+          {
+            "prize": "Premio Madrid Film Office (AFTER)",
+            "project": "HOY LEO SE HA DESPERTADO EN UNA CAMA MEDIO VACÍA",
+            "description": "María Olmedilla."
+          },
+          {
+            "prize": "Premio Aluzine",
+            "project": "HOY LEO SE HA DESPERTADO EN UNA CAMA MEDIO VACÍA",
+            "description": "María Olmedilla."
+          }
+        ]
+      },
+      {
+        "title": "SERIES",
+        "items": [
+          {
+            "prize": "Premio Serializados",
+            "project": "AGUA NEGRA",
+            "description": "Javier Mariscal Crevoisie."
+          },
+          {
+            "prize": "Premio Series Mania Forum",
+            "project": "AGUA NEGRA",
+            "description": "Javier Mariscal Crevoisie."
+          },
+          {
+            "prize": "Premio Conecta Fiction",
+            "project": "NUEVA ERA",
+            "description": "Elizabeth Cruz, Bárbara Robles y Adrián Arjona."
+          }
+        ]
+      }
+    ]
+  },
+  "forum-2024:en": {
+    "title": "2024 AWARDS",
+    "groups": [
+      {
+        "title": "LAST PUSH",
+        "items": [
+          {
+            "prize": "Premio Comunidad de Madrid",
+            "project": "GODS OF STONE",
+            "description": "Directed by Iván Castiñeiras and produced by Ángel Santos Touza. A production of Amateurfilms, Promenon–nous dans les Bois, Rua Escura and Primeira Idade."
+          }
+        ]
+      },
+      {
+        "title": "FILMS TO COME",
+        "items": [
+          {
+            "prize": "Premio Filmin",
+            "project": "MEMORIAL",
+            "description": "Directed by Sergi Pérez and produced by Carla Sospedra. A production of Edna Cinema, Sumendi, Bteam and Noodles."
+          },
+          {
+            "prize": "Premio Madrid Film Office",
+            "project": "PHANTOM",
+            "description": "Directed by Cristóbal Fernández and produced by Guadalupe Balaguer Trelles. A production by El Gesto Cinematográfico SL."
+          },
+          {
+            "prize": "Premio IFFR PRO",
+            "project": "FOR GOD'S SAKE",
+            "description": "Directed by Lorenzo Tocco and produced by Pancho Magnou. A production of Montelona (Uruguay) and Kocria (Brazil)."
+          }
+        ]
+      },
+      {
+        "title": "SERIES",
+        "items": [
+          {
+            "prize": "Premio Seriesmanía",
+            "project": "ESTRELLA DEL GREEN",
+            "description": "From Denise Moreno."
+          },
+          {
+            "prize": "Premio Serializados",
+            "project": "SHE AND ME, BUT MOSTLY HER",
+            "description": "From Marta Ambel Meyer."
+          }
+        ]
+      },
+      {
+        "title": "AFTER",
+        "items": [
+          {
+            "prize": "Premio Emergente",
+            "project": "MANU DRIVES AT NIGHT",
+            "description": "Directed by Alba Menor and produced by Carlota Rodas. A production of The Tenant."
+          },
+          {
+            "prize": "Premio Abycine Lanza",
+            "project": "MANU DRIVES AT NIGHT",
+            "description": "Directed by Alba Menor and produced by Carlota Rodas. A production of The Tenant."
+          },
+          {
+            "prize": "Premio Skyline Benidorm",
+            "project": "TURBOCAPITALEND",
+            "description": "Directed by Claudia Gracia and produced by Arnold Lozada."
+          },
+          {
+            "prize": "Premio Short Film Lab",
+            "project": "YOU WILL GROW SCALES",
+            "description": "Directed by Sara Domínguez and produced by Anxo Soilán."
+          },
+          {
+            "prize": "Premio Madrid Film Office",
+            "project": "NO ONE WANTS TO BURY YOU",
+            "description": "Directed by Matías García and produced by María Alemán. A production by Bola 3 Produccion3s."
+          },
+          {
+            "prize": "Premio Telemadrid",
+            "project": "LOVE TO SEE YOU AGAIN",
+            "description": "Directed by Guillermo Chapa and produced by Aïda Gómez."
+          }
+        ]
+      }
+    ]
+  },
+  "forum-2025:en": {
+    "title": "2025 AWARDS",
+    "groups": [
+      {
+        "title": "LAST PUSH",
+        "items": [
+          {
+            "prize": "Premio Comunidad de Madrid",
+            "project": "THE ART OF WAR",
+            "description": "Grecia Barbieri and Gonzalo Benavente Secco."
+          }
+        ]
+      },
+      {
+        "title": "FILMS TO COME",
+        "items": [
+          {
+            "prize": "Premio Filmin",
+            "project": "SINCE YOU'VE BEEN GONE",
+            "description": "María Herrera."
+          },
+          {
+            "prize": "Premio IFFR Rotterdam",
+            "project": "BAI, BAI",
+            "description": "Alba Esquinas."
+          },
+          {
+            "prize": "Premio Madrid Film Office",
+            "project": "SINCE YOU'VE BEEN GONE",
+            "description": "María Herrera."
+          },
+          {
+            "prize": "Premio Screen International",
+            "project": "NATIVITY",
+            "description": "Francisca Alegría."
+          }
+        ]
+      },
+      {
+        "title": "FORUM CORTOS",
+        "items": [
+          {
+            "prize": "Premio Emergente",
+            "project": "BED OF GRASS",
+            "description": "Carmela Román."
+          },
+          {
+            "prize": "Premio Abycine Lanza Conexiones",
+            "project": "SCARY MELONS",
+            "description": "Manolo Orellana Naranjo."
+          },
+          {
+            "prize": "Premio Telemadrid",
+            "project": "SCARY MELONS",
+            "description": "Manolo Orellana Naranjo."
+          },
+          {
+            "prize": "Premio Madrid Film Office (AFTER)",
+            "project": "TODAY LEO WOKE UP IN A HALF-EMPTY BED",
+            "description": "María Olmedilla."
+          },
+          {
+            "prize": "Premio Aluzine",
+            "project": "TODAY LEO WOKE UP IN A HALF-EMPTY BED",
+            "description": "María Olmedilla."
+          }
+        ]
+      },
+      {
+        "title": "SERIES",
+        "items": [
+          {
+            "prize": "Premio Serializados",
+            "project": "BLACK WATER",
+            "description": "Javier Mariscal Crevoisie."
+          },
+          {
+            "prize": "Premio Series Mania Forum",
+            "project": "BLACK WATER",
+            "description": "Javier Mariscal Crevoisie."
+          },
+          {
+            "prize": "Premio Conecta Fiction",
+            "project": "NEW AGE",
+            "description": "Elizabeth Cruz, Bárbara Robles and Adrián Arjona."
+          }
+        ]
+      }
+    ]
+  }
+};
+const content = awardsByPage[`${pageId}:${lang}`];
+const arrowFill = '#FFFFFF';
+const arrowPath = 'M0 33.481V25.9273H54.6916C49.9626 24.09 45.6449 21.0277 41.9439 16.7405C38.243 12.4533 36.1869 6.94118 35.3645 0H43.3832C44.2056 6.32872 46.6729 11.8408 51.1963 16.3322C55.7196 20.8235 60.6542 24.09 66 25.7232V33.2768C60.6542 34.91 55.7196 38.1765 51.1963 42.6678C46.6729 47.1592 44.2056 52.6713 43.3832 59H35.3645C36.1869 52.0588 38.243 46.5467 41.9439 42.2595C45.6449 37.9723 49.757 34.91 54.6916 33.2768H0V33.481Z';
+---
+
+{content && (
+  <section id="palmares" class="bg-rojo">
+    <div class="container">
+      <div class="row">
+        <div class="col col-md-8 mb-5">
+          <h3 class="tit-seccion azul">{content.title}</h3>
+        </div>
+      </div>
+
+      {content.groups.map((group, index) => (
+        <div class:list={["row", index > 0 && "mt-5"]}>
+          <div class="col-12">
+            <h4 class="tit-categoria azul">
+              {group.title}
+              <svg viewBox="0 0 66 59" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d={arrowPath} fill={arrowFill} />
+              </svg>
+            </h4>
+          </div>
+          {group.items.map((item) => (
+            <div class="col-12 col-md-4">
+              <p class="premio">{item.prize}</p>
+              <p class="proyecto-titulo azul">{item.project}</p>
+              <p class="azul">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  </section>
+)}
