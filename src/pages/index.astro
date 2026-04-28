@@ -5,27 +5,7 @@ import NewsSection from '../components/NewsSection.astro';
 import VideoSection from '../components/VideoSection.astro';
 import SponsorsSection from '../components/SponsorsSection.astro';
 
-const segment0Html = `<section id="convocatorias">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <h3 class="tit-seccion blanco">CONVOCATORIAS</h3>
-                </div>
-                <div class="col-12 col-md-6">
-                    <h4 class="tit-convo rojo">Films to come</h4>
-                    <p>La convocatoria FILMS TO COME está destinada a <strong>proyectos de largometraje en fase de desarrollo,</strong> en búsqueda de financiación, coproducción y posicionamiento del proyecto a nivel internacional. Podrán presentarse proyectos cuya dirección esté desarrollando su primer, segundo o tercer largometraje.</p>
-                    <a href="/pdf/ECAM_Forum_2026_Bases_Films_to_Come_1.pdf" class="btn btn-border btn-border-blanco mt-2 me-2" target="_blank">Bases</a>
-                </div>
-                
-                <div class="col-12 col-md-6">
-                    <h4 class="tit-convo rojo">Last push</h4>
-                    <p>La convocatoria LAST PUSH está dirigida a <strong>largometrajes que se encuentran en fase de montaje y postproducción.</strong> La sección work-in-progress de ECAM Forum tiene como objetivo apoyar producciones cinematográficas nacionales e internacionales en su fase final, conectándolas con programadores de festivales internacionales, distribuidoras y agentes de ventas - ayudándolas a avanzar hacia su finalización y potenciando su potencial de éxito en el circuito internacional.</p>
-                    <a href="/pdf/ECAM_Forum_2026_Bases_Last_Push.pdf" class="btn btn-border btn-border-blanco mt-2 me-2" target="_blank">Bases</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    
+const segment0Html = `    
     <section id="about">
         <div class="container">
             <div class="row">
@@ -87,46 +67,66 @@ const segment0Html = `<section id="convocatorias">
   hasNewsModal={true}
   hasSeminarModal={false}
 >
-    <section id="intro">
-        <div class="container">
-            <div class="row">
-                <div class="col text-center">
-                    <h1><span class="rojo">HOT</span> IS BACK</h1>
-                    <h2>INTERNATIONAL CO-PRODUCTION MARKET</h2>
-                    <h3>9/11 JUNIO 2026 <img src="/images/flecha_blanca.svg" alt="flecha" class="flecha"> MADRID</h3>
-                </div>
+  <section id="intro">
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <h1><span class="rojo">HOT</span> IS BACK</h1>
+                <h2>INTERNATIONAL CO-PRODUCTION MARKET</h2>
+                <h3>9/11 JUNIO 2026 <img src="/images/flecha_blanca.svg" alt="flecha" class="flecha"> MADRID</h3>
             </div>
-            <!-- <div class="row">
-                 <div class="col-12 col-sm-4 text-center mt-5 mb-2 mt-sm-5 mb-sm-5">
-                    <a href="/pdf/ECAM_FORUM_catalogo_2025.pdf" class="btn btn-cta btn-cta-pq" target="_blank">
-                        <span>CATÁLOGO</span>
-                        <svg viewBox="0 0 66 59" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M0 33.481V25.9273H54.6916C49.9626 24.09 45.6449 21.0277 41.9439 16.7405C38.243 12.4533 36.1869 6.94118 35.3645 0H43.3832C44.2056 6.32872 46.6729 11.8408 51.1963 16.3322C55.7196 20.8235 60.6542 24.09 66 25.7232V33.2768C60.6542 34.91 55.7196 38.1765 51.1963 42.6678C46.6729 47.1592 44.2056 52.6713 43.3832 59H35.3645C36.1869 52.0588 38.243 46.5467 41.9439 42.2595C45.6449 37.9723 49.757 34.91 54.6916 33.2768H0V33.481Z" fill="#E61D4B"/>
-                        </svg>
-                    </a>
-                </div>
-                <div class="col-12 col-sm-4 text-center mt-2 mb-2 mt-sm-5 mb-sm-5">
-                    <a href="/pdf/ECAM_FORUM_PROGRAMA_2025.pdf" class="btn btn-cta btn-cta-pq" target="_blank">
-                        <span>PROGRAMA</span>
-                        <svg viewBox="0 0 66 59" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M0 33.481V25.9273H54.6916C49.9626 24.09 45.6449 21.0277 41.9439 16.7405C38.243 12.4533 36.1869 6.94118 35.3645 0H43.3832C44.2056 6.32872 46.6729 11.8408 51.1963 16.3322C55.7196 20.8235 60.6542 24.09 66 25.7232V33.2768C60.6542 34.91 55.7196 38.1765 51.1963 42.6678C46.6729 47.1592 44.2056 52.6713 43.3832 59H35.3645C36.1869 52.0588 38.243 46.5467 41.9439 42.2595C45.6449 37.9723 49.757 34.91 54.6916 33.2768H0V33.481Z" fill="#E61D4B"/>
-                        </svg>
-                    </a>
-                </div>
-                <div class="col-12 col-sm-4 text-center mt-2 mb-2 mt-sm-5 mb-sm-5">
-                    <a href="/pdf/FINDE_PROGRAMA_2025_01.pdf" class="btn btn-cta btn-cta-pq" target="_blank">
-                        <span>Programa FINDE</span>
-                        <svg viewBox="0 0 66 59" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M0 33.481V25.9273H54.6916C49.9626 24.09 45.6449 21.0277 41.9439 16.7405C38.243 12.4533 36.1869 6.94118 35.3645 0H43.3832C44.2056 6.32872 46.6729 11.8408 51.1963 16.3322C55.7196 20.8235 60.6542 24.09 66 25.7232V33.2768C60.6542 34.91 55.7196 38.1765 51.1963 42.6678C46.6729 47.1592 44.2056 52.6713 43.3832 59H35.3645C36.1869 52.0588 38.243 46.5467 41.9439 42.2595C45.6449 37.9723 49.757 34.91 54.6916 33.2768H0V33.481Z" fill="#E61D4B"/>
-                        </svg>
-                    </a>
-                </div>
-            </div> -->
         </div>
-    </section>
+        <!-- <div class="row">
+                <div class="col-12 col-sm-4 text-center mt-5 mb-2 mt-sm-5 mb-sm-5">
+                <a href="/pdf/ECAM_FORUM_catalogo_2025.pdf" class="btn btn-cta btn-cta-pq" target="_blank">
+                    <span>CATÁLOGO</span>
+                    <svg viewBox="0 0 66 59" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 33.481V25.9273H54.6916C49.9626 24.09 45.6449 21.0277 41.9439 16.7405C38.243 12.4533 36.1869 6.94118 35.3645 0H43.3832C44.2056 6.32872 46.6729 11.8408 51.1963 16.3322C55.7196 20.8235 60.6542 24.09 66 25.7232V33.2768C60.6542 34.91 55.7196 38.1765 51.1963 42.6678C46.6729 47.1592 44.2056 52.6713 43.3832 59H35.3645C36.1869 52.0588 38.243 46.5467 41.9439 42.2595C45.6449 37.9723 49.757 34.91 54.6916 33.2768H0V33.481Z" fill="#E61D4B"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="col-12 col-sm-4 text-center mt-2 mb-2 mt-sm-5 mb-sm-5">
+                <a href="/pdf/ECAM_FORUM_PROGRAMA_2025.pdf" class="btn btn-cta btn-cta-pq" target="_blank">
+                    <span>PROGRAMA</span>
+                    <svg viewBox="0 0 66 59" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 33.481V25.9273H54.6916C49.9626 24.09 45.6449 21.0277 41.9439 16.7405C38.243 12.4533 36.1869 6.94118 35.3645 0H43.3832C44.2056 6.32872 46.6729 11.8408 51.1963 16.3322C55.7196 20.8235 60.6542 24.09 66 25.7232V33.2768C60.6542 34.91 55.7196 38.1765 51.1963 42.6678C46.6729 47.1592 44.2056 52.6713 43.3832 59H35.3645C36.1869 52.0588 38.243 46.5467 41.9439 42.2595C45.6449 37.9723 49.757 34.91 54.6916 33.2768H0V33.481Z" fill="#E61D4B"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="col-12 col-sm-4 text-center mt-2 mb-2 mt-sm-5 mb-sm-5">
+                <a href="/pdf/FINDE_PROGRAMA_2025_01.pdf" class="btn btn-cta btn-cta-pq" target="_blank">
+                    <span>Programa FINDE</span>
+                    <svg viewBox="0 0 66 59" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 33.481V25.9273H54.6916C49.9626 24.09 45.6449 21.0277 41.9439 16.7405C38.243 12.4533 36.1869 6.94118 35.3645 0H43.3832C44.2056 6.32872 46.6729 11.8408 51.1963 16.3322C55.7196 20.8235 60.6542 24.09 66 25.7232V33.2768C60.6542 34.91 55.7196 38.1765 51.1963 42.6678C46.6729 47.1592 44.2056 52.6713 43.3832 59H35.3645C36.1869 52.0588 38.243 46.5467 41.9439 42.2595C45.6449 37.9723 49.757 34.91 54.6916 33.2768H0V33.481Z" fill="#E61D4B"/>
+                    </svg>
+                </a>
+            </div>
+        </div> -->
+    </div>
+  </section>
   <ProjectsSection lang={"es"} pageId={"forum-2026"} />
   <Fragment set:html={segment0Html} />
   <NewsSection lang={"es"} pageId={"home"} />
+  <section id="convocatorias">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="tit-seccion blanco">CONVOCATORIAS</h3>
+            </div>
+            <div class="col-12 col-md-6">
+                <h4 class="tit-convo rojo">Films to come</h4>
+                <p>La convocatoria FILMS TO COME está destinada a <strong>proyectos de largometraje en fase de desarrollo,</strong> en búsqueda de financiación, coproducción y posicionamiento del proyecto a nivel internacional. Podrán presentarse proyectos cuya dirección esté desarrollando su primer, segundo o tercer largometraje.</p>
+                <a href="/pdf/ECAM_Forum_2026_Bases_Films_to_Come_1.pdf" class="btn btn-border btn-border-blanco mt-2 me-2" target="_blank">Bases</a>
+            </div>
+            
+            <div class="col-12 col-md-6">
+                <h4 class="tit-convo rojo">Last push</h4>
+                <p>La convocatoria LAST PUSH está dirigida a <strong>largometrajes que se encuentran en fase de montaje y postproducción.</strong> La sección work-in-progress de ECAM Forum tiene como objetivo apoyar producciones cinematográficas nacionales e internacionales en su fase final, conectándolas con programadores de festivales internacionales, distribuidoras y agentes de ventas - ayudándolas a avanzar hacia su finalización y potenciando su potencial de éxito en el circuito internacional.</p>
+                <a href="/pdf/ECAM_Forum_2026_Bases_Last_Push.pdf" class="btn btn-border btn-border-blanco mt-2 me-2" target="_blank">Bases</a>
+            </div>
+        </div>
+    </div>
+  </section>
   <VideoSection lang={"es"} pageId={"home"} />
   <SponsorsSection lang={"es"} />
 </LegacyPage>
