@@ -1,0 +1,63 @@
+---
+interface Props {
+  lang: 'es' | 'en';
+}
+
+const { lang } = Astro.props;
+
+const contentByLang = {
+  es: {
+    heading: 'CONVOCATORIAS',
+    items: [
+      {
+        title: 'Films to come',
+        body: 'La convocatoria FILMS TO COME esta destinada a <strong>proyectos de largometraje en fase de desarrollo,</strong> en busqueda de financiacion, coproduccion y posicionamiento del proyecto a nivel internacional. Podran presentarse proyectos cuya direccion este desarrollando su primer, segundo o tercer largometraje.',
+        href: '/pdf/ECAM_Forum_2026_Bases_Films_to_Come_1.pdf',
+        cta: 'Bases',
+      },
+      {
+        title: 'Last push',
+        body: 'La convocatoria LAST PUSH esta dirigida a <strong>largometrajes que se encuentran en fase de montaje y postproduccion.</strong> La seccion work-in-progress de ECAM Forum tiene como objetivo apoyar producciones cinematograficas nacionales e internacionales en su fase final, conectandolas con programadores de festivales internacionales, distribuidoras y agentes de ventas - ayudandolas a avanzar hacia su finalizacion y potenciando su potencial de exito en el circuito internacional.',
+        href: '/pdf/ECAM_Forum_2026_Bases_Last_Push.pdf',
+        cta: 'Bases',
+      },
+    ],
+  },
+  en: {
+    heading: 'CALLS FOR PROJECTS',
+    items: [
+      {
+        title: 'Films to come',
+        body: 'The FILMS TO COME call is aimed at <strong>first, second and third feature-length projects in development,</strong> seeking for coproducers, financiers, sales agents and other partners, and to position of the project at an international level.',
+        href: '/pdf/ECAM_Forum_2026_Rules_&_Regulations_Films_To_Come.pdf',
+        cta: 'Rules & Regulations',
+      },
+      {
+        title: 'Last push',
+        body: 'The LAST PUSH call for entries is aimed at <strong>feature films currently in the editing and post-production stages.</strong> The work in progress section of ECAM Forum aims to support both national and international film productions in their final stages, connecting them with international film festival programmers, distributors, sales agents and financiers - to helping them move towards completion while enhancing their potential for the international circuit.',
+        href: '/pdf/ECAM_Forum_2026_Rules_&_Regulations_Last_Push.pdf',
+        cta: 'Rules & Regulations',
+      },
+    ],
+  },
+};
+
+const content = contentByLang[lang];
+---
+
+<section id="convocatorias">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h3 class="tit-seccion blanco">{content.heading}</h3>
+      </div>
+      {content.items.map((item) => (
+        <div class="col-12 col-md-6">
+          <h4 class="tit-convo rojo">{item.title}</h4>
+          <p set:html={item.body}></p>
+          <a href={item.href} class="btn btn-border btn-border-blanco mt-2 me-2" target="_blank">{item.cta}</a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

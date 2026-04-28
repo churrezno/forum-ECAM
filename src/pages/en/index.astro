@@ -2,6 +2,7 @@
 import LegacyPage from '../../components/LegacyPage.astro';
 import ProjectsSection from '../../components/ProjectsSection.astro';
 import NewsSection from '../../components/NewsSection.astro';
+import ConvocatoriasSection from '../../components/ConvocatoriasSection.astro';
 import VideoSection from '../../components/VideoSection.astro';
 import SponsorsSection from '../../components/SponsorsSection.astro';
 
@@ -107,26 +108,7 @@ const segment0Html = `
   <ProjectsSection lang={"en"} pageId={"forum-2026"} />
   <Fragment set:html={segment0Html} />
   <NewsSection lang={"en"} pageId={"home"} />
-  <section id="convocatorias">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h3 class="tit-seccion blanco">CALLS FOR PROJECTS</h3>
-            </div>
-            <div class="col-12 col-md-6">
-                <h4 class="tit-convo rojo">Films to come</h4>
-                <p>The FILMS TO COME call is aimed at <strong>first, second and third feature-length projects in development,</strong> seeking for coproducers, financiers, sales agents and other partners, and to position of the project at an international level. </p>
-                <a href="/pdf/ECAM_Forum_2026_Rules_&_Regulations_Films_To_Come.pdf" class="btn btn-border btn-border-blanco mt-2 me-2" target="_blank">Rules & Regulations</a>
-            </div>
-            
-            <div class="col-12 col-md-6">
-                <h4 class="tit-convo rojo">Last push</h4>
-                <p>The LAST PUSH call for entries is aimed at <strong>feature films currently in the editing and post-production stages.</strong> The work in progress section of ECAM Forum aims to support both national and international film productions in their final stages, connecting them with international film festival programmers, distributors, sales agents and financiers - to helping them move towards completion while enhancing their potential for the international circuit. </p>
-                <a href="/pdf/ECAM_Forum_2026_Rules_&_Regulations_Last_Push.pdf" class="btn btn-border btn-border-blanco mt-2 me-2" target="_blank">Rules & Regulations</a>
-            </div>
-        </div>
-    </div>
-  </section>
+  <ConvocatoriasSection lang={"en"} />
   <VideoSection lang={"en"} pageId={"home"} />
   <SponsorsSection lang={"en"} />
 </LegacyPage>
