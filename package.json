@@ -26,17 +26,13 @@
     }
   },
   "scripts": {
-    "predev": "node scripts/prepare-astro.mjs",
-    "prebuild": "node scripts/prepare-astro.mjs",
-    "preprod": "node scripts/prepare-astro.mjs",
     "build": "astro build",
     "watch": "astro check --watch",
     "bundle": "npm install && npm run dev",
     "dev": "astro dev",
     "prod": "astro build",
     "astro:generate": "node scripts/generate-astro-pages.mjs",
-    "sync:assets": "node scripts/sync-public-assets.mjs",
-    "astro:prepare": "node scripts/prepare-astro.mjs"
+    "sync:assets": "node scripts/sync-public-assets.mjs"
   },
   "target": "web"
 }
