@@ -6,12 +6,35 @@ import AwardsSection from '../../components/AwardsSection.astro';
 import SeminarsSection from '../../components/SeminarsSection.astro';
 import VideoSection from '../../components/VideoSection.astro';
 import SponsorsSection from '../../components/SponsorsSection.astro';
+---
 
-const segment0Html = `<section id="seminarios">
+<LegacyPage
+  title="ECAM Forum 2024"
+  lang="en"
+  description="Forum 2024"
+  ogTitle="ECAM Forum"
+  ogDescription="2024"
+  ogUrl="https://ecamforum.es/"
+  ogImage="https://ecamforum.es/images/forum-share.jpg"
+  loadLegacyInteractive={true}
+  loadModernInteractive={false}
+  pageId="forum-2024"
+  currentRoute="/en/forum-2024"
+  counterpartRoute="/forum-2024"
+  footerLocale="en"
+  hasLegacyProjectModal={true}
+  hasProject2025Modal={false}
+  hasNewsModal={false}
+  hasSeminarModal={false}
+>
+  <ProjectsSection lang={"en"} pageId={"forum-2024"} />
+  <CommitteesSection lang={"en"} pageId={"forum-2024"} />
+  <AwardsSection lang={"en"} pageId={"forum-2024"} />
+  <section id="seminarios">
         <div class="container">
             <div class="row row-intro">
                 <div class="col-12">
-                    <h3 class="tit-seccion rojo">SEMINARS <span class="azul">&amp; CONVERSATIONS</span></h3>
+                    <h3 class="tit-seccion rojo">SEMINARS <span class="azul">& CONVERSATIONS</span></h3>
                     <h4 class="subtit-seccion azul">NOWMENT</h4>
                     <h5 class="sub-subtit-seccion azul">ON CONTEMPORARY EVENTS AND AUDIOVISUAL CREATION</h5>
                     <p class="azul"><strong>Conferences: The present of interest / The NOWMENT of interest</strong><br>
@@ -87,32 +110,7 @@ const segment0Html = `<section id="seminarios">
                 </div>
             </div>
         </div>
-    </section>`;
----
-
-<LegacyPage
-  title="ECAM Forum 2024"
-  lang="en"
-  description="Forum 2024"
-  ogTitle="ECAM Forum"
-  ogDescription="2025"
-  ogUrl="https://ecamforum.es/"
-  ogImage="https://ecamforum.es/images/forum-share.jpg"
-  loadLegacyInteractive={true}
-  loadModernInteractive={false}
-  pageId="forum-2024"
-  currentRoute="/en/forum-2024"
-  counterpartRoute="/forum-2024"
-  footerLocale="en"
-  hasLegacyProjectModal={true}
-  hasProject2025Modal={false}
-  hasNewsModal={false}
-  hasSeminarModal={false}
->
-  <ProjectsSection lang={"en"} pageId={"forum-2024"} />
-  <CommitteesSection lang={"en"} pageId={"forum-2024"} />
-  <AwardsSection lang={"en"} pageId={"forum-2024"} />
-  <Fragment set:html={segment0Html} />
+    </section>
   <VideoSection lang={"en"} pageId={"forum-2024"} />
   <SponsorsSection lang={"en"} />
 </LegacyPage>
