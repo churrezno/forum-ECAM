@@ -1,5 +1,6 @@
 ---
 import LegacyPage from '../components/LegacyPage.astro';
+import ProjectsSection from '../components/ProjectsSection.astro';
 import NewsSection from '../components/NewsSection.astro';
 import VideoSection from '../components/VideoSection.astro';
 import SponsorsSection from '../components/SponsorsSection.astro';
@@ -68,11 +69,11 @@ const segment0Html = `<section id="convocatorias">
 ---
 
 <LegacyPage
-  title="ECAM Forum 2025"
+  title="ECAM Forum 2026"
   lang="es"
-  description="Forum 2025"
+  description="Forum 2026"
   ogTitle="ECAM Forum"
-  ogDescription="2025"
+  ogDescription="2026"
   ogUrl="https://ecamforum.es/"
   ogImage="https://ecamforum.es/images/forum-share.jpg"
   loadLegacyInteractive={false}
@@ -123,6 +124,7 @@ const segment0Html = `<section id="convocatorias">
             </div> -->
         </div>
     </section>
+  <ProjectsSection lang={"es"} pageId={"forum-2026"} />
   <Fragment set:html={segment0Html} />
   <NewsSection lang={"es"} pageId={"home"} />
   <VideoSection lang={"es"} pageId={"home"} />
