@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     let projectsData2025Cache = null;
+    let projectsData2026Cache = null;
     let newsDataCache = null;
 
     const getProjectsData2025 = async () => {
@@ -9,6 +10,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         return projectsData2025Cache;
+    };
+
+    const getProjectsData2026 = async () => {
+        if (!projectsData2026Cache) {
+            const module = await import('./data-projects-2026');
+            projectsData2026Cache = module.projectsData2026;
+        }
+
+        return projectsData2026Cache;
     };
 
     const getNewsData = async () => {
@@ -179,13 +189,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    const manageImage = (project, imageElement, member, urlField) => {
+    const manageImage = (project, imageElement, member, urlField, imageBasePath) => {
         if (!imageElement) {
             return;
         }
 
         if (project[urlField]) {
-            imageElement.src = `${baseUrl}/images/proyectos-2025/${project[urlField]}.jpg`;
+            imageElement.src = `${imageBasePath}/${project[urlField]}.jpg`;
             imageElement.setAttribute('alt', project[member]);
             imageElement.className = 'photo-staff mt-4';
         } else {
@@ -195,13 +205,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    const setModalContent2025 = (project, language) => {
+    const setModalContent2025 = (project, language, imageBasePath) => {
         if (!project || !section || !img) {
             return;
         }
 
         section.textContent = sectionLabels[language]?.[project.section] ?? 'Sección';
-        img.src = `${baseUrl}/images/proyectos-2025/${project.project}.jpg`;
+        img.src = `${imageBasePath}/${project.project}.jpg`;
         img.setAttribute('alt', project.title);
 
         if (title) {
@@ -228,8 +238,8 @@ document.addEventListener('DOMContentLoaded', () => {
             setFieldsContent2025(arrayFieldsEn, project);
         }
 
-        manageImage(project, imgDirector, 'director', 'imageDirectorUrl');
-        manageImage(project, imgProducer, 'producer', 'imageProducerUrl');
+        manageImage(project, imgDirector, 'director', 'imageDirectorUrl', imageBasePath);
+        manageImage(project, imgProducer, 'producer', 'imageProducerUrl', imageBasePath);
     };
 
     const setFieldsNewsContent = (fields, news) => {
@@ -268,7 +278,20 @@ document.addEventListener('DOMContentLoaded', () => {
             void (async () => {
                 const projectsData2025 = await getProjectsData2025();
                 const project = projectsData2025.find((element) => element.project == projectName);
-                setModalContent2025(project, language);
+                setModalContent2025(project, language, `${baseUrl}/images/proyectos-2025`);
+            })();
+        }
+
+        const projectTrigger2026 = event.target.closest('[data-project-2026]');
+        if (projectTrigger2026) {
+            event.preventDefault();
+            const projectName = projectTrigger2026.getAttribute('data-project-2026');
+            const language = projectTrigger2026.getAttribute('data-lang');
+
+            void (async () => {
+                const projectsData2026 = await getProjectsData2026();
+                const project = projectsData2026.find((element) => element.project == projectName);
+                setModalContent2025(project, language, `${baseUrl}/images/proyectos-2026`);
             })();
         }
 
@@ -289,7 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const projectName = new URLSearchParams(window.location.search).get('p');
     if (projectName) {
         setTimeout(() => {
-            const button = document.querySelector(`[data-project-2025="${projectName}"]`);
+            const button = document.querySelector(`[data-project-2025="${projectName}"], [data-project-2026="${projectName}"]`);
             button?.click();
         }, 0);
     }
