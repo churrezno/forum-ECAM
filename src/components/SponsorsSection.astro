@@ -15,6 +15,7 @@ interface Props {
 }
 
 const { lang = 'es' } = Astro.props;
+const basePath = import.meta.env.BASE_URL;
 
 const labels = lang === 'en'
   ? {
@@ -97,7 +98,7 @@ const groups: SponsorGroup[] = [
         <div class="wrapper d-inline-flex align-items-center flex-wrap">
           <div class="d-flex flex-column align-items-start">
             <p class="mb-2 rojo fs-6 fw-bold">{labels.organizer}</p>
-            <img src="/images/logo-ECAM.svg" alt="ECAM" class="logo_3" />
+            <img src={`${basePath}images/logo-ECAM.svg`} alt="ECAM" class="logo_3" />
           </div>
         </div>
       </div>
@@ -110,7 +111,7 @@ const groups: SponsorGroup[] = [
             <p class="mb-2 rojo fs-6 fw-bold">{group.label}</p>
             <div class="wrapper d-inline-flex align-items-center flex-wrap">
               {group.items.map((item) => (
-                <img src={item.src} alt={item.alt} class={'logo ' + item.className} />
+                <img src={`${basePath}${item.src.replace(/^\//, '')}`} alt={item.alt} class={'logo ' + item.className} />
               ))}
             </div>
           </div>

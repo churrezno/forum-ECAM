@@ -33,6 +33,7 @@ interface Props {
 }
 
 const { lang = 'es' } = Astro.props;
+const basePath = import.meta.env.BASE_URL;
 
 const groups: SeminarGroup[] = [
   {
@@ -319,7 +320,7 @@ const sectionTitle = lang === 'en' ? 'ACTIVITIES' : 'ACTIVIDADES';
               <div class:list={['wrapper-evento', item.cardClass]}>
                 <p class:list={['tipo-evento', item.typeClass]}>{item.type}</p>
                 <div class:list={['ponente_name', item.leadClass]}>{item.lead}</div>
-                <img src={item.imageSrc} alt={item.imageAlt} class="ponente_img" />
+                <img src={`${basePath}${item.imageSrc.replace(/^\//, '')}`} alt={item.imageAlt} class="ponente_img" />
                 {item.title && <div class:list={[item.titleClass]}>{item.title}</div>}
                 <div class:list={['fecha', item.dateClass]}>{item.dateLabel}</div>
                 <div class="wrapper-cierre">
@@ -328,7 +329,7 @@ const sectionTitle = lang === 'en' ? 'ACTIVITIES' : 'ACTIVIDADES';
                     <div class="wrapper-colaborador">
                       {item.collaboratorLabel && <p class:list={[item.collaboratorLabelClass, 'mb-0']}>{item.collaboratorLabel}</p>}
                       <img
-                        src={item.collaboratorSrc}
+                        src={`${basePath}${item.collaboratorSrc.replace(/^\//, '')}`}
                         alt={item.collaboratorAlt ?? 'Colaborador'}
                         class={item.collaboratorLogoClass ?? 'logo-colaborador'}
                       />

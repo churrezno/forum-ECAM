@@ -29,6 +29,7 @@ const {
   loadModernInteractive = false,
 } = Astro.props;
 const siteUrl = 'https://ecamforum.es';
+const basePath = import.meta.env.BASE_URL;
 const canonicalUrl = new URL(currentRoute, siteUrl).toString();
 const alternateUrl = new URL(counterpartRoute, siteUrl).toString();
 const xDefaultUrl = new URL(lang === 'en' ? counterpartRoute : currentRoute, siteUrl).toString();
@@ -53,7 +54,7 @@ const ogLocaleAlternate = lang === 'en' ? 'es_ES' : 'en_GB';
     <link rel="alternate" hreflang={lang} href={canonicalUrl} />
     <link rel="alternate" hreflang={lang === 'en' ? 'es' : 'en'} href={alternateUrl} />
     <link rel="alternate" hreflang="x-default" href={xDefaultUrl} />
-    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href={`${basePath}favicon.ico`} sizes="any" />
 
     <meta property="og:title" content={ogTitle} />
     <meta property="og:description" content={ogDescription} />
@@ -68,7 +69,7 @@ const ogLocaleAlternate = lang === 'en' ? 'es_ES' : 'en_GB';
     <meta name="twitter:description" content={ogDescription} />
     <meta name="twitter:image" content={ogImage} />
 
-    <link rel="stylesheet" href="/vendor/cookienoticepro.style.css?v=1.0.1" />
+    <link rel="stylesheet" href={`${basePath}vendor/cookienoticepro.style.css?v=1.0.1`} />
   </head>
   <body>
     <slot />

@@ -8,24 +8,28 @@ interface Props {
 
 const { locale, pageId, currentRoute, counterpartRoute } = Astro.props;
 const isEnglish = locale === 'en';
-const homeHref = isEnglish ? '/en/' : '/';
+const basePath = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
+const currentHref = withBase(currentRoute);
+const counterpartHref = withBase(counterpartRoute);
+const homeHref = isEnglish ? withBase('/en/') : withBase('/');
 const editionsLabel = isEnglish ? 'Editions' : 'Ediciones';
 const newsLabel = isEnglish ? 'News' : 'Noticias';
 const homeAnchorHref =
   pageId === 'activities'
-    ? '/#proyectos'
+    ? withBase('/#proyectos')
     : pageId === 'home'
       ? '#finde'
       : isEnglish
-        ? '/en/#finde'
-        : '/#finde';
+        ? withBase('/en/#finde')
+        : withBase('/#finde');
 const homeAnchorLabel = pageId === 'activities' ? 'Proyectos' : 'FINDE';
-const newsHref = isEnglish ? '/en/news' : '/noticias';
+const newsHref = isEnglish ? withBase('/en/news') : withBase('/noticias');
 const editions = [
-  { id: 'forum-2024', label: 'Forum 2024', href: isEnglish ? '/en/forum-2024' : '/forum-2024' },
-  { id: 'forum-2025', label: 'Forum 2025', href: isEnglish ? '/en/forum-2025' : '/forum-2025' },
+  { id: 'forum-2024', label: 'Forum 2024', href: isEnglish ? withBase('/en/forum-2024') : withBase('/forum-2024') },
+  { id: 'forum-2025', label: 'Forum 2025', href: isEnglish ? withBase('/en/forum-2025') : withBase('/forum-2025') },
 ];
-const separatorIcon = '/images/ico_chile-blanco.svg';
+const separatorIcon = `${basePath}images/ico_chile-blanco.svg`;
 const navLabel = isEnglish ? 'Main navigation' : 'Navegación principal';
 const menuToggleLabel = isEnglish ? 'Open navigation menu' : 'Abrir menú de navegación';
 const homeLabel = isEnglish ? 'Home' : 'Inicio';
@@ -40,7 +44,7 @@ const langEnLabel = isEnglish ? 'Switch to English' : 'Cambiar a inglés';
         <nav class="navbar navbar-expand-lg" aria-label={navLabel}>
           <div class="container-fluid">
             <a class="navbar-brand" href={homeHref} aria-label={homeLabel}>
-              <img src="/images/logo_FORUM_ECAM.svg" alt="Forum ECAM" class="logo" />
+              <img src={`${basePath}images/logo_FORUM_ECAM.svg`} alt="Forum ECAM" class="logo" />
             </a>
             <button
               class="navbar-toggler"
@@ -69,7 +73,7 @@ const langEnLabel = isEnglish ? 'Switch to English' : 'Cambiar a inglés';
                 </li>
                 {pageId === 'activities' && !isEnglish && (
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/actividades">
+                    <a class="nav-link active" aria-current="page" href={withBase('/actividades')}>
                       Actividades
                     </a>
                   </li>
@@ -100,7 +104,7 @@ const langEnLabel = isEnglish ? 'Switch to English' : 'Cambiar a inglés';
                     class:list={['nav-link', { active: !isEnglish }]}
                     aria-current={!isEnglish ? 'page' : undefined}
                     aria-label={langEsLabel}
-                    href={isEnglish ? counterpartRoute : currentRoute}
+                    href={isEnglish ? counterpartHref : currentHref}
                   >
                     ES
                   </a>
@@ -110,7 +114,7 @@ const langEnLabel = isEnglish ? 'Switch to English' : 'Cambiar a inglés';
                     class:list={['nav-link', { active: isEnglish }]}
                     aria-current={isEnglish ? 'page' : undefined}
                     aria-label={langEnLabel}
-                    href={isEnglish ? currentRoute : counterpartRoute}
+                    href={isEnglish ? currentHref : counterpartHref}
                   >
                     EN
                   </a>

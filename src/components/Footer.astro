@@ -5,6 +5,8 @@ interface Props {
 
 const { locale } = Astro.props;
 const isEnglish = locale === 'en';
+const basePath = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
 const infoLabel = isEnglish ? 'Information' : 'Información';
 const pressLabel = isEnglish ? 'Press and communication' : 'Prensa y comunicación';
 const hoursLabel = isEnglish
@@ -20,7 +22,7 @@ const whistleblowingLabel = isEnglish ? 'Whistleblowing channel' : 'Canal de den
   <div class="container">
     <div class="row">
       <div class="col-12 col-md-3">
-        <img src="/images/logo-ECAM_blanco.svg" alt="ECAM" class="logo" />
+        <img src={`${basePath}images/logo-ECAM_blanco.svg`} alt="ECAM" class="logo" />
       </div>
 
       <div class="col-12 col-md-3">
@@ -73,8 +75,8 @@ const whistleblowingLabel = isEnglish ? 'Whistleblowing channel' : 'Canal de den
           </li>
         </ul>
         <p class="mt-4 d-flex flex-column">
-          <a href="/politica-cookies" title={cookiePolicyLabel}>{cookiePolicyLabel}</a>
-          <a href="/politica-privacidad" title={privacyPolicyLabel}>{privacyPolicyLabel}</a>
+          <a href={withBase('/politica-cookies')} title={cookiePolicyLabel}>{cookiePolicyLabel}</a>
+          <a href={withBase('/politica-privacidad')} title={privacyPolicyLabel}>{privacyPolicyLabel}</a>
           <span>-----</span>
           <a href="https://ecam.es/canal-de-denuncias/" target="_blank" rel="noopener noreferrer">
             {whistleblowingLabel}

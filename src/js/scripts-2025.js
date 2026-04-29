@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
     };
 
-    const baseUrl = '';
+    const baseUrl = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL.replace(/\/$/, '');
     const section = document.getElementById('section');
     const title = document.getElementById('title');
     const titleEn = document.getElementById('titleEn');
@@ -171,7 +171,14 @@ document.addEventListener('DOMContentLoaded', () => {
         fields.forEach((field) => {
             const modalElement = document.getElementById(field);
             const elementWrapper = document.getElementsByClassName(`wrapper_${field}`)[0];
-            const elementData = project[field];
+            const elementData =
+                field == 'company'
+                    ? project.company ?? project.productionCompanies
+                    : field == 'script'
+                        ? project.script ?? project.screenplay
+                        : field == 'budget'
+                            ? project.budget ?? project.totalBudget
+                            : project[field];
 
             if (!modalElement) {
                 return;

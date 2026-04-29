@@ -7,11 +7,12 @@ interface Props {
 }
 
 const { lang = 'es', pageId } = Astro.props;
+const basePath = import.meta.env.BASE_URL;
 
 const contentByPage = {
   es: {
     home: {
-      headingHtml: 'ASÍ FUE LA <a href="/forum-2025">EDICIÓN 2025</a>',
+      headingHtml: `ASÍ FUE LA <a href="${basePath}forum-2025">EDICIÓN 2025</a>`,
       videoSrc: 'https://www.youtube-nocookie.com/embed/9yvz9I8GB7I?si=2VH1DfCuNJQ8y5yn',
     },
     'forum-2024': {
@@ -25,7 +26,7 @@ const contentByPage = {
   },
   en: {
     home: {
-      headingHtml: 'THIS WAS THE <a href="/en/forum-2025">2025 EDITION</a>',
+      headingHtml: `THIS WAS THE <a href="${basePath}en/forum-2025">2025 EDITION</a>`,
       videoSrc: 'https://www.youtube-nocookie.com/embed/9yvz9I8GB7I?si=2VH1DfCuNJQ8y5yn',
     },
     'forum-2024': {

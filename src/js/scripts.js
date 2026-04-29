@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return seminarsDataCache;
     };
 
-    const baseUrl = '';
+    const baseUrl = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL.replace(/\/$/, '');
     const section = document.getElementById('section');
     const title = document.getElementById('title');
     const titleEn = document.getElementById('title_en');
