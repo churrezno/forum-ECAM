@@ -6,6 +6,7 @@ import AwardsSection from '../../components/AwardsSection.astro';
 import SeminarsSection from '../../components/SeminarsSection.astro';
 import VideoSection from '../../components/VideoSection.astro';
 import SponsorsSection from '../../components/SponsorsSection.astro';
+const basePath = import.meta.env.BASE_URL;
 ---
 
 <LegacyPage
@@ -46,14 +47,14 @@ import SponsorsSection from '../../components/SponsorsSection.astro';
                     <div class="wrapper-evento bg-azul">
                         <p class="tipo-evento">Conversations</p>
                         <div class="ponente_name rojo">Ernesto Castro <br>Nacho Vigalondo</div>
-                        <img src="../images/castro-vigalondo.png" alt="Ponentes" class="ponente_img">
+                        <img src={`${basePath}images/castro-vigalondo.png`} alt="Ponentes" class="ponente_img">
                         <div class="titulo">NOWMENT Hints</div>
                         <div class="fecha rojo">JUN 11/18 H.</div>
                         <div class="wrapper-cierre">
                             <div class="rojo">Cineteca Matadero <br>Sala Azcona</div>
                             <div class="wrapper-colaborador">
                                 <p class="rojo mb-0">In collaboration with</p>
-                                <img src="../images/logo-dama_rojo.svg" alt="DAMA" class="logo-colaborador">
+                                <img src={`${basePath}images/logo-dama_rojo.svg`} alt="DAMA" class="logo-colaborador">
                             </div>
                         </div>
                     </div>
@@ -62,14 +63,14 @@ import SponsorsSection from '../../components/SponsorsSection.astro';
                     <div class="wrapper-evento bg-azul">
                         <p class="tipo-evento">Conversations</p>
                         <div class="ponente_name rojo">Elena Neira <br>Marta Peirano</div>
-                        <img src="../images/neira-peirano.png" alt="Ponentes" class="ponente_img">
+                        <img src={`${basePath}images/neira-peirano.png`} alt="Ponentes" class="ponente_img">
                         <div class="titulo">The times they are a NOWMENT</div>
                         <div class="fecha rojo">JUN 12/18 H.</div>
                         <div class="wrapper-cierre">
                             <div class="rojo">Cineteca Matadero <br>Sala Azcona</div>
                             <div class="wrapper-colaborador">
                                 <p class="rojo mb-0">In collaboration with</p>
-                                <img src="../images/logo-dama_rojo.svg" alt="DAMA" class="logo-colaborador">
+                                <img src={`${basePath}images/logo-dama_rojo.svg`} alt="DAMA" class="logo-colaborador">
                             </div>
                         </div>
                     </div>
@@ -80,14 +81,14 @@ import SponsorsSection from '../../components/SponsorsSection.astro';
                     <div class="wrapper-evento bg-rojo">
                         <p class="tipo-evento">Seminar</p>
                         <div class="ponente_name azul">Ted Hope</div>
-                        <img src="../images/ted-hope-gr.jpg" alt="Ponente" class="ponente_img">
+                        <img src={`${basePath}images/ted-hope-gr.jpg`} alt="Ponente" class="ponente_img">
                         <div class="titulo">The transformative moment is now</div>
                         <div class="fecha azul">JUN 13/10 H.</div>
                         <div class="wrapper-cierre">
                             <div class="azul">Cineteca Matadero <br>Sala Azcona</div>
                             <div class="wrapper-colaborador">
                                 <p class="azul mb-0">In collaboration with</p>
-                                <img src="../images/logo-dama_azul.svg" alt="DAMA" class="logo-colaborador">
+                                <img src={`${basePath}images/logo-dama_azul.svg`} alt="DAMA" class="logo-colaborador">
                             </div>
                         </div>
                     </div>
@@ -96,14 +97,14 @@ import SponsorsSection from '../../components/SponsorsSection.astro';
                     <div class="wrapper-evento bg-rojo">
                         <p class="tipo-evento">Seminar</p>
                         <div class="ponente_name azul">Hélène Louvart</div>
-                        <img src="../images/helene-louvart-gr.jpg" alt="Ponente" class="ponente_img">
+                        <img src={`${basePath}images/helene-louvart-gr.jpg`} alt="Ponente" class="ponente_img">
                         <div class="titulo">Give the NOWMENT a chance</div>
                         <div class="fecha azul">JUN 14/17 H.</div>
                         <div class="wrapper-cierre">
                             <div class="azul">Caixa Forum</div>
                             <div class="wrapper-colaborador">
                                 <p class="azul mb-0">In collaboration with</p>
-                                <img src="../images/logo-30-aec_azul.png" alt="AEC" class="logo-colaborador">
+                                <img src={`${basePath}images/logo-30-aec_azul.png`} alt="AEC" class="logo-colaborador">
                             </div>
                         </div>
                     </div>

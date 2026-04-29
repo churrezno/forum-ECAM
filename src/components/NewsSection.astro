@@ -9,6 +9,7 @@ interface Props {
 const { lang, pageId } = Astro.props;
 const isEnglish = lang === 'en';
 const isHome = pageId === 'home';
+const basePath = import.meta.env.BASE_URL;
 const items = isHome ? newsData.slice(0, 3) : newsData;
 const cleanText = (value: unknown) =>
   String(value ?? '')
@@ -30,14 +31,14 @@ const cleanText = (value: unknown) =>
       {items.map((item) => (
         <div class="col-6 col-md-6 col-lg-4">
           <a href="#" data-bs-toggle="modal" data-bs-target="#modalNoticia" data-news={item.news} data-lang={lang}>
-            <img src={`/images/${item.image}`} alt={cleanText(item.news)} />
+            <img src={`${basePath}images/${item.image}`} alt={cleanText(item.news)} />
             <p class="titulo">{cleanText(isEnglish ? item.titleEN : item.title)}</p>
           </a>
         </div>
       ))}
       {isHome && (
         <div class="col-12 mt-3 text-center">
-          <a href={isEnglish ? '/en/news' : '/noticias'} class="btn btn-border btn-border-azul d-inline-block">
+          <a href={isEnglish ? `${basePath}en/news` : `${basePath}noticias`} class="btn btn-border btn-border-azul d-inline-block">
             {isEnglish ? 'See more news' : 'Ver más noticias'}
           </a>
         </div>

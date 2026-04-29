@@ -39,10 +39,10 @@ const setMessage = (container, text) => {
 };
 
 const wireEmbed = (container) => {
+    const poster = container.querySelector('.youtube-consent-poster');
     const loadButton = container.querySelector('.youtube-consent-load');
     const settingsButton = container.querySelector('.youtube-consent-settings');
-
-    loadButton?.addEventListener('click', () => {
+    const handleLoadIntent = () => {
         if (hasMarketingConsent()) {
             loadEmbed(container);
             return;
@@ -51,6 +51,15 @@ const wireEmbed = (container) => {
         container.dataset.pending = 'true';
         setMessage(container, container.dataset.pendingMessage);
         openCookieSettings();
+    };
+
+    loadButton?.addEventListener('click', handleLoadIntent);
+    poster?.addEventListener('click', handleLoadIntent);
+    poster?.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            handleLoadIntent();
+        }
     });
 
     settingsButton?.addEventListener('click', () => {

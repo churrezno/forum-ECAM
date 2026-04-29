@@ -13,6 +13,7 @@ interface Props {
 const { lang, pageId } = Astro.props;
 const isEnglish = lang === 'en';
 const workspaceRoot = process.cwd();
+const basePath = import.meta.env.BASE_URL;
 
 const cleanText = (value: unknown) =>
   String(value ?? '')
@@ -21,14 +22,14 @@ const cleanText = (value: unknown) =>
     .replace(/\s+/g, ' ')
     .trim();
 
-const getProject2024Image = (image: string) => `/images/proyectos/${image.replace('-gr.', '-pq.')}`;
+const getProject2024Image = (image: string) => `${basePath}images/proyectos/${image.replace('-gr.', '-pq.')}`;
 const getProject2025Image = (slug: string) => {
   const pqPath = path.join(workspaceRoot, 'public', 'images', 'proyectos-2025', 'pq', `${slug}.jpg`);
-  return fs.existsSync(pqPath) ? `/images/proyectos-2025/pq/${slug}.jpg` : `/images/proyectos-2025/${slug}.jpg`;
+  return fs.existsSync(pqPath) ? `${basePath}images/proyectos-2025/pq/${slug}.jpg` : `${basePath}images/proyectos-2025/${slug}.jpg`;
 };
 const getProject2026Image = (slug: string) => {
   const pqPath = path.join(workspaceRoot, 'public', 'images', 'proyectos-2026', 'pq', `${slug}.jpg`);
-  return fs.existsSync(pqPath) ? `/images/proyectos-2026/pq/${slug}.jpg` : `/images/proyectos-2026/${slug}.jpg`;
+  return fs.existsSync(pqPath) ? `${basePath}images/proyectos-2026/pq/${slug}.jpg` : `${basePath}images/proyectos-2026/${slug}.jpg`;
 };
 
 const projectsByPage = {

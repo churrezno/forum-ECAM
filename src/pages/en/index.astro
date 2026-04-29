@@ -5,6 +5,7 @@ import NewsSection from '../../components/NewsSection.astro';
 import ConvocatoriasSection from '../../components/ConvocatoriasSection.astro';
 import VideoSection from '../../components/VideoSection.astro';
 import SponsorsSection from '../../components/SponsorsSection.astro';
+const basePath = import.meta.env.BASE_URL;
 
 const segment0Html = `
     <section id="about">
@@ -26,7 +27,7 @@ const segment0Html = `
         <div class="container">
             <div class="row mb-4">
                 <div class="col-12 col-md-8">
-                    <img class="logo-finde" src="/images/logo-FINDE.svg" alt="FINDE">
+                    <img class="logo-finde" src="${basePath}images/logo-FINDE.svg" alt="FINDE">
                     <p class="blanco"><strong>Madrid's Meetings on Financing, Investment, and Independent Film</strong> was launched in 2025 by ECAM and the Madrid Audiovisual Cluster with the strategic objective of connecting the independent film sector with new financing and investment models. FINDE aims to build bridges and <strong>provide producers with concrete tools to explore new financial models and facilitate mutual understanding between investors, funds and creators.</strong> Over two days, the Meetings combine specialized training on private investment and equity for producers, presentations by international funds, and meetings between funds, investors, independent producers, and industry professionals.</p>
                     <p class="blanco">The first edition featured some of the most important investors in Europe focused on financing independent film, such as Together Fund and Logical Pictures, as well as representatives like Rémi Burah (CEO of ARTE/Cofinova), Giorgos Karnavas (CEO and founder of Heretic), and Sophie Erbs (producer and founder of Gaijin). It also had the participation of María González Veracruz - Secretary of State for Digitalization and Artificial Intelligence, María Coronado from SETT (Spanish Society for Technological Transformation), as well as representatives from the Community of Madrid and the Madrid City Council.</p>
                 </div>
@@ -36,13 +37,13 @@ const segment0Html = `
             
             <div class="row">
                 <div class="col-12 col-md-4 mb-2">
-                    <img src="/images/finde-1.jpg" alt="FINDE">
+                    <img src="${basePath}images/finde-1.jpg" alt="FINDE">
                 </div>
                 <div class="col-12 col-md-4 mb-2">
-                    <img src="/images/finde-2.jpg" alt="FINDE">
+                    <img src="${basePath}images/finde-2.jpg" alt="FINDE">
                 </div>
                 <div class="col-12 col-md-4 mb-2">
-                    <img src="/images/finde-4.jpg" alt="FINDE">
+                    <img src="${basePath}images/finde-4.jpg" alt="FINDE">
                 </div>
             </div>
         </div>
@@ -74,12 +75,12 @@ const segment0Html = `
             <div class="col text-center">
                 <h1><span class="rojo">HOT</span> IS BACK</h1>
                 <h2>INTERNATIONAL CO-PRODUCTION MARKET</h2>
-                <h3>JUNE 9/11 2026 <img src="/images/flecha_blanca.svg" alt="flecha" class="flecha"> MADRID</h3>
+                <h3>JUNE 9/11 2026 <img src={`${basePath}images/flecha_blanca.svg`} alt="flecha" class="flecha"> MADRID</h3>
             </div>
         </div>
         <!-- <div class="row">
         <div class="col-12 col-sm-4 text-center mt-5 mb-2 mt-sm-5 mb-sm-5">
-        <a href="/pdf/ECAM_FORUM_catalogo_2025.pdf" class="btn btn-cta btn-cta-pq" target="_blank">
+        <a href="${basePath}pdf/ECAM_FORUM_catalogo_2025.pdf" class="btn btn-cta btn-cta-pq" target="_blank">
         <span>CATALOGUE</span>
         <svg viewBox="0 0 66 59" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M0 33.481V25.9273H54.6916C49.9626 24.09 45.6449 21.0277 41.9439 16.7405C38.243 12.4533 36.1869 6.94118 35.3645 0H43.3832C44.2056 6.32872 46.6729 11.8408 51.1963 16.3322C55.7196 20.8235 60.6542 24.09 66 25.7232V33.2768C60.6542 34.91 55.7196 38.1765 51.1963 42.6678C46.6729 47.1592 44.2056 52.6713 43.3832 59H35.3645C36.1869 52.0588 38.243 46.5467 41.9439 42.2595C45.6449 37.9723 49.757 34.91 54.6916 33.2768H0V33.481Z" fill="#E61D4B"/>
@@ -87,7 +88,7 @@ const segment0Html = `
         </a>
         </div>
         <div class="col-12 col-sm-4 text-center mt-2 mb-2 mt-sm-5 mb-sm-5">
-        <a href="/pdf/ECAM_FORUM_PROGRAMA_2025_ENG_01.pdf" class="btn btn-cta btn-cta-pq" target="_blank">
+        <a href="${basePath}pdf/ECAM_FORUM_PROGRAMA_2025_ENG_01.pdf" class="btn btn-cta btn-cta-pq" target="_blank">
         <span>PROGRAM</span>
         <svg viewBox="0 0 66 59" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M0 33.481V25.9273H54.6916C49.9626 24.09 45.6449 21.0277 41.9439 16.7405C38.243 12.4533 36.1869 6.94118 35.3645 0H43.3832C44.2056 6.32872 46.6729 11.8408 51.1963 16.3322C55.7196 20.8235 60.6542 24.09 66 25.7232V33.2768C60.6542 34.91 55.7196 38.1765 51.1963 42.6678C46.6729 47.1592 44.2056 52.6713 43.3832 59H35.3645C36.1869 52.0588 38.243 46.5467 41.9439 42.2595C45.6449 37.9723 49.757 34.91 54.6916 33.2768H0V33.481Z" fill="#E61D4B"/>
@@ -95,7 +96,7 @@ const segment0Html = `
         </a>
         </div>
         <div class="col-12 col-sm-4 text-center mt-2 mb-2 mt-sm-5 mb-sm-5">
-        <a href="/pdf/FINDE_PROGRAMA_2025_01.pdf" class="btn btn-cta btn-cta-pq" target="_blank">
+        <a href="${basePath}pdf/FINDE_PROGRAMA_2025_01.pdf" class="btn btn-cta btn-cta-pq" target="_blank">
         <span>FINDE Program</span>
         <svg viewBox="0 0 66 59" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M0 33.481V25.9273H54.6916C49.9626 24.09 45.6449 21.0277 41.9439 16.7405C38.243 12.4533 36.1869 6.94118 35.3645 0H43.3832C44.2056 6.32872 46.6729 11.8408 51.1963 16.3322C55.7196 20.8235 60.6542 24.09 66 25.7232V33.2768C60.6542 34.91 55.7196 38.1765 51.1963 42.6678C46.6729 47.1592 44.2056 52.6713 43.3832 59H35.3645C36.1869 52.0588 38.243 46.5467 41.9439 42.2595C45.6449 37.9723 49.757 34.91 54.6916 33.2768H0V33.481Z" fill="#E61D4B"/>

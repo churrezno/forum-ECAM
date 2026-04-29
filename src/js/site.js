@@ -4,6 +4,17 @@ import './youtubeEmbeds';
 
 document.addEventListener('DOMContentLoaded', () => {
   const navbarCollapse = document.getElementById('navbarTogglerForum');
+  const managedModals = document.querySelectorAll('.modal');
+
+  managedModals.forEach((modal) => {
+    modal.addEventListener('hide.bs.modal', () => {
+      const activeElement = document.activeElement;
+
+      if (activeElement instanceof HTMLElement && modal.contains(activeElement)) {
+        activeElement.blur();
+      }
+    });
+  });
 
   if (!navbarCollapse) {
     return;

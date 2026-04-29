@@ -5,6 +5,7 @@ interface Props {
 }
 
 const { lang, pageId } = Astro.props;
+const basePath = import.meta.env.BASE_URL;
 
 const committeesByPage = {
   "forum-2024:es": {
@@ -395,7 +396,7 @@ const content = committeesByPage[`${pageId}:${lang}`];
           </div>
           {group.people.map((person) => (
             <div class="col-6 col-md-3">
-              <img src={person.image} alt={person.alt} />
+                  <img src={`${basePath}${person.image.replace(/^\//, '')}`} alt={person.alt} />
               <p class="nombre azul">{person.name}</p>
               <p class="azul">{person.role}</p>
             </div>

@@ -33,7 +33,7 @@ const copy = locale === 'en'
   data-pending-message={copy.pendingMessage}
 >
   <div class="youtube-consent-card">
-    <div class="youtube-consent-poster" aria-hidden="true">
+    <div class="youtube-consent-poster" role="button" tabindex="0" aria-label={copy.loadLabel}>
       <span class="youtube-consent-play"></span>
     </div>
     <p class="youtube-consent-message">{copy.message}</p>
