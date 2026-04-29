@@ -171,7 +171,14 @@ document.addEventListener('DOMContentLoaded', () => {
         fields.forEach((field) => {
             const modalElement = document.getElementById(field);
             const elementWrapper = document.getElementsByClassName(`wrapper_${field}`)[0];
-            const elementData = project[field];
+            const elementData =
+                field == 'company'
+                    ? project.company ?? project.productionCompanies
+                    : field == 'script'
+                        ? project.script ?? project.screenplay
+                        : field == 'budget'
+                            ? project.budget ?? project.totalBudget
+                            : project[field];
 
             if (!modalElement) {
                 return;
