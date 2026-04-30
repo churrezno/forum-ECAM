@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
+  site: 'https://ecamforum.es',
   base: process.env.BASE_PATH || '/',
   devToolbar: {
     enabled: false,
