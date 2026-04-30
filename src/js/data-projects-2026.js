@@ -105,7 +105,7 @@ const projectsData2026 = [
         "country": "Argentina",
         "countryEn": "Argentina",
         "productionCompanies": "Un puma",
-        "screenplay": "Federico Luis Tachella",
+        "screenplay": "Federico Luis ",
         "language": "Español",
         "languageEn": "Spanish",
         "genre": "Biografía",
@@ -353,7 +353,7 @@ const projectsData2026 = [
         "imageDirector": "paolonatale_incubadora.jpg",
         "imageDirectorUrl": "paolo-natale",
         "imageProducer": "manuelagutierrezarrieta_incubadora.jpg",
-        "imageProducerUrl": "manuelagutierrez-arrieta"
+        "imageProducerUrl": "manuela-gutierrez-arrieta"
     },
     {
         "project": "os-reis",
@@ -599,8 +599,8 @@ const projectsData2026 = [
         "countryEn": "France, Spain, Germany",
         "productionCompanies": "New Sight, Caos Dept.",
         "screenplay": "Gala Hernández López",
-        "language": "Francés, alemán, español",
-        "languageEn": "French, German, Spanish",
+        "language": "Francés, español",
+        "languageEn": "French, Spanish",
         "genre": "Drama, Histórica",
         "genreEn": "Drama, historical",
         "duration": "120'",
