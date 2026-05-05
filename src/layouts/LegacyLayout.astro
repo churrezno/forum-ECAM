@@ -5,6 +5,7 @@ interface Props {
   title: string;
   lang?: string;
   description?: string;
+  keywords?: string;
   ogTitle?: string;
   ogDescription?: string;
   ogUrl?: string;
@@ -18,9 +19,10 @@ interface Props {
 const {
   title,
   lang = 'es',
-  description = 'Forum 2025',
-  ogTitle = 'ECAM Forum',
-  ogDescription = '2025',
+  description = 'ECAM Forum: mercado internacional de coproducción y encuentro de industria audiovisual en Madrid.',
+  keywords,
+  ogTitle,
+  ogDescription,
   ogUrl = 'https://ecamforum.es/',
   ogImage = 'https://ecamforum.es/images/forum-share.jpg',
   currentRoute = '/',
@@ -35,6 +37,36 @@ const alternateUrl = new URL(counterpartRoute, siteUrl).toString();
 const xDefaultUrl = new URL(lang === 'en' ? counterpartRoute : currentRoute, siteUrl).toString();
 const ogLocale = lang === 'en' ? 'en_GB' : 'es_ES';
 const ogLocaleAlternate = lang === 'en' ? 'es_ES' : 'en_GB';
+const resolvedOgTitle = ogTitle ?? title;
+const resolvedOgDescription = ogDescription ?? description;
+const resolvedKeywords =
+  keywords ??
+  (lang === 'en'
+    ? 'ECAM Forum, international co-production market, audiovisual industry, film projects, Madrid'
+    : 'ECAM Forum, mercado internacional de coproducción, industria audiovisual, proyectos de cine, Madrid');
+const ogImageAlt = lang === 'en' ? `Poster image for ${title}` : `Imagen promocional de ${title}`;
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'ECAM Forum',
+  url: siteUrl,
+  logo: `${siteUrl}/images/logo_FORUM_ECAM.svg`,
+  sameAs: [
+    'https://es-la.facebook.com/ECAMescuela/',
+    'https://twitter.com/ecam_',
+    'https://www.instagram.com/ecam_cine/',
+    'https://www.linkedin.com/company/ecam-escuela-de-cinematograf-a-y-del-audiovisual-de-la-comunidad-de-madrid-/',
+    'https://www.youtube.com/channel/UCkpBkvGs-zX6ayayKNhY5bw',
+  ],
+};
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'ECAM Forum',
+  url: siteUrl,
+  inLanguage: lang === 'en' ? 'en' : 'es',
+};
+const structuredData = JSON.stringify([organizationSchema, websiteSchema]);
 ---
 
 <!DOCTYPE html>
@@ -46,7 +78,7 @@ const ogLocaleAlternate = lang === 'en' ? 'es_ES' : 'en_GB';
     <meta name="author" content="ECAM" />
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow" />
-    <meta name="keywords" content="ECAM, Forum" />
+    <meta name="keywords" content={resolvedKeywords} />
     <meta name="theme-color" content="#0f2345" />
     <title>{title}</title>
 
@@ -56,18 +88,21 @@ const ogLocaleAlternate = lang === 'en' ? 'es_ES' : 'en_GB';
     <link rel="alternate" hreflang="x-default" href={xDefaultUrl} />
     <link rel="icon" href={`${basePath}favicon.ico`} sizes="any" />
 
-    <meta property="og:title" content={ogTitle} />
-    <meta property="og:description" content={ogDescription} />
+    <meta property="og:title" content={resolvedOgTitle} />
+    <meta property="og:description" content={resolvedOgDescription} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:url" content={new URL(ogUrl, siteUrl).toString()} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content={ogImageAlt} />
     <meta property="og:site_name" content="ECAM Forum" />
     <meta property="og:locale" content={ogLocale} />
     <meta property="og:locale:alternate" content={ogLocaleAlternate} />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={ogTitle} />
-    <meta name="twitter:description" content={ogDescription} />
+    <meta name="twitter:title" content={resolvedOgTitle} />
+    <meta name="twitter:description" content={resolvedOgDescription} />
     <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:url" content={canonicalUrl} />
+    <script type="application/ld+json" set:html={structuredData}></script>
 
     <link rel="stylesheet" href={`${basePath}vendor/cookienoticepro.style.css?v=1.0.1`} />
   </head>

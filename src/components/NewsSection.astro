@@ -31,7 +31,7 @@ const cleanText = (value: unknown) =>
       {items.map((item) => (
         <div class="col-6 col-md-6 col-lg-4">
           <a href="#" data-bs-toggle="modal" data-bs-target="#modalNoticia" data-news={item.news} data-lang={lang}>
-            <img src={`${basePath}images/${item.image}`} alt={cleanText(item.news)} />
+            <img src={`${basePath}images/${item.image}`} alt={cleanText(isEnglish ? item.titleEN : item.title)} />
             <p class="titulo">{cleanText(isEnglish ? item.titleEN : item.title)}</p>
           </a>
         </div>
