@@ -15,3 +15,5 @@ public/images/*
 src/images/*
 !src/images/proyectos-2026/
 !src/images/proyectos-2026/**
+
+.DS_Store
