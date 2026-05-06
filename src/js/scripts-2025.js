@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
             1: 'Last push',
             2: 'Films to come',
             3: 'Series',
-            4: 'Forum Cortos',
+            4: 'Forum Shorts',
         },
         en: {
             1: 'Last Push',
