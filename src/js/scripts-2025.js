@@ -53,6 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
             script: 'Guion:',
             duration: 'Duración:',
             budget: 'Presupuesto total:',
+            episodeslength: 'Episodios/Duración:',
             back: 'Volver',
         },
         en: {
@@ -62,6 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
             script: 'Script:',
             duration: 'Duration:',
             budget: 'Total budget:',
+            episodeslength: 'Episodes/Length:',
             back: 'Back',
         },
     };
@@ -83,6 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'genre',
         'duration',
         'budget',
+        'episodeslength',
         'language',
         'biographyDirector',
         'biographyProducer',
@@ -97,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'genreEn',
         'duration',
         'budget',
+        'episodeslength',
         'languageEn',
         'biographyDirectorEn',
         'biographyProducerEn',
