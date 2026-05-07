@@ -1108,6 +1108,7 @@ const projectsData2026 = [
         "title": "Neocurros",
         "titleEn": "Neojobs",
         "screenplay": "Pep Molina",
+        "image": "neocurros_ia_series.png",
         "country": "España ",
         "countryEn": "Spain",
         "language": "Catalán",
@@ -1132,7 +1133,7 @@ const projectsData2026 = [
         "genre": "Thriller político",
         "genreEn": "Political thriller",
         "episodeslength": "6 x 50'",
-        "synopsis": "Tras la explosión de una gasolinera en Madrid, en la que mueren más de diez personas, cinco familiares y amigos de las víctimas se unen por el dolor y la necesidad de saber qué ocurrió. Marta, Íñigo, Pilar, Borja y Celia forman un inesperado grupo que se reúne cada martes para compartir sobre el duelo. \n\nCelia, una periodista que investiga un caso de corrupción urbanística, se vuelca en su trabajo para evadir la culpa por la muerte de su madre.\nDescubrirá que la explosión no fue accidental, sino un plan fallido urdido por gente poderosa para recalificar los terrenos y construir viviendas de lujo.\n",
+        "synopsis": "Tras la explosión de una gasolinera en Madrid, en la que mueren más de diez personas, cinco familiares y amigos de las víctimas se unen por el dolor y la necesidad de saber qué ocurrió. Marta, Íñigo, Pilar, Borja y Celia forman un inesperado grupo que se reúne cada martes para compartir sobre el duelo. \n\nCelia, una periodista que investiga un caso de corrupción urbanística, se vuelca en su trabajo para evadir la culpa por la muerte de su madre.\n\nDescubrirá que la explosión no fue accidental, sino un plan fallido urdido por gente poderosa para recalificar los terrenos y construir viviendas de lujo.",
         "synopsisEn": "After a gas station explosion in Madrid kills more than ten people, five relatives and friends of the victims are brought together by grief and the need to know what really happened. Marta, Iñigo, Pilar, Borja and Celia form an unexpected group that meets every Tuesday to talk through their loss.\n\nCelia, a journalist investigating a case of zoning corruption, throws herself into work to avoid the guilt she feels over her mother’s death.\nShe will discover the explosion was no accident, but a failed plan by powerful people to rezone the land and build luxury housing."
     },
     {
@@ -1149,8 +1150,8 @@ const projectsData2026 = [
         "genre": "Drama deportivo",
         "genreEn": "Sports drama",
         "episodeslength": "10 x 45'",
-        "synopsis": "\"El Barro\" nace de una pasión muy concreta: el amor profundo, a veces casi irracional que hay por el fútbol en España. Un amor que tiene más que ver con la tradición y con la gente que acude cada domingo al estadio incluso cuando el equipo no levanta cabeza, que con los focos.\n\nLa historia se adentra en un espacio donde lo personal y lo colectivo chocan constantemente. Donde las decisiones nunca son deportivas, y donde un vestuario roto pesa tanto como una mala racha. El mundo del fútbol, y especialmente el de un equipo al borde del descenso, ofrecen el contexto con el que poder tratar temas universales como la herencia, la identidad, o la necesidad de sostener algo que está destinado a desaparecer. ",
-        "synopsisEn": "\"The Mud\" came from a very specific passion: the deep, sometimes almost irrational, love for football in Spain. A love that has more to do with tradition and people showing up every Sunday in the stadium even when the team just can’t catch a break, than with the spotlight.\nThe story dives into a space where the personal and the collective constantly collide. Where decisions are never just about the game, and where a fractured locker room can weigh as heavily as a losing streak. The world of football—and especially that of a team on the brink of relegation—provides the backdrop to explore universal themes such as legacy, identity, and the need to hold on to something that feels destined to disappear."
+        "synopsis": "A falta de seis jornadas, un histórico club de fútbol pelea por no descender a tercera división. Sin margen de error, la presidenta Alicia Arandia, única mujer en los despachos, heredera involuntaria del club, sustituye al entrenador por su inexperto hermano con quién mantiene una distante relación. Es considerada la principal responsable de las circunstancias a ojos de la prensa e hinchada, preocupados por una posible oferta de compra árabe. El vestuario roto por los egos, la falta de liderazgo y los escándalos extradeportivos intentan adaptarse al cambio de dinámica para revertir la situación.",
+        "synopsisEn": "Six games to the end of the season, a historical football club tries to not sink to the third division. No room for error, the president Alicia Arandia, only woman in the offices, unintentional heir of the club, substitutes the coach for his inexperienced brother with whom she has a distant relation. She is considered the principal responsible of the circumstances to the eyes of the press and fans, worried about a possible arabic purchase offer. The team, broken by the egos, the missing of leadership and the non-sporting scandals try to adapt to the change of dynamics to reverse the situation."
     },
     {
         "project": "el-observatorio",
@@ -1209,6 +1210,7 @@ const projectsData2026 = [
         "title": "Gregorio, cabrón",
         "titleEn": "Gregorio, you asshole",
         "screenplay": "Gabriella Romero Franchy, Manuel Huertos Mení",
+        "image": "Gregorio, cabrón_series.png",
         "country": "España",
         "countryEn": "Spain",
         "language": "Español",
@@ -1216,8 +1218,8 @@ const projectsData2026 = [
         "genre": "Comedia",
         "genreEn": "Comedy ",
         "episodeslength": "8 x 40'",
-        "synopsis": "Este proyecto nace del deseo de comprender cómo la culpa nos persigue a lo largo de toda una vida. Exploramos esto a través de Gregorio, un frustrado profesor de autoescuela obsesionado con la idea de que alguien ha intentado matarle. Una profunda insatisfacción impregna cada rincón de su vida, pero él no siempre fue así.\nLa búsqueda de su supuesto asesino despierta los fantasmas de un pasado que le persiguen desde la muerte de su hermano David en un accidente de coche. Oculto al resto del mundo, Gregorio carga con el peso abrumador de ser el responsable de esa tragedia. A través de un humor radical, pretendemos revelar la complejidad de un hombre movido por el odio, mostrando finalmente que el problema del mundo es que cada uno tiene sus propias razones.",
-        "synopsisEn": "This project was born from a desire to understand how guilt follows us throughout a lifetime. We explore this through Gregorio, a frustrated driving instructor obsessed with the idea that someone is trying to kill him. Deep-seated dissatisfaction permeates every corner of his life—but he wasn't always this way.\nHis quest to find his supposed assassin reawakens the ghosts of a past that have haunted him since the death of his brother, David, in a car accident. Hidden from the world, Gregorio carries the crushing weight of being responsible for that tragedy. Through radical humor, we aim to reveal the complexity of a man driven by hatred, ultimately showing that the trouble with the world is that everyone has their reasons."
+        "synopsis": "Gregorio es un profesor de autoescuela con un talento especial: hacerse odiar por todo el mundo. Un día, a la salida de un entrenamiento de curling, es atropellado brutalmente. Después de tres meses en coma y convencido de que alguien ha intentado matarle, Gregorio sale en busca de su asesino con la ayuda de Raúl, un alumno de autoescuela que se convertirá en su mayor confidente y apoyo en esta expedición. Al fin y al cabo, ¿quién habrá querido matar a un cabrón?",
+        "synopsisEn": "Gregorio is a driving instructor with a singular talent: making everyone hate him. One day, leaving a curling practice, he is brutally run over. After three months in a coma and convinced that someone tried to murder him, Gregorio sets out to find his killer. He is joined by Raúl, a driving student who becomes his closest confidant and ally on this quest. After all, who would have wanted to kill that son of a bitch?"
     },
     {
         "project": "hasta-muerte",
@@ -1267,7 +1269,7 @@ const projectsData2026 = [
         "genre": "Animación, comedia y fantasía",
         "genreEn": "Animation, comedy and fantasy",
         "episodeslength": "10 x 22'",
-        "synopsis": "RENATO (22) cree que por fin algo le sale bien cuando la chica que ama se le declara. Segundos después entra en coma y despierta en un Más Allá burocrático y capitalista donde las almas trabajan para pagar su próxima vida.\n\nSu caso queda atrapado en un trámite que puede tardar años, por lo que decide buscar a la Muerte, CEO del Más Allá, para que lo devuelva a la vida. El problema es que nadie nunca la ha visto. Para encontrarla se alía con Fer, hijo del Diablo expulsado del infierno por no dar miedo, y juntos escalan dentro de este mundo hasta recibir una carta: la Muerte los invita a cenar.",
+        "synopsis": "RENATO (22) cree que por fin algo le sale bien cuando la chica que ama se le declara. Segundos después entra en coma y despierta en un Más Allá burocrático y capitalista donde las almas trabajan para pagar su próxima vida. Su caso queda atrapado en un trámite que puede tardar años, por lo que decide buscar a la Muerte, CEO del Más Allá, para que lo devuelva a la vida. El problema es que nadie nunca la ha visto. Para encontrarla se alía con Fer, hijo del Diablo expulsado del infierno por no dar miedo, y juntos escalan dentro de este mundo hasta recibir una carta: la Muerte los invita a cenar.",
         "synopsisEn": "RENATO (22) thinks that, for once, something is finally going right for him when the girl he loves confesses her feelings. Seconds later, he falls into a coma and wakes up in a bureaucratic, capitalist Afterlife where souls work to pay for their next life.\n\nHis case gets stuck in a process that could take years, so he decides to search for Death, the CEO of the Afterlife, to send him back to life. The problem is that no one has ever seen her. To find her, he teams up with Fer, the Devil’s son, who was expelled from Hell for not being scary, and together they climb the ranks of this world—until they receive a letter: Death is inviting them to dinner."
     },
     {
@@ -1293,6 +1295,7 @@ const projectsData2026 = [
         "title": "Pata Negra",
         "titleEn": "Black Paw",
         "screenplay": "Natalia Aguilera Alonso, Miguel Marrero Medina",
+        "image": "patanegra_series.jpeg",
         "country": "España",
         "countryEn": "Spain",
         "language": "Español",
@@ -1309,6 +1312,7 @@ const projectsData2026 = [
         "title": "Diario de un monje infernal",
         "titleEn": "Diary of a hellish monk",
         "screenplay": "Alejandra Viñas, Saúl Trueba",
+        "image": "monjeinfernal_ia_series.png",
         "country": "España",
         "countryEn": "Spain",
         "language": "Español",
