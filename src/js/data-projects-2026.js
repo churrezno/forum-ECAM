@@ -131,7 +131,7 @@ const projectsData2026 = [
         "director": "Paz Fábrega",
         "producer": "Pamela Guinea, Carla Sospedra Salvador, Federico Moreira",
         "image": "alfuturo_ lp.jpg",
-        "country": "Costa Rica, España",
+        "country": "Costa Rica, España, Uruguay",
         "countryEn": "Costa Rica, Spain, Uruguay",
         "productionCompanies": "Temporal Films, Edna Cinema, La Mayor Cine",
         "screenplay": "Paz Fábrega",
@@ -281,7 +281,7 @@ const projectsData2026 = [
         "productionCompanies": "Alina Film, Lastor Media",
         "screenplay": "Pauline Julier, Nicolas Chapoulier",
         "language": "Francés, Español",
-        "languageEn": "French, \nSpanish",
+        "languageEn": "French, Spanish",
         "genre": "Drama, Histórico, Medioambiental",
         "genreEn": "Drama, Historical, Environmental",
         "duration": "81'",
@@ -310,7 +310,7 @@ const projectsData2026 = [
         "productionCompanies": "Gelatina Películas",
         "screenplay": "Miguel Machetti",
         "language": "Español, inglés, francés, ruso",
-        "languageEn": "Spanish, english, french, russian",
+        "languageEn": "Spanish, English, French, Russian",
         "genre": "Thiller, Comedia dramática, LGBT+",
         "genreEn": "Thriller, Dramatic comedy, LGBT+",
         "duration": "90'",
@@ -600,7 +600,7 @@ const projectsData2026 = [
         "productionCompanies": "New Sight",
         "screenplay": "Gala Hernández López",
         "language": "Francés, inglés, alemán",
-        "languageEn": "French, english, german",
+        "languageEn": "French, English, German",
         "genre": "Drama, Histórica",
         "genreEn": "Drama, historical",
         "duration": "120'",
@@ -1243,7 +1243,7 @@ const projectsData2026 = [
         "section": 3,
         "title": "Los Putos Dramas",
         "titleEn": "The Fucking Dramas",
-        "screenplay": "Lucía Écija Rueda, Irene V. Caballero",
+        "screenplay": "Lucía Écija Rueda, Irene V. Caballero, Nacho Serrano",
         "image": "Los Putos Dramas_SERIES.jpeg",
         "country": "España",
         "countryEn": "Spain",
@@ -1258,8 +1258,8 @@ const projectsData2026 = [
     {
         "project": "muerte-importante",
         "section": 3,
-        "title": "Su muerte es importante",
-        "titleEn": "Yout death is important for us",
+        "title": "Su muerte es importante para nosotros",
+        "titleEn": "Your death is important for us",
         "screenplay": "Gonzalo Carracedo Salcedo, Gonzalo Silvia Ardura, Lucas Legua Gil",
         "image": "sumuerteesimportante_series.png",
         "country": "España",
@@ -1322,7 +1322,7 @@ const projectsData2026 = [
         "episodeslength": "14 x 20'",
         "synopsis": "Pedro es un monje en el infierno que pierde la memoria tras ser atropellado por Gravis, un demonio. Tras este encuentro, Pedro se une al trabajo del demonio: cazar los traumas que surgen en el lugar. En el infierno, los traumas de las personas los transforman en monstruos que crean el caos. Poco a poco, Pedro va recordando quién era antes de perder la memoria, pero ha cambiado tanto que ya no quiere aceptar ser esa persona.  ",
         "synopsisEn": "Pedro is a monk in hell who loses his memory after being run over by Gravis, a demon. Following this encounter, Pedro joins the demon in his work: hunting down the traumas that arise in that place. In hell, people’s traumas transform them into monsters that wreak havoc. Little by little, Pedro begins to remember who he was before losing his memory, but he has changed so much that he no longer wants to accept being that person."
-    }
+    }    
 ]
 
 export { sections, projectsData2026 };
