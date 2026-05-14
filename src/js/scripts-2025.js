@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         es: {
             director: 'Dirección:',
             producer: 'Producción:',
+            creaator: 'Creación',
             company: 'Compañías productoras:',
             script: 'Guion:',
             duration: 'Duración:',
@@ -59,6 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
         en: {
             director: 'Director:',
             producer: 'Producer:',
+            creaator: 'Creation',
             company: 'Production companies:',
             script: 'Script:',
             duration: 'Duration:',
@@ -75,10 +77,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const img = document.getElementById('img');
     const imgDirector = document.getElementById('img_director');
     const imgProducer = document.getElementById('img_producer');
+    const imgCreator = document.getElementById('img_creator');
     const arrayFields = [
         'synopsis',
         'director',
         'producer',
+        'creator',
         'company',
         'script',
         'country',
@@ -89,11 +93,13 @@ document.addEventListener('DOMContentLoaded', () => {
         'language',
         'biographyDirector',
         'biographyProducer',
+        'biographyCreator',
     ];
     const arrayFieldsEn = [
         'synopsisEn',
         'director',
         'producer',
+        'creator',
         'company',
         'script',
         'countryEn',
@@ -104,6 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'languageEn',
         'biographyDirectorEn',
         'biographyProducerEn',
+        'biographyCreatorEn',
     ];
 
     const newsImg = document.getElementById('news_img');
@@ -111,8 +118,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const arrayFieldsNewsEn = ['titleEN', 'abstractEN', 'bodyEN'];
 
     const resetProjectModalLanguage = (language) => {
-        const spanishOnlyFields = ['synopsis', 'country', 'genre', 'language', 'biographyDirector', 'biographyProducer'];
-        const englishOnlyFields = ['synopsisEn', 'countryEn', 'genreEn', 'languageEn', 'biographyDirectorEn', 'biographyProducerEn'];
+        const spanishOnlyFields = ['synopsis', 'country', 'genre', 'language', 'biographyDirector', 'biographyProducer', 'biographyCreator'];
+        const englishOnlyFields = ['synopsisEn', 'countryEn', 'genreEn', 'languageEn', 'biographyDirectorEn', 'biographyProducerEn', 'biographyCreatorEn'];
         const fieldsToHide = language == 'es' ? englishOnlyFields : spanishOnlyFields;
 
         [...spanishOnlyFields, ...englishOnlyFields].forEach((field) => {
@@ -251,6 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         manageImage(project, imgDirector, 'director', 'imageDirectorUrl', imageBasePath);
         manageImage(project, imgProducer, 'producer', 'imageProducerUrl', imageBasePath);
+        manageImage(project, imgCreator, 'creator', 'imageCreatorUrl', imageBasePath);
     };
 
     const setFieldsNewsContent = (fields, news) => {
