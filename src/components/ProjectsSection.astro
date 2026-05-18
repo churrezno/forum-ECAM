@@ -91,7 +91,7 @@ const projectsByPage = {
       imageSrc: getProject2026Image(project.project),
       title: cleanText(isEnglish ? (project.titleEn || project.title) : project.title),
       alt: cleanText(isEnglish ? (project.titleEn || project.title) : project.title),
-      credit: cleanText(project.section === 3 ? project.script : project.director),
+      credit: cleanText(project.section === 3 ? project.creator : project.director),
       country: cleanText(isEnglish ? (project.countryEn || project.country) : project.country),
       section: project.section,
     })),
