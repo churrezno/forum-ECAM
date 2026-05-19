@@ -326,6 +326,37 @@ document.addEventListener('DOMContentLoaded', () => {
                 setModalNewsContent(news, language);
             })();
         }
+
+        const modalNoticia = document.getElementById('modalNoticia');
+        if (modalNoticia) {
+            const modalBody = modalNoticia.querySelector('.modal-body');
+            const closeBtn = modalNoticia.querySelector('[data-bs-dismiss="modal"]');
+            if (event.target.closest('a[href*="#"]') && modalBody && modalBody.contains(event.target)) {
+                const anchor = event.target.closest('a[href*="#"]');
+                const href = anchor.getAttribute('href');
+                const hashIndex = href.indexOf('#');
+                if (hashIndex !== -1) {
+                    const hash = href.substring(hashIndex);
+                    if (hash && hash !== '#' && hash !== '#!') {
+                        event.preventDefault();
+                        const baseUrl = window.location.origin;
+                        const isSamePage = href.startsWith(baseUrl) || href.startsWith('/');
+                        const targetSection = document.querySelector(hash);
+                        if (isSamePage && targetSection) {
+                            closeBtn?.click();
+                            setTimeout(() => {
+                                targetSection.scrollIntoView({ behavior: 'smooth' });
+                            }, 300);
+                        } else {
+                            closeBtn?.click();
+                            setTimeout(() => {
+                                window.location.href = href;
+                            }, 300);
+                        }
+                    }
+                }
+            }
+        }
     });
 
     const projectName = new URLSearchParams(window.location.search).get('p');
