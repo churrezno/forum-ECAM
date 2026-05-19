@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     let projectsDataCache = null;
     let seminarsDataCache = null;
+    let seminarsDataCacheYear = null;
 
     const sectionLabels = {
         1: 'Last push',
@@ -18,10 +19,11 @@ document.addEventListener('DOMContentLoaded', () => {
         return projectsDataCache;
     };
 
-    const getSeminarsData = async () => {
-        if (!seminarsDataCache) {
-            const module = await import('./data-seminarios-2025');
-            seminarsDataCache = module.seminarsData2025;
+    const getSeminarsData = async (year = 2025) => {
+        if (!seminarsDataCache || seminarsDataCacheYear !== year) {
+            const module = await import(`./data-seminarios-${year}.js`);
+            seminarsDataCache = module.seminarsData;
+            seminarsDataCacheYear = year;
         }
 
         return seminarsDataCache;
@@ -207,10 +209,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (seminarTrigger) {
             event.preventDefault();
             const seminarName = seminarTrigger.getAttribute('data-seminar');
+            const seminarsSection = document.getElementById('seminarios');
+            const year = parseInt(seminarsSection?.getAttribute('data-year')) || 2025;
 
             void (async () => {
-                const seminarsData2025 = await getSeminarsData();
-                const seminar = seminarsData2025.find((element) => element.seminar == seminarName);
+                const seminarsData = await getSeminarsData(year);
+                const seminar = seminarsData.find((element) => element.seminar == seminarName);
                 setModalSeminarContent(seminar);
             })();
         }

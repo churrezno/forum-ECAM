@@ -1,4 +1,7 @@
 ---
+import { seminarsData as seminarsData2025 } from '../js/data-seminarios-2025.js';
+import { seminarsData as seminarsData2026 } from '../js/data-seminarios-2026.js';
+
 interface SeminarCard {
   seminar: string;
   cardClass: string;
@@ -19,6 +22,7 @@ interface SeminarCard {
   collaboratorSrc?: string;
   collaboratorAlt?: string;
   collaboratorLogoClass?: string;
+  showTitleOnCard: boolean;
 }
 
 interface SeminarGroup {
@@ -30,280 +34,114 @@ interface SeminarGroup {
 
 interface Props {
   lang?: 'es' | 'en';
+  year?: number;
 }
 
-const { lang = 'es' } = Astro.props;
+const { lang = 'es', year = 2025 } = Astro.props;
 const basePath = import.meta.env.BASE_URL;
+const isEnglish = lang === 'en';
 
-const groups: SeminarGroup[] = [
-  {
-    titleEs: 'CONVERSACIONES',
-    titleEn: 'CONVERSATIONS',
-    items: [
-      {
-        seminar: 'toro-urraca',
-        cardClass: 'bg-azul',
-        type: 'Conversaciones. El estado de las cosas',
-        lead: 'Pilar Toro, Vicente Monroy y Sabina Urraca',
-        leadClass: 'rojo',
-        imageSrc: '/images/toro-urraca.png',
-        imageAlt: 'Pilar Toro, Vicente Monroy y Sabina Urraca en conversación "¿Qué puedo hacer yo para mejorar esto?"',
-        title: '¿Qué puedo hacer yo para mejorar esto?',
-        titleClass: 'titulo',
-        dateLabel: '10 JUN/18 H.',
-        dateClass: 'rojo',
-        locationHtml: 'Cineteca Matadero <br>Sala Plató',
-        locationClass: 'rojo',
-        collaboratorLabel: 'En colaboración con',
-        collaboratorLabelClass: 'rojo',
-        collaboratorSrc: '/images/logo-dama_rojo.svg',
-        collaboratorAlt: 'DAMA',
-        collaboratorLogoClass: 'logo-colaborador',
-      },
-      {
-        seminar: 'guardiola-andres',
-        cardClass: 'bg-azul',
-        type: 'Conversaciones. El estado de las cosas',
-        lead: 'Ingrid Guardiola, Ramón Andrés y Silvia Nanclares',
-        leadClass: 'rojo',
-        imageSrc: '/images/guardiola-andres.png',
-        imageAlt: 'Ingrid Guardiola, Ramón Andrés y Silvia Nanclares en "Las consecuencias de la nostalgia"',
-        title: 'Las consecuencias de la nostalgia',
-        titleClass: 'titulo',
-        dateLabel: '11 JUN/18 H.',
-        dateClass: 'rojo',
-        locationHtml: 'Cineteca Matadero <br>Sala Azcona',
-        locationClass: 'rojo',
-        collaboratorLabel: 'En colaboración con',
-        collaboratorLabelClass: 'rojo',
-        collaboratorSrc: '/images/logo-dama_rojo.svg',
-        collaboratorAlt: 'DAMA',
-        collaboratorLogoClass: 'logo-colaborador',
-      },
-      {
-        seminar: 'marques-sola',
-        cardClass: 'bg-azul',
-        type: 'Conversaciones. El estado de las cosas',
-        lead: 'Carlos Marqués-Marcet, Eduard Sola, Jaione Camborda y Valentina Viso',
-        leadClass: 'rojo',
-        imageSrc: '/images/marques-sola.png',
-        imageAlt: 'Carlos Marqués-Marcet, Eduard Sola, Jaione Camborda y Valentina Viso en "Habitar la cultura"',
-        title: 'Habitar la cultura',
-        titleClass: 'titulo',
-        dateLabel: '13 JUN/18 H.',
-        dateClass: 'rojo',
-        locationHtml: 'Cineteca Matadero <br>Sala Azcona',
-        locationClass: 'rojo',
-        collaboratorLabel: 'En colaboración con',
-        collaboratorLabelClass: 'rojo',
-        collaboratorSrc: '/images/logo-dama_rojo.svg',
-        collaboratorAlt: 'DAMA',
-        collaboratorLogoClass: 'logo-colaborador',
-      },
-    ],
-  },
-  {
-    titleEs: 'INDUSTRY TALKS',
-    titleEn: 'INDUSTRY TALKS',
-    marginTopClass: 'mt-5',
-    items: [
-      {
-        seminar: 'promo-cine',
-        cardClass: 'bg-rojo',
-        type: 'Industry Talks',
-        lead: 'Promoción del cine español en un entorno internacional',
-        leadClass: 'azul',
-        imageSrc: '/images/promo-cine.jpg',
-        imageAlt: 'Seminario "Promoción del cine español en un entorno internacional"',
-        dateLabel: 'JUN 10/11 H.',
-        dateClass: 'azul',
-        locationHtml: 'Cineteca Matadero <br>Sala Plató',
-        locationClass: 'azul',
-      },
-      {
-        seminar: 'make-it',
-        cardClass: 'bg-rojo',
-        type: 'Industry Talks',
-        lead: 'Make It Shine. Consejos para tu coproducción Internacional (Con ACE Producers)',
-        leadClass: 'azul',
-        imageSrc: '/images/make-it.jpg',
-        imageAlt: 'Seminario "Make It Shine. Consejos para tu coproducción Internacional" con ACE Producers',
-        dateLabel: 'JUN 10/16 H.',
-        dateClass: 'azul',
-        locationHtml: 'Cineteca Matadero <br>Sala Plató',
-        locationClass: 'azul',
-        collaboratorLabel: 'En colaboración con',
-        collaboratorLabelClass: 'azul',
-        collaboratorSrc: '/images/logo-ace.svg',
-        collaboratorAlt: 'ACE',
-        collaboratorLogoClass: 'logo-colaborador',
-      },
-      {
-        seminar: 'como-sera',
-        cardClass: 'bg-rojo',
-        type: 'Industry Talks',
-        lead: '¿Cómo será nuestra industria en 5 años? Presentación del Nostradamus Report 2025',
-        leadClass: 'azul',
-        imageSrc: '/images/como-sera.jpg',
-        imageAlt: 'Presentación del Nostradamus Report 2025 sobre el futuro de la industria audiovisual',
-        dateLabel: 'JUN 11/11 H.',
-        dateClass: 'azul',
-        locationHtml: 'Cineteca Matadero <br>Sala Plató',
-        locationClass: 'azul',
-        collaboratorLabel: 'En colaboración con',
-        collaboratorLabelClass: 'azul',
-        collaboratorSrc: '/images/logo-euc.svg',
-        collaboratorAlt: 'EUC',
-        collaboratorLogoClass: 'logo-colaborador',
-      },
-      {
-        seminar: 'madrid-mundo',
-        cardClass: 'bg-rojo',
-        type: 'Industry Talks',
-        lead: 'De Madrid al mundo. Promoción y ayudas al sector audiovisual en Madrid',
-        leadClass: 'azul',
-        imageSrc: '/images/madrid-mundo.jpg',
-        imageAlt: 'Seminario "De Madrid al mundo" sobre promoción y ayudas al sector audiovisual en Madrid',
-        dateLabel: 'JUN 11/16:30 H.',
-        dateClass: 'azul',
-        locationHtml: 'Cineteca Matadero <br>Sala Plató',
-        locationClass: 'azul',
-      },
-      {
-        seminar: 'informe-cima',
-        cardClass: 'bg-rojo',
-        type: 'Industry Talks',
-        lead: 'Presentación Informe CIMA "Después del silencio. Impacto sobre los abusos y violencias sexuales contra las mujeres en el cine y el audiovisual". Principales hallazgos y recomendaciones a la industria',
-        leadClass: 'azul',
-        imageSrc: '/images/informe-cima.jpg',
-        imageAlt: 'Presentación del Informe CIMA sobre violencias sexuales contra las mujeres en el cine y audiovisual',
-        dateLabel: 'JUN 11/12:45 H.',
-        dateClass: 'azul',
-        locationHtml: 'Cineteca Matadero <br>Sala Plató',
-        locationClass: 'azul',
-        collaboratorLabel: 'En colaboración con',
-        collaboratorLabelClass: 'azul',
-        collaboratorSrc: '/images/logo-cima.png',
-        collaboratorAlt: 'CIMA',
-        collaboratorLogoClass: 'logo-colaborador',
-      },
-      {
-        seminar: 'talking-shorts',
-        cardClass: 'bg-rojo',
-        type: 'Industry Talks',
-        lead: 'Talking Shorts. De la producción a la distribución de cortometrajes',
-        leadClass: 'azul',
-        imageSrc: '/images/talking-shorts.jpg',
-        imageAlt: 'Seminario "Talking Shorts" sobre producción y distribución de cortometrajes',
-        dateLabel: 'JUN 13/11:30 H.',
-        dateClass: 'azul',
-        locationHtml: 'Cineteca Matadero <br>Sala Plató',
-        locationClass: 'azul',
-      },
-      {
-        seminar: 'productores-emergentes',
-        cardClass: 'bg-rojo',
-        type: 'Industry Talks',
-        lead: 'Productoras Emergentes. Cartografía de la producción emergente en España',
-        leadClass: 'azul',
-        imageSrc: '/images/productores-emergentes.jpg',
-        imageAlt: 'Seminario "Productoras Emergentes" sobre cartografía de la producción audiovisual en España',
-        dateLabel: 'JUN 13/16 H.',
-        dateClass: 'azul',
-        locationHtml: 'Cineteca Matadero <br>Sala Azcona',
-        locationClass: 'azul',
-      },
-    ],
-  },
-  {
-    titleEs: 'SEMINARIO & PROYECCIONES',
-    titleEn: 'SEMINAR & PROJECTIONS',
-    marginTopClass: 'mt-5',
-    items: [
-      {
-        seminar: 'seminario-bonello',
-        cardClass: 'bg-gris',
-        type: 'Foco Bertrand Bonello',
-        typeClass: 'rojo',
-        lead: 'Seminario con Bertrand Bonello',
-        leadClass: 'azul',
-        imageSrc: '/images/seminario-bonello.jpg',
-        imageAlt: 'Seminario con el director Bertrand Bonello',
-        dateLabel: 'JUN 12/17 H.',
-        dateClass: 'azul',
-        locationHtml: 'Cineteca Matadero <br>Sala Plató',
-        locationClass: 'azul',
-        collaboratorLabel: 'En colaboración con',
-        collaboratorLabelClass: 'azul',
-        collaboratorSrc: '/images/logos-colaboradores_bonello-cuadrado.svg',
-        collaboratorAlt: 'Colaboradores',
-        collaboratorLogoClass: 'logo-colaborador logo-colaborador-gr',
-      },
-      {
-        seminar: 'proyeccion-1',
-        cardClass: 'bg-gris',
-        type: 'Foco Bertrand Bonello',
-        typeClass: 'rojo',
-        lead: 'Tiresia',
-        leadClass: 'azul',
-        imageSrc: '/images/proyeccion-1.jpg',
-        imageAlt: 'Proyección de la película Tiresia de Bertrand Bonello',
-        dateLabel: 'JUN 11/20:30 H.',
-        dateClass: 'azul',
-        locationHtml: 'Cineteca Matadero <br>Sala Plató',
-        locationClass: 'azul',
-        collaboratorLabel: 'En colaboración con',
-        collaboratorLabelClass: 'azul',
-        collaboratorSrc: '/images/logos-colaboradores_bonello-cuadrado.svg',
-        collaboratorAlt: 'Colaboradores',
-        collaboratorLogoClass: 'logo-colaborador logo-colaborador-gr',
-      },
-      {
-        seminar: 'proyeccion-2',
-        cardClass: 'bg-gris',
-        type: 'Foco Bertrand Bonello',
-        typeClass: 'rojo',
-        lead: "Casa de tolerancia (L'Apollinide)",
-        leadClass: 'azul',
-        imageSrc: '/images/proyeccion-2.jpg',
-        imageAlt: 'Proyección de la película Casa de tolerancia (L\'Apollinide) de Bertrand Bonello',
-        dateLabel: 'JUN 12/20:30 H.',
-        dateClass: 'azul',
-        locationHtml: 'Cineteca Matadero <br>Sala Plató',
-        locationClass: 'azul',
-        collaboratorLabel: 'En colaboración con',
-        collaboratorLabelClass: 'azul',
-        collaboratorSrc: '/images/logos-colaboradores_bonello-cuadrado.svg',
-        collaboratorAlt: 'Colaboradores',
-        collaboratorLogoClass: 'logo-colaborador logo-colaborador-gr',
-      },
-      {
-        seminar: 'proyeccion-3',
-        cardClass: 'bg-gris',
-        type: 'Foco Bertrand Bonello',
-        typeClass: 'rojo',
-        lead: 'Zombi child',
-        leadClass: 'azul',
-        imageSrc: '/images/proyeccion-3.jpg',
-        imageAlt: 'Proyección de la película Zombi child de Bertrand Bonello',
-        dateLabel: 'JUN 13/20:30 H.',
-        dateClass: 'azul',
-        locationHtml: 'Cineteca Matadero <br>Sala Plató',
-        locationClass: 'azul',
-        collaboratorLabel: 'En colaboración con',
-        collaboratorLabelClass: 'azul',
-        collaboratorSrc: '/images/logos-colaboradores_bonello-cuadrado.svg',
-        collaboratorAlt: 'Colaboradores',
-        collaboratorLogoClass: 'logo-colaborador logo-colaborador-gr',
-      },
-    ],
-  },
-];
+const seminarsData = year === 2026 ? seminarsData2026 : seminarsData2025;
 
-const sectionTitle = lang === 'en' ? 'ACTIVITIES' : 'ACTIVIDADES';
+const groupsConfig: Record<number, Record<string, { titleEs: string; titleEn: string; marginTopClass?: string }>> = {
+  2025: {
+    'Conversaciones. El estado de las cosas': { titleEs: 'CONVERSACIONES', titleEn: 'CONVERSATIONS' },
+    'Industry Talks': { titleEs: 'INDUSTRY TALKS', titleEn: 'INDUSTRY TALKS', marginTopClass: 'mt-5' },
+    'Foco Bertrand Bonello': { titleEs: 'SEMINARIO & PROYECCIONES', titleEn: 'SEMINAR & PROJECTIONS', marginTopClass: 'mt-5' },
+  },
+  2026: {
+    'Conversaciones. El estado de las cosas': { titleEs: 'CONVERSACIONES', titleEn: 'CONVERSATIONS' },
+    'Industry Talks': { titleEs: 'INDUSTRY TALKS', titleEn: 'INDUSTRY TALKS', marginTopClass: 'mt-5' },
+    'Foco Bertrand Bonello': { titleEs: 'SEMINARIO & PROYECCIONES', titleEn: 'SEMINAR & PROJECTIONS', marginTopClass: 'mt-5' },
+  }
+};
+
+const config = groupsConfig[year] || groupsConfig[2025];
+
+const groupedItems = seminarsData.reduce((acc, item) => {
+  const groupKey = item.activity;
+  if (!acc[groupKey]) {
+    acc[groupKey] = [];
+  }
+  acc[groupKey].push(item);
+  return acc;
+}, {} as Record<string, typeof seminarsData>);
+
+const formatTimeLabel = (dateStr: string, timeStr: string): string => {
+  const date = new Date(dateStr);
+  const day = String(date.getDate()).padStart(2, '0');
+  const monthKey = date.toLocaleDateString(isEnglish ? 'en-US' : 'es-ES', { month: 'short' }).toUpperCase().replace('.', '');
+  const timeParts = timeStr.match(/^(\d{2}):(\d{2})/);
+  const hour = timeParts ? timeParts[1] : '18';
+  return `${day} ${monthKey}/${hour} H.`;
+};
+
+const getCollaboratorLogo = (activity: string, colaboratorUrl: string | undefined): string | undefined => {
+  if (!colaboratorUrl || colaboratorUrl === '-') return undefined;
+  if (activity.includes('Foco Bertrand Bonello')) {
+    return '/images/logos-colaboradores_bonello-cuadrado.svg';
+  }
+  if (colaboratorUrl.includes('dama')) {
+    return '/images/logo-dama_rojo.svg';
+  }
+  return `/images/${colaboratorUrl}`;
+};
+
+const groups: SeminarGroup[] = Object.entries(config).map(([activity, groupConfig]) => {
+  const items = groupedItems[activity] || [];
+  return {
+    ...groupConfig,
+    items: items.map((item): SeminarCard => {
+      const isConversaciones = item.activity.includes('Conversaciones');
+      const isIndustry = item.activity.includes('Industry');
+      const isFoco = item.activity.includes('Foco');
+
+      const cardClass = isConversaciones ? 'bg-azul' : isIndustry ? 'bg-rojo' : 'bg-gris';
+      const leadClass = isConversaciones ? 'rojo' : 'azul';
+      const dateClass = leadClass;
+      const locationClass = leadClass;
+      const typeClass = isFoco ? 'rojo' : undefined;
+      const showTitleOnCard = !isIndustry && item.subtitle && item.subtitle !== '-' && !isFoco;
+
+      const dateLabel = formatTimeLabel(item.date, item.time);
+      const locationParts = item.location.split(' - ');
+      const locationHtml = locationParts.join('<br>');
+
+      const subtitleText = isEnglish && item.subtitleEn && item.subtitleEn !== '-' ? item.subtitleEn : item.subtitle;
+      const cardTitle = showTitleOnCard ? subtitleText : undefined;
+
+      const collaboratorLogo = getCollaboratorLogo(item.activity, item.colaboratorUrl);
+
+      return {
+        seminar: item.seminar,
+        cardClass,
+        type: item.activity,
+        typeClass,
+        lead: item.title,
+        leadClass,
+        imageSrc: `/images/${item.photoUrl}`,
+        imageAlt: item.subtitle || item.title,
+        title: cardTitle,
+        titleClass: 'titulo',
+        dateLabel,
+        dateClass,
+        locationHtml,
+        locationClass,
+        collaboratorLabel: item.colaborator && item.colaborator !== '-' ? (isEnglish ? 'In collaboration with' : 'En colaboración con') : undefined,
+        collaboratorLabelClass: leadClass,
+        collaboratorSrc: collaboratorLogo,
+        collaboratorAlt: item.colaborator || 'Colaborador',
+        collaboratorLogoClass: 'logo-colaborador',
+        showTitleOnCard,
+      };
+    }),
+  };
+}).filter(group => group.items.length > 0);
+
+const sectionTitle = isEnglish ? 'ACTIVITIES' : 'ACTIVIDADES';
 ---
 
-<section id="seminarios">
+<section id="seminarios" data-year={year}>
   <div class="container">
     <div class="row row-intro">
       <div class="col-12">
@@ -313,7 +151,7 @@ const sectionTitle = lang === 'en' ? 'ACTIVITIES' : 'ACTIVIDADES';
 
     {groups.map((group) => (
       <div class="row">
-        <h4 class:list={['subtit-seccion', 'azul', 'mb-2', group.marginTopClass]}>{lang === 'en' ? group.titleEn : group.titleEs}</h4>
+        <h4 class:list={['subtit-seccion', 'azul', 'mb-2', group.marginTopClass]}>{isEnglish ? group.titleEn : group.titleEs}</h4>
         {group.items.map((item) => (
           <div class="col-12 col-md-6">
             <a href="#" data-bs-toggle="modal" data-bs-target="#modalSeminario" data-seminar={item.seminar}>

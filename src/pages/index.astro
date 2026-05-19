@@ -1,6 +1,7 @@
 ---
 import LegacyPage from '../components/LegacyPage.astro';
 import ProjectsSection from '../components/ProjectsSection.astro';
+import SeminarsSection from '../components/SeminarsSection.astro';
 import NewsSection from '../components/NewsSection.astro';
 import ConvocatoriasSection from '../components/ConvocatoriasSection.astro';
 import VideoSection from '../components/VideoSection.astro';
@@ -58,7 +59,7 @@ const segment0Html = `
   ogDescription="Conecta con talento audiovisual, proyectos de cine y series, y oportunidades de financiación en ECAM Forum 2026."
   ogUrl="https://ecamforum.es/"
   ogImage="https://ecamforum.es/images/forum-share.jpg"
-  loadLegacyInteractive={false}
+  loadLegacyInteractive={true}
   loadModernInteractive={true}
   pageId="home"
   currentRoute="/"
@@ -67,7 +68,7 @@ const segment0Html = `
   hasLegacyProjectModal={false}
   hasProject2025Modal={true}
   hasNewsModal={true}
-  hasSeminarModal={false}
+  hasSeminarModal={true}
 >
   <section id="intro">
     <div class="container">
@@ -140,6 +141,7 @@ const segment0Html = `
         </div>
     </section>
   <ProjectsSection lang={"es"} pageId={"forum-2026"} />
+  <!-- <SeminarsSection lang={"es"} pageId={"forum-2026"} year={2026} /> -->
   <Fragment set:html={segment0Html} />
   <NewsSection lang={"es"} pageId={"home"} />
   <ConvocatoriasSection lang={"es"} />
