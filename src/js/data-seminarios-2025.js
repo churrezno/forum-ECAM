@@ -1,4 +1,4 @@
-const seminarsData2025 = [
+const seminarsData = [
     {
         "seminar": "toro-urraca",
         "activity": "Conversaciones. El estado de las cosas",
@@ -264,4 +264,4 @@ const seminarsData2025 = [
     }
 ]
 
-export { seminarsData2025 };
+export { seminarsData };
