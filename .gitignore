@@ -7,13 +7,5 @@ yarn-debug.log*
 yarn-error.log*
 .env
 .env.*
-public/pdf/
-src/pdf/
-public/images/*
-!public/images/proyectos-2026/
-!public/images/proyectos-2026/**
-src/images/*
-!src/images/proyectos-2026/
-!src/images/proyectos-2026/**
 
 .DS_Store
