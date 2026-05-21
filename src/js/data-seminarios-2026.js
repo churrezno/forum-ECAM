@@ -1,6 +1,6 @@
 const seminarsData = [
     {
-        "seminar": "mumenthaler-milagros",
+        "seminar": "mumenthaler-masterclass",
         "activity": "Foco Milagros Mumenthaler",
         "title": "Foco Milagros Mumenthaler",
         "location": "Cineteca Matadero - Sala Azcona",
@@ -17,7 +17,7 @@ const seminarsData = [
         "textEn": "The Milagros Mumenthaler masterclass at Cineteca Madrid invites us to explore her particular way of understanding the image, both within and beyond her cinema. Her work is characterised by a free, intuitive, and fragmentary relationship with the visual, where the image does not illustrate a closed narrative but rather sustains itself in the sensorial, the atmospheric, and the unresolved. In that space, the everyday becomes strange, and the minimal acquires its own density, opening the spectator's experience to other forms of perception.\nIn this session, the filmmaker will also share her wider interest in the image as a field of thought, beyond cinema understood in strictly narrative terms. Drawing on her creative process, the masterclass will explore the role of intuition, memory, and dissociation in her relationship with the image and with editing, and how her vision engages with contemporary ways of seeing. It will be a conversation around a practice that understands the image not as an answer, but as an open experience."
     },
     {
-        "seminar": "mumenthaler-milagros",
+        "seminar": "mumenthaler-corrientes",
         "activity": "Foco Milagros Mumenthaler",
         "title": "Las Corrientes | Proyección",
         "location": "Cineteca Matadero - Sala Azcona",
@@ -34,7 +34,7 @@ const seminarsData = [
         "textEn": "In her third feature film, Milagros Mumenthaler takes as her starting point an impulse, an automatic gesture that suddenly disrupts the life of an Argentine stylist. Lina throws herself into a river during a business trip to Switzerland and, upon returning to Buenos Aires, realizes that nothing is the same. Drawing on the representational models of adrift female characters characteristic of modernity — from Antonioni to Akerman — the Argentine filmmaker weaves a critical gaze at the malaise of contemporary neoliberal society, built from the inner world of her protagonist. It is for this reason that the mise-en-scène is guided by the indeterminacy of her thinking, through brushstrokes of lyricism and traces of fantasy and mystery that gradually shape the film's narrative corridors and expose Lina's confrontation with a bourgeois social machinery — a cosmos that, suddenly, ceases to function for her.\nMumenthaler portrays that state of identity vulnerability born from an existential, yet also bodily and primal, misalignment with the everyday — expressed through the sudden aversion to water that afflicts Lina and grows progressively worse. That conflict between the external world and the internal one, in which she no longer recognizes herself and seems to vibrate at a different frequency from the environment she has inhabited until then, is given its backbone by feminine experience. Running beneath Las corrientes is a repeated questioning of the protocols and expectations surrounding marriage and motherhood today, while also establishing an inevitable connection with the world of fashion and beauty to which the protagonist belongs. In this sense, special attention is reserved for the silences and the spaces that constitute an everyday life that no longer holds anything familiar — in keeping with the work of filmmakers such as Christian Petzold or Angela Schanelec, who have repeatedly rendered the microstructures of a capitalism that has definitively intervened in the vital frameworks of the bourgeoisie in the twenty-first century."
     },
     {
-        "seminar": "mumenthaler-milagros",
+        "seminar": "mumenthaler-idea-lago",
         "activity": "Foco Milagros Mumenthaler",
         "title": "La idea de un lago | Proyección",
         "location": "Cineteca Matadero - Sala Azcona",
@@ -51,7 +51,7 @@ const seminarsData = [
         "textEn": "Milagros Mumenthaler's second feature film takes as its starting point the poetry collection by Guadalupe Gaona, Pozo de aire (2009), in which the author sets verse and photography in dialogue to plunge into the wound left by her father's disappearance during Argentina's military dictatorship. In La idea de un lago, Malena Moiron plays an artist, Inés, whose father was also a victim of enforced disappearance, and who, on the verge of giving birth to her first child, is putting the finishing touches on the publication of her own photobook. Inés relates to photography as the only means of piecing together a past that is gradually fading, a past that has created a blockage preventing her from navigating the bonds she has built in the present — with her partner, her mother, her brother. \"Between them and me / there is a well of air\" (Gaona). The photographs she has taken remain as the sole witness to the presence of a father who disappears from memory in repeated dissolves. Disappearance leaves ghosts wandering through the settings, not physical bodies that can be missed. Faced with absence and the volatility of memory, only images can be trusted. Inés clings to digitized portraits that dehumanize her father, turning him into square pixels and solid colors when zoomed in — a failed attempt to draw close to him once more. Inés's childhood intertwines with the present in back-and-forth movements across different textures and modes of image capture that complicate the existence of any single linear narrative. Memory becomes a forest that has grown dark, and only those children who still remember can search with their torches, illuminating the huddled bodies that continue to resist. Those places that once served as the settings for the photographs — through which the father's body passed and left its mark on the curves of the landscape — are now empty, inert landscapes that become repetitive attempts to restore the backdrop against which the event of presence once took place."
     },
     {
-        "seminar": "mumenthaler-milagros",
+        "seminar": "mumenthaler-abrir-puertas",
         "activity": "Foco Milagros Mumenthaler",
         "title": "Abrir puertas y ventanas | Proyección",
         "location": "Cineteca Matadero - Sala Plató",
