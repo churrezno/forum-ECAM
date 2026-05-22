@@ -59,8 +59,15 @@ const groupsConfig: Record<number, Record<string, { titleEs: string; titleEn: st
 
 const config = groupsConfig[year] || groupsConfig[2025];
 
+const getGroupKey = (activity: string): string => {
+  if (activity.includes('Foco Milagros Mumenthaler')) {
+    return 'Foco Milagros Mumenthaler';
+  }
+  return activity;
+};
+
 const groupedItems = seminarsData.reduce((acc, item) => {
-  const groupKey = item.activity;
+  const groupKey = getGroupKey(item.activity);
   if (!acc[groupKey]) {
     acc[groupKey] = [];
   }
