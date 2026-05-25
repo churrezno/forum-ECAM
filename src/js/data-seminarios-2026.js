@@ -198,6 +198,66 @@ const seminarsData = [
         "photo": "RODRIGOTEIXEIRA9.webp",
         "photoUrl": "teixeira.jpg",
         "textEn": "Rodrigo Teixeira, founder of RT Features, will give a talk focused on the role of the producer as a key driving force behind independent cinema. Throughout his career, he has championed projects alongside filmmakers such as James Gray (Paper Tiger, Ad Astra), Luca Guadagnino (Call Me by Your Name), Brian De Palma (Passion), and Noah Baumbach (Frances Ha), as well as supporting distinctive voices like Kelly Reichardt (Night Moves), Dominga Sotomayor (La Perra) and Robert Eggers (The Witch).\rIn this session, he will reflect on what it means to champion independent cinema across all stages—from development to reaching audiences—highlighting the producer's role as both a creative and strategic force. Marking the 20th anniversary of RT Features, his production company, the talk will also look back at two decades of bold choices, key collaborations, and a sustained commitment to auteur-driven filmmaking on the international stage."
+    },
+    {
+        "seminar": "francia-coproducir",
+        "activity": "Industry Talks | Francia está en pantalla x ECAM Forum",
+        "title": "Coproducir para crecer: España y Francia, una alianza de cine\r\n",
+        "location": "Institut Français",
+        "date": "2026-06-09T07:00:00.000Z",
+        "time": "09.45 - 11.45",
+        "subtitle": "Eduardo Villanueva, Marisa F. Armenteros, Guillermo Farre, Alice Labadie, Rémi Burah ",
+        "subitleEn": "Co-producing for Growth: Spain and France, a Cinematic Alliance\n",
+        "text": "La charla abordará el momento actual de la coproducción entre España y Francia, poniendo el foco en los éxitos recientes y en las dinámicas industriales y creativas que los han hecho posible. Parte del reconocimiento del cine español en los últimos años está estrechamente ligado a esta colaboración, que ha permitido impulsar talentos nacionales y proyectos con mayor recorrido y visibilidad a nivel internacional.\r\nEn esta charla invitamos a algunas de las personas y agentes que han facilitado esas coproducciones entre España y Francia para reflexionar sobre cómo se han construido estos vínculos en los últimos años, y qué papel han jugado la financiación y el apoyo al talento. El objetivo es identificar las claves de este creciente interés mutuo y pensar cómo consolidar esta relación en el tiempo.\r",
+        "colaborator": "Institut Français",
+        "colaboratorLogos": "8. Institut Français + Embajada",
+        "colaboratorUrl": "logos-if-embajada-francia.svg",
+        "textEn": "This talk will address the current state of co-production between Spain and France, focusing on recent successes and the industrial and creative dynamics that have made them possible. Part of the recognition Spanish cinema has received in recent years is closely linked to this collaboration, which has helped nurture national talent and develop projects with greater reach and international visibility.\r\nIn this session, we invite some of the key individuals and players who have facilitated these Spanish–French co-productions to reflect on how these ties have been built over recent years, and what role financing and talent support have played. The aim is to identify the foundations of this growing mutual interest and consider how to strengthen this relationship over time.\r"
+    },
+    {
+        "seminar": "francia-distribuir",
+        "activity": "Industry Talks | Francia está en pantalla x ECAM Forum",
+        "title": "Distribuir cine español en Francia: una relación en expansión\r",
+        "location": "Institut Français",
+        "date": "2026-06-09T07:00:00.000Z",
+        "time": "11.15 –12.30 ",
+        "subtitle": "Eric Lagesse, Alice Labadie, Andrea Queralt, Javier Pachon\n",
+        "subitleEn": "Distributing Spanish Cinema in France: A Growing Relationship\r",
+        "text": "Durante años, la presencia del cine español en las salas francesas fue irregular y, en muchos casos, limitada a nombres ya consolidados. Sin embargo, en el momento actual podemos hablar de un cambio significativo. Películas recientes han logrado no solo estrenarse en Francia, sino también conectar con el público y generar interés crítico. Cineastas como Rodrigo Sorogoyen, Oliver Laxe con Sirat, Alauda Ruiz de Azúa con Los domingos o las películas de Jonás Trueba, reflejan una diversidad de miradas —desde lo político hasta lo íntimo— que está encontrando un espacio natural en el ecosistema cinematográfico francés.\n¿Qué factores explican la creciente conexión entre el público francés y el cine español contemporáneo: se trata de una cuestión de estilos narrativos, de salto de calidad, de presupuestos o de temas universales o de una estrategia de distribución más eficaz? ¿Es este éxito sostenible en el tiempo o estamos ante una coyuntura puntual?\n",
+        "colaborator": "Institut Français",
+        "colaboratorLogos": "8. Institut Français + Embajada",
+        "colaboratorUrl": "logos-if-embajada-francia.svg",
+        "textEn": "For years, Spanish cinema's presence in French theatres was inconsistent and, in many cases, limited to already well-established names. However, we can now speak of a significant shift. Recent films have not only managed to open in France, but have also connected with audiences and generated critical interest. Filmmakers such as Rodrigo Sorogoyen, Oliver Laxe with Sirat, Alauda Ruiz de Azúa with Los domingos, and the films of Jonás Trueba reflect a diversity of perspectives—from the political to the intimate—that is finding a natural place within the French film ecosystem.\r\nWhat factors explain the growing connection between French audiences and contemporary Spanish cinema: is it a question of narrative styles, a leap in quality, budgets, universal themes, or a more effective distribution strategy? Is this success sustainable over time, or are we witnessing a momentary convergence?\r"
+    },
+    {
+        "seminar": "francia-publico",
+        "activity": "Industry Talks | Francia está en pantalla x ECAM Forum",
+        "title": "Encontrando al público y el público encontrándose\r\n",
+        "location": "Institut Français",
+        "date": "2026-06-09T07:00:00.000Z",
+        "time": "12.30 - 13.30",
+        "subtitle": "Lara P Camiña, Thomas Hakim, Javier Pachon \r\n",
+        "subitleEn": "Finding the Audience and the Audience Finding Itself\r",
+        "text": "En un contexto que suele describirse desde el desgaste —menos espectadores en salas, hábitos de consumo fragmentados y una sensación general de pérdida de centralidad del cine en la vida cultural—, empiezan a aparecer experiencias que contradicen el relato más pesimista. No son soluciones globales, pero sí ejemplos concretos de películas que consiguen conectar con audiencias y salas que han encontrado nuevas formas de relacionarse con su público.\r\nEsta conversación reúne tres miradas que atraviesan la exhibición, distribución y producción cinematográfica en España y en Francia para pensar una misma pregunta: ¿qué hace que hoy el público quiera ir al cine? ¿Y qué tipo de espacios, comunidades y experiencias se están construyendo alrededor de las salas?\r\nCon Lara P. Camiña, de BTeam, hablaremos sobre cómo ciertas películas encuentran a su audiencia más allá de las dinámicas tradicionales de distribución. Con Javier Pachón conoceremos el caso de Cineciutat, una sala impulsada desde la comunidad y sostenida por ella misma. Y con Thomas Hakim nos acercaremos a la experiencia de Cinéma La Clef en París, convertido en símbolo de una manera colectiva y política de entender el cine y sus espacios.\r",
+        "colaborator": "Institut Français",
+        "colaboratorLogos": "8. Institut Français + Embajada",
+        "colaboratorUrl": "logos-if-embajada-francia.svg",
+        "textEn": "In a context that is often described through decline—fewer audiences in cinemas, fragmented consumption habits, and a general sense that cinema has lost its central place in cultural life—experiences are beginning to emerge that contradict the most pessimistic narratives. These are not global solutions, but concrete examples of films that manage to connect with audiences, and of venues that have found new ways of engaging with their public.\nThis conversation brings together three perspectives spanning exhibition, distribution, and film production in Spain and France, all centred on the same question: what makes audiences want to go to the cinema today? And what kinds of spaces, communities, and experiences are being built around cinemas?\nWith Lara P. Camiña from BTeam, we will discuss how certain films find their audience beyond traditional distribution dynamics. With Javier Pachón, we will explore the case of Cineciutat, a cinema driven and sustained by its community. And with Thomas Hakim, we will learn about the experience of Cinéma La Clef in Paris, which has become a symbol of a collective and political way of understanding cinema and its spaces.\n\n"
+    },
+    {
+        "seminar": "francia-adaptaciones",
+        "activity": "Industry Talks | Francia está en pantalla x ECAM Forum",
+        "title": "Adaptaciones literarias. De la palabra a la imagen",
+        "location": "Institut Français",
+        "date": "2026-06-09T07:00:00.000Z",
+        "time": "15.30 - 17.00",
+        "subtitle": "Arthur Derrouaz, Celia Rico, Luis Angel Ramirez\r\n",
+        "subitleEn": "Literary adaptations. From word to image\n",
+        "text": "La conversación abordará, en particular, las oportunidades de adaptación de obras literarias en España como en Francia, las dinámicas actuales del mercado de derechos de propiedad intelectual, así como las características específicas de las producciones “del libro a la pantalla” (modelos de financiación, negociación de derechos, coproducciones y colaboración entre actores del sector). Además, permitirá un intercambio enriquecedor entre profesionales clave sobre tendencias recientes y principales retos del mercado. \n",
+        "colaborator": "Institut Français",
+        "colaboratorLogos": "8. Institut Français + Embajada",
+        "colaboratorUrl": "logos-if-embajada-francia.svg",
+        "textEn": "The talk will focus in particular on opportunities for adapting literary works in Spain and France, current dynamics in the intellectual property rights market, as well as the specific features of “book-to-screen” productions (financing models, rights negotiations, co-productions, and collaboration among industry stakeholders). It will also provide an enriching exchange among key professionals on recent trends and the main challenges facing the market.\n\n"
     }
 ];
 
