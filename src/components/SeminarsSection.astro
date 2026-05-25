@@ -23,6 +23,7 @@ interface SeminarCard {
   collaboratorAlt?: string;
   collaboratorLogoClass?: string;
   showTitleOnCard: boolean;
+  modalCollaboratorSrc?: string;
 }
 
 interface SeminarGroup {
@@ -52,14 +53,24 @@ const groupsConfig: Record<number, Record<string, { titleEs: string; titleEn: st
   2026: {
     'Conversaciones. El estado de las cosas': { titleEs: 'CONVERSACIONES', titleEn: 'CONVERSATIONS' },
     'Industry Talks': { titleEs: 'INDUSTRY TALKS', titleEn: 'INDUSTRY TALKS', marginTopClass: 'mt-5' },
-    'Foco Bertrand Bonello': { titleEs: 'SEMINARIO & PROYECCIONES', titleEn: 'SEMINAR & PROJECTIONS', marginTopClass: 'mt-5' },
+    'Foco Milagros Mumenthaler': { titleEs: 'FOCO & PROYECCIONES', titleEn: 'FOCUS & PROJECTIONS', marginTopClass: 'mt-5' },
   }
 };
 
 const config = groupsConfig[year] || groupsConfig[2025];
 
+const getGroupKey = (activity: string): string => {
+  if (activity.includes('Foco Milagros Mumenthaler')) {
+    return 'Foco Milagros Mumenthaler';
+  }
+  else if (activity.includes('Industry Talks')) {
+    return 'Industry Talks';
+  }
+  return activity;
+};
+
 const groupedItems = seminarsData.reduce((acc, item) => {
-  const groupKey = item.activity;
+  const groupKey = getGroupKey(item.activity);
   if (!acc[groupKey]) {
     acc[groupKey] = [];
   }
@@ -73,18 +84,32 @@ const formatTimeLabel = (dateStr: string, timeStr: string): string => {
   const monthKey = date.toLocaleDateString(isEnglish ? 'en-US' : 'es-ES', { month: 'short' }).toUpperCase().replace('.', '');
   const timeParts = timeStr.match(/^(\d{2}):(\d{2})/);
   const hour = timeParts ? timeParts[1] : '18';
-  return `${day} ${monthKey}/${hour} H.`;
+  const minutes = timeParts && timeParts[2] !== '00' ? `:${timeParts[2]}` : '';
+  return `${day} ${monthKey}/${hour}${minutes}H.`;
 };
 
-const getCollaboratorLogo = (activity: string, colaboratorUrl: string | undefined): string | undefined => {
+const getCollaboratorLogo = (colaboratorUrl: string | undefined, isBgAzul: boolean): string | undefined => {
   if (!colaboratorUrl || colaboratorUrl === '-') return undefined;
-  if (activity.includes('Foco Bertrand Bonello')) {
-    return '/images/logos-colaboradores_bonello-cuadrado.svg';
+  let url = colaboratorUrl;
+  if (url.includes('_linea') || url.includes('-linea')) {
+    url = url.replace(/_linea/, '_cuadrado').replace(/-linea/, '-cuadrado');
   }
-  if (colaboratorUrl.includes('dama')) {
-    return '/images/logo-dama_rojo.svg';
+  if (isBgAzul) {
+    url = url.includes('azul') ? url.replace('azul', 'rojo') : url.replace(/\.([^.]+)$/, '_rojo.$1');
   }
-  return `/images/${colaboratorUrl}`;
+  return `/images/${url}`;
+};
+
+const getCollaboratorLogoCard = (colaboratorUrl: string | undefined, isBgAzul: boolean): string | undefined => {
+  if (!colaboratorUrl || colaboratorUrl === '-') return undefined;
+  let url = colaboratorUrl;
+  if (url.includes('_linea') || url.includes('-linea')) {
+    url = url.replace(/_linea/, '_cuadrado').replace(/-linea/, '-cuadrado');
+  }
+  if (isBgAzul) {
+    url = url.includes('azul') ? url.replace('azul', 'rojo') : url.replace(/\.([^.]+)$/, '_rojo.$1');
+  }
+  return `/images/${url}`;
 };
 
 const groups: SeminarGroup[] = Object.entries(config).map(([activity, groupConfig]) => {
@@ -110,7 +135,9 @@ const groups: SeminarGroup[] = Object.entries(config).map(([activity, groupConfi
       const subtitleText = isEnglish && item.subtitleEn && item.subtitleEn !== '-' ? item.subtitleEn : item.subtitle;
       const cardTitle = showTitleOnCard ? subtitleText : undefined;
 
-      const collaboratorLogo = getCollaboratorLogo(item.activity, item.colaboratorUrl);
+      const isBgAzul = cardClass === 'bg-azul';
+      const cardCollaboratorLogo = getCollaboratorLogoCard(item.colaboratorUrl, isBgAzul);
+      const modalCollaboratorLogo = getCollaboratorLogo(item.colaboratorUrl, isBgAzul);
 
       return {
         seminar: item.seminar,
@@ -129,10 +156,11 @@ const groups: SeminarGroup[] = Object.entries(config).map(([activity, groupConfi
         locationClass,
         collaboratorLabel: item.colaborator && item.colaborator !== '-' ? (isEnglish ? 'In collaboration with' : 'En colaboración con') : undefined,
         collaboratorLabelClass: leadClass,
-        collaboratorSrc: collaboratorLogo,
+        collaboratorSrc: cardCollaboratorLogo,
         collaboratorAlt: item.colaborator || 'Colaborador',
         collaboratorLogoClass: 'logo-colaborador',
         showTitleOnCard,
+        modalCollaboratorSrc: modalCollaboratorLogo,
       };
     }),
   };
