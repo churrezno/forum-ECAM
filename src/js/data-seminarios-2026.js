@@ -2,7 +2,9 @@ const seminarsData = [
     {
         "seminar": "mumenthaler-masterclass",
         "activity": "Foco Milagros Mumenthaler",
+        "activityEn": "Milagros Mumenthaler Focus",
         "title": "Masterclass Milagros Mumenthaler",
+        "titleEn": "MILAGROS MUMENTHALER MASTERCLASS",
         "location": "Cineteca Matadero - Sala Azcona",
         "date": "2026-06-11T07:00:00.000Z",
         "time": "16:00 - 18:00",
@@ -20,7 +22,9 @@ const seminarsData = [
     {
         "seminar": "mumenthaler-corrientes",
         "activity": "Foco Milagros Mumenthaler | Proyección",
+        "activityEn": "Milagros Mumenthaler Focus | Screening ",
         "title": "Las Corrientes + Q&A",
+        "titleEn": "Las Corrientes + Q&A",
         "location": "Cineteca Matadero - Sala Azcona",
         "date": "2026-06-05T07:00:00.000Z",
         "time": "20:30 - 22.30",
@@ -38,7 +42,9 @@ const seminarsData = [
     {
         "seminar": "mumenthaler-idea-lago",
         "activity": "Foco Milagros Mumenthaler | Proyección",
+        "activityEn": "Milagros Mumenthaler Focus | Screening ",
         "title": "La idea de un lago + Q&A",
+        "titleEn": "La idea de un lago + Q&A",
         "location": "Cineteca Matadero - Sala Azcona",
         "date": "2026-06-10T07:00:00.000Z",
         "time": "19:30 - 21:45",
@@ -56,7 +62,9 @@ const seminarsData = [
     {
         "seminar": "mumenthaler-abrir-puertas",
         "activity": "Foco Milagros Mumenthaler | Proyección",
+        "activityEn": "Milagros Mumenthaler Focus | Screening ",
         "title": "Abrir puertas y ventanas + Q&A",
+        "titleEn": "Abrir puertas y ventanas + Q&A",
         "location": "Cineteca Matadero - Sala Plató",
         "date": "2026-06-11T07:00:00.000Z",
         "time": "18:30 - 20:45",
@@ -74,7 +82,9 @@ const seminarsData = [
     {
         "seminar": "rico-gil",
         "activity": "Conversaciones. El estado de las cosas",
+        "activityEn": "Conversation. El estado de las cosas",
         "title": "Reencontrar la imagen",
+        "titleEn": "Rediscovering the image",
         "location": "Cineteca Matadero - Sala Plató",
         "date": "2026-06-09T07:00:00.000Z",
         "time": "18:00 - 20:00",
@@ -94,7 +104,9 @@ const seminarsData = [
     {
         "seminar": "fontcuberta",
         "activity": "Conversaciones. El estado de las cosas",
+        "activityEn": "Conversation. El estado de las cosas",
         "title": "Debí tirar mas fotos | Joan Fontcuberta",
+        "titleEn": "Debí tirar mas fotos | Joan Fontcuberta",
         "location": "Cineteca Matadero - Sala Azcona",
         "date": "2026-06-09T07:00:00.000Z",
         "time": "20:00 - 22:00",
@@ -114,7 +126,9 @@ const seminarsData = [
     {
         "seminar": "sorogoyen-ruiz-romero",
         "activity": "Conversaciones. El estado de las cosas",
+        "activityEn": "Conversation. El estado de las cosas",
         "title": "La Dirección Cinematográfica en el presente: entre industria y mirada",
+        "titleEn": "Film Direction in the present: between industry and vision",
         "location": "Cineteca Matadero - Sala Azcona",
         "date": "2026-06-10T07:00:00.000Z",
         "time": "20:00 –22:00",
@@ -134,7 +148,9 @@ const seminarsData = [
     {
         "seminar": "navas-juarez",
         "activity": "Conversaciones. El estado de las cosas",
+        "activityEn": "Conversation. El estado de las cosas",
         "title": "Los mitos del futuro",
+        "titleEn": "The myths of the future",
         "location": "Cineteca Matadero - Sala Azcona",
         "date": "2026-06-11T07:00:00.000Z",
         "time": "20:30 - 22:00",
@@ -154,7 +170,9 @@ const seminarsData = [
     {
         "seminar": "cabezas-cortadas",
         "activity": "Industry Talks",
+        "activityEn": "Industry Talks",
         "title": "Cabezas cortadas. La restauración de una película maldita",
+        "titleEn": "Severed Heads. The Restoration of a Cursed Film\r",
         "location": "Cineteca Matadero - Sala Plató",
         "date": "2026-06-10T07:00:00.000Z",
         "time": "10:30 - 11:30",
@@ -171,7 +189,9 @@ const seminarsData = [
     {
         "seminar": "proxima-decada",
         "activity": "Industry Talks",
+        "activityEn": "Industry Talks",
         "title": "La próxima década audiovisual: Nostradamus Report 2026",
+        "titleEn": "The Next Audiovisual Decade: Nostradamus Report 2026\r",
         "location": "Cineteca Matadero - Sala Plató",
         "date": "2026-06-10T07:00:00.000Z",
         "time": "12:00 - 13:30",
@@ -188,7 +208,9 @@ const seminarsData = [
     {
         "seminar": "defender-cine",
         "activity": "Industry Talks",
+        "activityEn": "Industry Talks",
         "title": "Defender el cine independiente desde la producción: una conversación con Rodrigo Teixeira",
+        "titleEn": "Championing Independent Cinema: A Conversation with Rodrigo Teixeira\n",
         "location": "Cineteca Matadero - Sala Plató",
         "date": "2026-06-10T07:00:00.000Z",
         "time": "17:30 - 19:00",
@@ -202,7 +224,9 @@ const seminarsData = [
     {
         "seminar": "francia-coproducir",
         "activity": "Industry Talks | Francia está en pantalla x ECAM Forum",
+        "activityEn": "Industry Talks | France on Screen x ECAM Forum",
         "title": "Coproducir para crecer: España y Francia, una alianza de cine\r\n",
+        "titleEn": "Co-producing for Growth: Spain and France, a Cinematic Alliance\r",
         "location": "Institut Français",
         "date": "2026-06-09T07:00:00.000Z",
         "time": "09.45 - 11.45",
@@ -218,7 +242,9 @@ const seminarsData = [
     {
         "seminar": "francia-distribuir",
         "activity": "Industry Talks | Francia está en pantalla x ECAM Forum",
+        "activityEn": "Industry Talks | France on Screen x ECAM Forum",
         "title": "Distribuir cine español en Francia: una relación en expansión\r",
+        "titleEn": "Distributing Spanish Cinema in France: A Growing Relationship\r",
         "location": "Institut Français",
         "date": "2026-06-09T07:00:00.000Z",
         "time": "11.15 –12.30 ",
@@ -234,7 +260,9 @@ const seminarsData = [
     {
         "seminar": "francia-publico",
         "activity": "Industry Talks | Francia está en pantalla x ECAM Forum",
+        "activityEn": "Industry Talks | France on Screen x ECAM Forum",
         "title": "Encontrando al público y el público encontrándose\r\n",
+        "titleEn": "Finding the Audience and the Audience Finding Itself\r",
         "location": "Institut Français",
         "date": "2026-06-09T07:00:00.000Z",
         "time": "12.30 - 13.30",
@@ -250,7 +278,9 @@ const seminarsData = [
     {
         "seminar": "francia-adaptaciones",
         "activity": "Industry Talks | Francia está en pantalla x ECAM Forum",
+        "activityEn": "Industry Talks | France on Screen x ECAM Forum",
         "title": "Adaptaciones literarias. De la palabra a la imagen",
+        "titleEn": "Literary adaptations. From word to image",
         "location": "Institut Français",
         "date": "2026-06-09T07:00:00.000Z",
         "time": "15.30 - 17.00",

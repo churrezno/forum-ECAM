@@ -90,9 +90,10 @@ document.addEventListener('DOMContentLoaded', () => {
         return '';
     };
 
-    const normalizeSeminar = (seminar) => ({
+    const normalizeSeminar = (seminar, isEnglish = false) => ({
         ...seminar,
-        title: getFirstDefined(seminar, ['title', 'name']),
+        activity: getFirstDefined(seminar, [isEnglish ? 'activityEn' : null, 'activity', 'name'].filter(Boolean)),
+        title: getFirstDefined(seminar, [isEnglish ? 'titleEn' : null, 'title', 'name'].filter(Boolean)),
         subtitle: getFirstDefined(seminar, ['subtitle']),
         subtitleEn: getFirstDefined(seminar, ['subtitleEn', 'subtitle_en']),
         text: getFirstDefined(seminar, ['text']),
@@ -115,12 +116,12 @@ document.addEventListener('DOMContentLoaded', () => {
         setFieldsContent(arrayFields, project);
     };
 
-    const setModalSeminarContent = (seminar) => {
+    const setModalSeminarContent = (seminar, isEnglish = false) => {
         if (!seminar || !imgColaborator || !imgPonente || !btnTickets) {
             return;
         }
 
-        const normalizedSeminar = normalizeSeminar(seminar);
+        const normalizedSeminar = normalizeSeminar(seminar, isEnglish);
 
         setSeminarFieldsContent(arraySeminarFields, normalizedSeminar);
         imgColaborator.src = normalizedSeminar.colaboratorUrl && normalizedSeminar.colaboratorUrl != '-'
@@ -211,11 +212,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const seminarName = seminarTrigger.getAttribute('data-seminar');
             const seminarsSection = document.getElementById('seminarios');
             const year = parseInt(seminarsSection?.getAttribute('data-year')) || 2025;
+            const isEnglish = document.documentElement.lang === 'en';
 
             void (async () => {
                 const seminarsData = await getSeminarsData(year);
                 const seminar = seminarsData.find((element) => element.seminar == seminarName);
-                setModalSeminarContent(seminar);
+                setModalSeminarContent(seminar, isEnglish);
             })();
         }
     });
