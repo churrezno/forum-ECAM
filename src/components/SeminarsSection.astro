@@ -59,7 +59,15 @@ const groupsConfig: Record<number, Record<string, { titleEs: string; titleEn: st
 
 const config = groupsConfig[year] || groupsConfig[2025];
 
-const getGroupKey = (activity: string): string => {
+const getGroupKey = (item: Record<string, string>, activity: string): string => {
+  if (year === 2026 && isEnglish && item.activityEn) {
+    if (item.activityEn.includes('Milagros Mumenthaler')) {
+      return 'Foco Milagros Mumenthaler';
+    }
+    if (item.activityEn.includes('Conversation')) {
+      return 'Conversaciones. El estado de las cosas';
+    }
+  }
   if (activity.includes('Foco Milagros Mumenthaler')) {
     return 'Foco Milagros Mumenthaler';
   }
@@ -70,7 +78,8 @@ const getGroupKey = (activity: string): string => {
 };
 
 const groupedItems = seminarsData.reduce((acc, item) => {
-  const groupKey = getGroupKey(item.activity);
+  const activity = year === 2026 && isEnglish && item.activityEn ? item.activityEn : item.activity;
+  const groupKey = getGroupKey(item, activity);
   if (!acc[groupKey]) {
     acc[groupKey] = [];
   }
@@ -117,6 +126,9 @@ const groups: SeminarGroup[] = Object.entries(config).map(([activity, groupConfi
   return {
     ...groupConfig,
     items: items.map((item): SeminarCard => {
+      const activity = year === 2026 && isEnglish && item.activityEn ? item.activityEn : item.activity;
+      const title = year === 2026 && isEnglish && item.titleEn ? item.titleEn : item.title;
+
       const isConversaciones = item.activity.includes('Conversaciones');
       const isIndustry = item.activity.includes('Industry');
       const isFoco = item.activity.includes('Foco');
@@ -142,9 +154,9 @@ const groups: SeminarGroup[] = Object.entries(config).map(([activity, groupConfi
       return {
         seminar: item.seminar,
         cardClass,
-        type: item.activity,
+        type: activity,
         typeClass,
-        lead: item.title,
+        lead: title,
         leadClass,
         imageSrc: `/images/${item.photoUrl}`,
         imageAlt: item.subtitle || item.title,

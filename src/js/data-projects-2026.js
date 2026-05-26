@@ -21,7 +21,7 @@ const projectsData2026 = [
         "screenplay": "Marc Ferrer",
         "language": "Español",
         "languageEn": "Spanish",
-        "genre": "Thiller, Comedía dramática, Comedia, Romance",
+        "genre": "Thriller, Comedía dramática, Comedia, Romance",
         "genreEn": "Thriller, Dramatic comedy, Comedy, Romance",
         "duration": "100'",
         "totalBudget": "112 700  €",
