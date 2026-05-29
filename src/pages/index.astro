@@ -53,25 +53,25 @@ const segment0Html = `
 ---
 
 <LegacyPage
-  title="ECAM Forum 2026 | Mercado Internacional de Coproducción en Madrid"
-  lang="es"
-  description="ECAM Forum 2026 reúne proyectos de cine, series e industria audiovisual en Madrid: coproducción internacional, talento emergente y financiación independiente."
-  ogTitle="ECAM Forum 2026 | Coproducción internacional en Madrid"
-  ogDescription="Conecta con talento audiovisual, proyectos de cine y series, y oportunidades de financiación en ECAM Forum 2026."
-  ogUrl="https://ecamforum.es/"
-  ogImage="https://ecamforum.es/images/forum-share.jpg"
-  loadLegacyInteractive={true}
-  loadModernInteractive={true}
-  pageId="home"
-  currentRoute="/"
-  counterpartRoute="/en/"
-  footerLocale="es"
-  hasLegacyProjectModal={false}
-  hasProject2025Modal={true}
-  hasNewsModal={true}
-  hasSeminarModal={true}
+title="ECAM Forum 2026 | Mercado Internacional de Coproducción en Madrid"
+lang="es"
+description="ECAM Forum 2026 reúne proyectos de cine, series e industria audiovisual en Madrid: coproducción internacional, talento emergente y financiación independiente."
+ogTitle="ECAM Forum 2026 | Coproducción internacional en Madrid"
+ogDescription="Conecta con talento audiovisual, proyectos de cine y series, y oportunidades de financiación en ECAM Forum 2026."
+ogUrl="https://ecamforum.es/"
+ogImage="https://ecamforum.es/images/forum-share.jpg"
+loadLegacyInteractive={true}
+loadModernInteractive={true}
+pageId="home"
+currentRoute="/"
+counterpartRoute="/en/"
+footerLocale="es"
+hasLegacyProjectModal={false}
+hasProject2025Modal={true}
+hasNewsModal={true}
+hasSeminarModal={true}
 >
-  <section id="intro">
+<section id="intro">
     <div class="container">
         <div class="row">
             <div class="col text-center">
@@ -80,71 +80,63 @@ const segment0Html = `
                 <h3>9/11 JUNIO 2026 <img src={`${basePath}images/flecha_blanca.svg`} alt="" class="flecha" aria-hidden="true"> MADRID</h3>
             </div>
         </div>
-        <!-- <div class="row">
-                <div class="col-12 col-sm-4 text-center mt-5 mb-2 mt-sm-5 mb-sm-5">
-                <a href="${basePath}pdf/ECAM_FORUM_catalogo_2025.pdf" class="btn btn-cta btn-cta-pq" target="_blank">
-                    <span>CATÁLOGO</span>
-                    <svg viewBox="0 0 66 59" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 33.481V25.9273H54.6916C49.9626 24.09 45.6449 21.0277 41.9439 16.7405C38.243 12.4533 36.1869 6.94118 35.3645 0H43.3832C44.2056 6.32872 46.6729 11.8408 51.1963 16.3322C55.7196 20.8235 60.6542 24.09 66 25.7232V33.2768C60.6542 34.91 55.7196 38.1765 51.1963 42.6678C46.6729 47.1592 44.2056 52.6713 43.3832 59H35.3645C36.1869 52.0588 38.243 46.5467 41.9439 42.2595C45.6449 37.9723 49.757 34.91 54.6916 33.2768H0V33.481Z" fill="#E61D4B"/>
-                    </svg>
-                </a>
-            </div>
-            <div class="col-12 col-sm-4 text-center mt-2 mb-2 mt-sm-5 mb-sm-5">
-                <a href="${basePath}pdf/ECAM_FORUM_PROGRAMA_2025.pdf" class="btn btn-cta btn-cta-pq" target="_blank">
+        <div class="row">
+            <!-- <div class="col-12 col-sm-6 text-center mt-5 mb-2 mt-sm-5 mb-sm-5">
+            <a href="${basePath}pdf/ECAM_FORUM_catalogo_2025.pdf" class="btn btn-cta btn-cta-pq" target="_blank">
+            <span>CATÁLOGO</span>
+            <svg viewBox="0 0 66 59" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 33.481V25.9273H54.6916C49.9626 24.09 45.6449 21.0277 41.9439 16.7405C38.243 12.4533 36.1869 6.94118 35.3645 0H43.3832C44.2056 6.32872 46.6729 11.8408 51.1963 16.3322C55.7196 20.8235 60.6542 24.09 66 25.7232V33.2768C60.6542 34.91 55.7196 38.1765 51.1963 42.6678C46.6729 47.1592 44.2056 52.6713 43.3832 59H35.3645C36.1869 52.0588 38.243 46.5467 41.9439 42.2595C45.6449 37.9723 49.757 34.91 54.6916 33.2768H0V33.481Z" fill="#E61D4B"/>
+            </svg>
+            </a>
+            </div> -->
+            <div class="col-12 text-center mt-2 mb-2 mt-sm-5 mb-sm-5">
+                <a href={`${basePath}pdf/ECAM_FORUM_PROGRAMA_2026.pdf`} class="btn btn-cta btn-cta-pq" target="_blank">
                     <span>PROGRAMA</span>
                     <svg viewBox="0 0 66 59" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M0 33.481V25.9273H54.6916C49.9626 24.09 45.6449 21.0277 41.9439 16.7405C38.243 12.4533 36.1869 6.94118 35.3645 0H43.3832C44.2056 6.32872 46.6729 11.8408 51.1963 16.3322C55.7196 20.8235 60.6542 24.09 66 25.7232V33.2768C60.6542 34.91 55.7196 38.1765 51.1963 42.6678C46.6729 47.1592 44.2056 52.6713 43.3832 59H35.3645C36.1869 52.0588 38.243 46.5467 41.9439 42.2595C45.6449 37.9723 49.757 34.91 54.6916 33.2768H0V33.481Z" fill="#E61D4B"/>
                     </svg>
                 </a>
             </div>
-            <div class="col-12 col-sm-4 text-center mt-2 mb-2 mt-sm-5 mb-sm-5">
-                <a href="${basePath}pdf/FINDE_PROGRAMA_2025_01.pdf" class="btn btn-cta btn-cta-pq" target="_blank">
-                    <span>Programa FINDE</span>
-                    <svg viewBox="0 0 66 59" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 33.481V25.9273H54.6916C49.9626 24.09 45.6449 21.0277 41.9439 16.7405C38.243 12.4533 36.1869 6.94118 35.3645 0H43.3832C44.2056 6.32872 46.6729 11.8408 51.1963 16.3322C55.7196 20.8235 60.6542 24.09 66 25.7232V33.2768C60.6542 34.91 55.7196 38.1765 51.1963 42.6678C46.6729 47.1592 44.2056 52.6713 43.3832 59H35.3645C36.1869 52.0588 38.243 46.5467 41.9439 42.2595C45.6449 37.9723 49.757 34.91 54.6916 33.2768H0V33.481Z" fill="#E61D4B"/>
-                    </svg>
-                </a>
-            </div>
-        </div> -->
+        </div>
     </div>
-  </section>
+</section>
 
-  <ProjectsSection lang={"es"} pageId={"forum-2026"} />
-  <CommitteesSection lang={"es"} pageId={"forum-2026"} />
-  <SeminarsSection lang={"es"} pageId={"forum-2026"} year={2026} />
+<ProjectsSection lang={"es"} pageId={"forum-2026"} />
+<CommitteesSection lang={"es"} pageId={"forum-2026"} />
+<SeminarsSection lang={"es"} pageId={"forum-2026"} year={2026} />
 
-  <section id="acreditaciones">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-md-8">
-                    <h3 class="tit-seccion azul">ACREDITACIONES</h3>
-                </div>
-                <div class="col-12 col-md-6 col-lg-8">
-                    <p class="azul">Ya se encuentra abierto el periodo de acreditación para la tercera edición de ECAM Forum. Las acreditaciones están destinadas a los profesionales de la industria audiovisual, medios de prensa y estudiantes.</p>
-                    <p class="azul">La acreditación es gratuita y se realiza a través de la plataforma FestiCiné.</p>
-                    <p class="azul">La acreditación es personal e intransferible y te dará acceso a:</p>
-                    <ul class="azul">
-                        <li>Presentaciones de proyectos <em>(pitch)</em> de las secciones Films to Come (largometrajes), Forum Shorts y Series.</li>
-                        <li>ECAM Forum Industry Platform en FestiCiné. Acceso para consultar la programación y el Who is Who.</li>
-                        <li>ECAM Forum - Industry Talks. Charlas, presentaciones y paneles sobre el estado de la industria audiovisual.</li>
-                        <li>Acceso a espacio profesional Forum en Sala Taller.</li>
-                    </ul>
-                    <p class="azul">Si tienes dudas, puedes consultar nuestra página de Preguntas Frecuentes - Acreditación ECAM FORUM <a href={`${basePath}pdf/FORUM_FAQ_2026_ESP.pdf`} target="_blank" class="rojo fw-bold">aquí.</a></p>
-                    <p class="azul">Para más información no dudes en contactarnos: <a href="mailto:forum@ecam.es" class="rojo fw-bold">forum@ecam.es</a></p>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="wrapper text-center">
-                        <p>Plazo de solicitud</p>
-                        <p class="fw-bold">CERRADO</p>
-                    </div>
+<section id="acreditaciones">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-8">
+                <h3 class="tit-seccion azul">ACREDITACIONES</h3>
+            </div>
+            <div class="col-12 col-md-6 col-lg-8">
+                <p class="azul">Ya se encuentra abierto el periodo de acreditación para la tercera edición de ECAM Forum. Las acreditaciones están destinadas a los profesionales de la industria audiovisual, medios de prensa y estudiantes.</p>
+                <p class="azul">La acreditación es gratuita y se realiza a través de la plataforma FestiCiné.</p>
+                <p class="azul">La acreditación es personal e intransferible y te dará acceso a:</p>
+                <ul class="azul">
+                    <li>Presentaciones de proyectos <em>(pitch)</em> de las secciones Films to Come (largometrajes), Forum Shorts y Series.</li>
+                    <li>ECAM Forum Industry Platform en FestiCiné. Acceso para consultar la programación y el Who is Who.</li>
+                    <li>ECAM Forum - Industry Talks. Charlas, presentaciones y paneles sobre el estado de la industria audiovisual.</li>
+                    <li>Acceso a espacio profesional Forum en Sala Taller.</li>
+                </ul>
+                <p class="azul">Si tienes dudas, puedes consultar nuestra página de Preguntas Frecuentes - Acreditación ECAM FORUM <a href={`${basePath}pdf/FORUM_FAQ_2026_ESP.pdf`} target="_blank" class="rojo fw-bold">aquí.</a></p>
+                <p class="azul">Para más información no dudes en contactarnos: <a href="mailto:forum@ecam.es" class="rojo fw-bold">forum@ecam.es</a></p>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="wrapper text-center">
+                    <p>Plazo de solicitud</p>
+                    <p class="fw-bold">CERRADO</p>
                 </div>
             </div>
         </div>
-  </section>
+    </div>
+</section>
 
-  <Fragment set:html={segment0Html} />
-  <NewsSection lang={"es"} pageId={"home"} />
-  <ConvocatoriasSection lang={"es"} />
-  <VideoSection lang={"es"} pageId={"home"} />
-  <SponsorsSection lang={"es"} />
+<Fragment set:html={segment0Html} />
+<NewsSection lang={"es"} pageId={"home"} />
+<ConvocatoriasSection lang={"es"} />
+<VideoSection lang={"es"} pageId={"home"} />
+<SponsorsSection lang={"es"} />
 </LegacyPage>
